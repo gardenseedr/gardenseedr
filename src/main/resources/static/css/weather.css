@@ -1,44 +1,6 @@
-body {
-    background-color: cadetblue;
-}
-.header {
-    font-family: 'Girassol', cursive;
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-.subheader {
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-}
-
 .weatherdisplay {
     display: flex;
     justify-content: center;
-}
-
-#mapdiv {
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    height: 520px;
-    padding: 0;
-}
-
-.mapspacers {
-    background-color: cadetblue;
-}
-
-input, label, button {
-    height: 50%;
-    align-self: center;
-    margin-left: 10px;
-}
-
-button{
-    font-size: 15px;
 }
 
 .days {
@@ -47,7 +9,6 @@ button{
     flex-direction: column;
     background-color: white;
     opacity: 0.95;
-
 }
 
 p {
@@ -62,18 +23,5 @@ span {
     margin-bottom: 10px;
     font-size: 20px;
 }
-
-.mapboxgl-canvas-container{ <!-- leave this here -->
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-/*WTF is this?*/
-/*container will be the basic container background for all forms*/
-/*container {*/
-
-/*}*/
-
 
 
