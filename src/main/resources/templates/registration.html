@@ -1,14 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/partials :: head">
+    <title>Sign up</title>
 </head>
 <body>
 
+<!--Header-->
+<nav th:replace="partials/partials :: header"></nav>
+
+<!--NavBar-->
+<nav th:replace="partials/partials :: navbar"></nav>
+
 <!--Registration form-->
-    <!--  username, PW, email, zipcode, yes or no on emails  -->
-<!--Submit button-->
+<div class="container">
+
+    <h1 class="subheader">Create an account</h1>
+<!--    <form th:action="@{/register}" method="POST" th:object="${user}">-->
+
+        <!--  username, PW, email, zipcode, yes or no on emails  -->
+
+<!--        <label for="username">Username</label>-->
+<!--        <input id="username" th:field="*{username}" />-->
+
+<!--        <label for="email">Email</label>-->
+<!--        <input id="email" th:field="*{email}" />-->
+
+<!--        <label for="password">Password</label>-->
+<!--        <input id="password" type="password" th:field="*{password}" />-->
+
+<!--        <label for="zipcode">Zipcode</label>-->
+<!--        <input id="zipcode" type="zipcode" th:field="*{zipcode}" />-->
+        <br>
+        <br>
+
+        <!--Checkbox!!! Would you like to receive email updates?-->
+<!--        <input type="checkbox" id="emailUpdates" th:field="*{emailUpdates}">-->
+<!--        <label for="emailUpdates">Would You Like Email Updates?</label><br>-->
+
+        <!--Submit button-->
+        <input type="text">
+        <input value="Sign me up!" type="submit" />
+
+        <br>
+        <br>
+    </form>
+</div>
+
+<!--Footer-->
+<nav th:replace="partials/partials :: footer"></nav>
 
 </body>
 </html>
+
