@@ -29,5 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
-keys.js
+src/main/resources/static/js/keys.js
 src/main/resources/application.properties
