@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!--    <link rel="stylesheet" href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css">-->
-<!--    Get rid of below link after testing-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!--    Get rid of below link after testing -->
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap"
+          rel="stylesheet">
+    <!--  My CSS  -->
     <link rel="stylesheet" href="../../static/css/weather.css"> <!--    th:href="@{/weather.css}"-->
 
     <title>Weather Fragment</title>
@@ -14,25 +21,39 @@
 
 <body>
 
-<!--  -->
-
-<div class="test" th:fragment="weather">
-
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-secondary">Secondary</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-light">Light</button>
-    <button type="button" class="btn btn-dark">Dark</button>
-    <button type="button" class="btn btn-link">Link</button>
-
+<div class="test" th: fragment="weather">
+    <!--Daily weather display-->
+    <div class="row weatherdisplay">
+        <!--Day 1-->
+        <div class="col-md-3 days" >
+            <span>Today</span>
+            <div id="day0"></div>
+        </div>
+        <!--Day 2-->
+        <div class="col-md-3 days">
+            <span>Tomorrow</span>
+            <div id="day1"></div>
+        </div>
+        <!--Day 3-->
+        <div class="col-md-3 days">
+            <span>Day After</span>
+            <div id="day2"></div>
+        </div>
+    </div>
 </div>
 
 <!--Get rid of these after testing-->
+
+<!--Bootstrap JS-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!--FontAwesome-->
+<script src="https://kit.fontawesome.com/b3eab56ba0.js" crossorigin="anonymous"></script>
+<!--MY JS/jQ-->
+<script src="../../static/js/jquery-2.2.4.js"></script>
+<script src="../../static/js/keys.js"></script>
+<script src="../../static/js/weather.js"></script>
+
 </body>
 </html>
