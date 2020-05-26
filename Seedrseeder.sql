@@ -1,88 +1,29 @@
-# Seed plants table here
-# Seed garden_plants table here
+DROP DATABASE IF EXISTS seedr_db;
+CREATE DATABASE seedr_db;
 
-CREATE TABLE plants (
-    id INT UNSIGNED AUTO_INCREMENT,
-    plant_name VARCHAR(50),
-    zone VARCHAR(50),
-    PRIMARY KEY (id)
-);
+USE seedr_db;
+
+Drop USER IF EXISTS seedr_user@localhost;
+CREATE USER seedr_user@localhost IDENTIFIED BY '*BlackKitty5';
+GRANT ALL ON seedr_db.* TO seedr_user@localhost;
 
 
-INSERT INTO plants (plant_name)
-VALUES
-('Arugula'),
-('Asparagus'),
-('Basil'),
-('Beet'),
-('Bell Pepper'),
-('Broccoli'),
-('Brussels Sprout'),
-('Cabbage'),
-('Carrot'),
-('Cauliflower'),
-('Celery'),
-('Chives'),
-('Cilantro'),
-('Cucumber'),
-('Dill'),
-('Eggplant'),
-('Fennel'),
-('Garlic'),
-('Green Bean'),
-('Green Onion'),
-('Horseradish'),
-('Jalapeno'),
-('Lavender'),
-('Lettuce'),
-('Mint'),
-('Okra'),
-('Onion'),
-('Oregano'),
-('Parsley'),
-('Parsnip'),
-('Radish'),
-('Rutabaga'),
-('Sage'),
-('Savoy Cabbage '),
-('Soybean'),
-('Spinach'),
-('Strawberry'),
-('Swiss Chard'),
-('Thyme'),
-('Tomato'),
-('Turnip'),
-('Zucchini'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value'),
-('value');
+# USERS TABLE
+INSERT INTO users (id, first_name, last_name, username, email, password, zipcode, is_admin, email_updates)
+VALUE
+(1, 'Kate', 'McKinney', 'katmck14', 'katmck14@gmail.com', 'password', 78240, true, true);
+
+# GARDENS TABLE
+INSERT INTO gardens (id, user_id, garden_name, created, updated)
+VALUE
+(1, 1, 'Kate Garden', '01/14/1996','01/14/1997');
+
+# SQUARES TABLE
+INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date)
+VALUE
+(1, 1, 'A3', 1, '01/14/1996');
+
+# PLANTS TABLE
+INSERT INTO plants (id, plant_name, API_id)
+VALUE
+(1, 'Arugula', '12A3B45');
