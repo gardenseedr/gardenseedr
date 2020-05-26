@@ -49,6 +49,7 @@ function getWeather(x) {
             weatherIcon = '<i class="fas fa-poo-storm fa-3x"></i>';
         }
 
+        // FINISH THIS
         content += (
             "<p>" +
             "Temp range: " +
