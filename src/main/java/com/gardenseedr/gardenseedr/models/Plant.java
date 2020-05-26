@@ -20,6 +20,5 @@ public class Plant {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plant")
     private List<Square> squares;
 
-
 //    No constructor(s) cause it should not change after values are seeded
 }
