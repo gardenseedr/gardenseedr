@@ -1,12 +1,27 @@
-.test {
-    background: lightseagreen;
+.weatherdisplay {
+    display: flex;
+    justify-content: center;
 }
 
-
-/*container will be the basic container background for all forms*/
-container {
-
+.days {
+    border: cadetblue 1px solid;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    opacity: 0.95;
 }
 
+p {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
 
 
