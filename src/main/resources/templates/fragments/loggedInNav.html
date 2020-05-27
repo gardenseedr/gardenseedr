@@ -8,6 +8,7 @@
 	<title>Logged in nav</title>
 </head>
 <body>
+
 <!--not linked to anything right now, may need to add something (such as "Hi, *NAME*!") to show user they are logged in besides showing the dashboard link-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="logged-in-nav">
@@ -17,13 +18,14 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="navbar-nav">
-			<a class="nav-item nav-link active" href="#">Weather Icon Here</a>
-			<a class="nav-item nav-link" href="#">Dashboard</a>
+			<a id="weather" class="nav-item nav-link active" href="#">Weather Icon Here</a>
+			<a class="nav-item nav-link" href="/dashboard/">Dashboard</a>
 			<a class="nav-item nav-link" href="#">About Us</a>
 
 		</div>
 	</div>
 </nav>
+	<script src="js/weather.js"></script>
 
 </body>
 </html>
