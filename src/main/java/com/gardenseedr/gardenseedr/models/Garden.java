@@ -52,4 +52,53 @@ public class Garden {
         this.updated = updated;
         this.user = user;
     }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Square> getSquares() {
+        return squares;
+    }
+
+    public void setSquares(List<Square> squares) {
+        this.squares = squares;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getGarden_name() {
+        return garden_name;
+    }
+
+    public void setGarden_name(String garden_name) {
+        this.garden_name = garden_name;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
 }

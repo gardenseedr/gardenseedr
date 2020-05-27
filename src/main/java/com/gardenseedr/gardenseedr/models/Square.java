@@ -46,4 +46,45 @@ public class Square {
         this.garden = garden;
         this.plant = plant;
     }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Garden getGarden() {
+        return garden;
+    }
+
+    public void setGarden(Garden garden) {
+        this.garden = garden;
+    }
+
+    public Plant getPlant() {
+        return plant;
+    }
+
+    public void setPlant(Plant plant) {
+        this.plant = plant;
+    }
+
+    public String getPlant_date() {
+        return plant_date;
+    }
+
+    public void setPlant_date(String plant_date) {
+        this.plant_date = plant_date;
+    }
+
+    public String getSquare_num() {
+        return square_num;
+    }
+
+    public void setSquare_num(String square_num) {
+        this.square_num = square_num;
+    }
 }

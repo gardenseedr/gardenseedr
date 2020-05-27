@@ -21,4 +21,37 @@ public class Plant {
     private List<Square> squares;
 
 //    No constructor(s) cause it should not change after values are seeded
+
+
+    public List<Square> getSquares() {
+        return squares;
+    }
+
+    public void setSquares(List<Square> squares) {
+        this.squares = squares;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getAPI_id() {
+        return API_id;
+    }
+
+    public void setAPI_id(String API_id) {
+        this.API_id = API_id;
+    }
+
+    public String getPlant_name() {
+        return plant_name;
+    }
+
+    public void setPlant_name(String plant_name) {
+        this.plant_name = plant_name;
+    }
 }

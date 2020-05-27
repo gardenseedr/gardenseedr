@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dashboard</title>
 </head>
 <body>
 
 <!-- "Welcome back, User!" -->
+<h1 th:text="Welcome back, ${user.getFirst_name()}"></h1>
+
+
 <!-- 3 day weather forecast for their zipcode -->
+<!--<div th:fragment=""></div>-->
+<div>Here's where the weather fragment will go</div>
+
 <!-- List of links to User's garden(s) -->
+<div th:each="garden : ${user.getGardens}">
+    <a th:href="@{'/garden/' + ${garden.id}}" th:text="${garden.getGarden_name()}"></a>
+</div>
 
 </body>
 </html>
