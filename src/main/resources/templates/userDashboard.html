@@ -5,9 +5,11 @@
     <title>Dashboard</title>
 </head>
 <body>
+<!--Navbar Frag-->
+<div>Here's where the navbar fragment goes</div>
 
 <!-- "Welcome back, User!" -->
-<h1 th:text="Welcome back, ${user.getFirst_name()}"></h1>
+<h1> Welcome back, <span th:text="${user.getFirst_name()}"></span>!</h1>
 
 
 <!-- 3 day weather forecast for their zipcode -->
@@ -15,9 +17,15 @@
 <div>Here's where the weather fragment will go</div>
 
 <!-- List of links to User's garden(s) -->
-<div th:each="garden : ${user.getGardens}">
-    <a th:href="@{'/garden/' + ${garden.id}}" th:text="${garden.getGarden_name()}"></a>
+<div th:each="garden : ${allTheGardens}">
+    <a th:href="@{'/garden/' + ${garden.getId()}}"><span th:text="${garden.getGarden_name()}"></span></a>
 </div>
+
+<!--Create a new garden button -->
+<form th:action="@{/dashboard/${user.getId()}}" th:method="post" th:object="${newGarden}"> <!--  pass it a garden obj right?  -->
+    Create New Garden:
+    <input type="submit">
+</form>
 
 </body>
 </html>
