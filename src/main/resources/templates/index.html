@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="partials/partials :: head">
+<head th:replace="fragments/headAndFooter :: head">
     <title>Title</title>
 </head>
 <body>
 
 
 <!--Landing page-->
-<nav th:replace="partials/partials :: header"></nav>
+<!--<nav th:replace="fragments/headAndFooter :: header"></nav>-->
 
 <!--Nav bar with sign up link and about us button-->
-<!--<nav th:replace="partials/partials :: navbar"></nav>-->
+<!--<nav th:replace="fragments/headAndFooter :: navbar"></nav>-->
 
 <!--Bootstrap carousel-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -50,7 +50,7 @@
 
 
 <!--footer Displaying about us link?-->
-<nav th:replace="partials/partials :: footer"></nav>
+<nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
 
 </body>
 </html>

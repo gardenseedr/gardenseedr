@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials :: head">
+<head th:replace="fragments/headAndFooter :: head">
     <title>Login</title>
 
 </head>
 <body>
-<nav th:replace="partials/partials :: header"></nav>
-<nav th:replace="partials/partials :: navbar"></nav>
+
 <h1 class="subheader">Log In</h1>
 <div th:if="${param.error}" class="subheader">
     Invalid Username and Password.
@@ -28,7 +27,7 @@
     <br>
 </div>
 
-<nav th:replace="partials/partials :: footer"></nav>
+<nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
 
 </body>
 
