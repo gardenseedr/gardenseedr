@@ -4,10 +4,10 @@
 }
 
 .days {
-    border: cadetblue 1px solid;
+    border: #523C23 1px solid;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #D2CDB2;
     opacity: 0.95;
 }
 

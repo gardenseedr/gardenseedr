@@ -23,9 +23,9 @@ INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date)
 VALUE
 (1, 1, 'A3', 1, '01/14/1996');
 
-# PLANTS TABLE ----------------------------- THIS NEEDS TO HAVE ALL 100 OF THE TOP 100 PLANT LIST
+# PLANTS TABLE
 INSERT INTO plants (id, plant_name, API_id)
-VALUE
+VALUES
 (1, 'Arugula', '550144506665350003000000'),
 (2, 'Asparagus', '54afdda33166630002400600'),
 (3, 'Basil', '543c216c3938620002020000'),
