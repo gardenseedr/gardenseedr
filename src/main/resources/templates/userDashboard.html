@@ -7,6 +7,7 @@
 <body>
 <!--Navbar Frag-->
 <div>Here's where the navbar fragment goes</div>
+
 <!-- "Welcome back, User!" -->
 <h1> Welcome back, <span th:text="${user.getFirst_name()}"></span>!</h1>
 
@@ -20,8 +21,11 @@
     <a th:href="@{'/garden/' + ${garden.getId()}}"><span th:text="${garden.getGarden_name()}"></span></a>
 </div>
 
-<!--Create a new garden-->
-<a href="">Create New Garden</a>
+<!--Create a new garden button -->
+<form th:action="@{/dashboard/${user.getId()}}" th:method="post" th:object="${newGarden}"> <!--  pass it a garden obj right?  -->
+    Create New Garden:
+    <input type="submit">
+</form>
 
 </body>
 </html>

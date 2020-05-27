@@ -1,5 +1,6 @@
 package com.gardenseedr.gardenseedr.controllers;
 
+import com.gardenseedr.gardenseedr.models.Garden;
 import com.gardenseedr.gardenseedr.models.User;
 import com.gardenseedr.gardenseedr.repositories.GardenRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Controller
 public class KateUserController {
 
@@ -21,21 +25,17 @@ public class KateUserController {
         this.userDao = userDao;
         this.gardenDao = gardenDao;
     }
+    // User's dashboard page
+    @GetMapping("/dashboard/{userId}")
+    public String showDashboard(@PathVariable long userId, Model model){
+        model.addAttribute("user", userDao.getOne(userId));
+        model.addAttribute("allTheGardens", userDao.getOne(userId).getGardens());
+        model.addAttribute("newGarden", new Garden());
 
-    @GetMapping("/dashboard/{id}")
-    public String showDashboard(@PathVariable long id, Model model){
-        model.addAttribute("user", userDao.getOne(id));
-        model.addAttribute("allTheGardens", userDao.getOne(id).getGardens());
-//        model.addAttribute("garde)
+//        LocalDate today = LocalDate.now();
+//        System.out.println(today);
+
         return "userDashboard";
     }
-
-//    @PostMapping("/dashboard")
-//    public String saveUser(@ModelAttribute User user){
-//        String hash = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        users.save(user);
-//        return "redirect:/login";
-//    }
 
 }
