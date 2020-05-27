@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS seedr_db;
-CREATE DATABASE seedr_db;
+# DROP DATABASE IF EXISTS seedr_db;
+# CREATE DATABASE seedr_db;
 
 USE seedr_db;
 
