@@ -72,7 +72,6 @@ public class User {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -80,7 +79,6 @@ public class User {
     public String getFirst_name() {
         return first_name;
     }
-
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
@@ -88,7 +86,6 @@ public class User {
     public String getLast_name() {
         return last_name;
     }
-
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
@@ -96,7 +93,6 @@ public class User {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -104,7 +100,6 @@ public class User {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -112,7 +107,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -120,7 +114,6 @@ public class User {
     public int getZipcode() {
         return zipcode;
     }
-
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
@@ -128,7 +121,6 @@ public class User {
     public boolean isIs_admin() {
         return is_admin;
     }
-
     public void setIs_admin(boolean is_admin) {
         this.is_admin = is_admin;
     }
@@ -136,7 +128,6 @@ public class User {
     public boolean isEmail_updates() {
         return email_updates;
     }
-
     public void setEmail_updates(boolean email_updates) {
         this.email_updates = email_updates;
     }
@@ -144,7 +135,6 @@ public class User {
     public List<Garden> getGardens() {
         return gardens;
     }
-
     public void setGardens(List<Garden> gardens) {
         this.gardens = gardens;
     }

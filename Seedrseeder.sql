@@ -1,5 +1,7 @@
-# DROP DATABASE IF EXISTS seedr_db;
-# CREATE DATABASE seedr_db;
+# Migration Part (run this by itself first, THEN run the app, then the seeder part)
+
+DROP DATABASE IF EXISTS seedr_db;
+CREATE DATABASE seedr_db;
 
 USE seedr_db;
 
@@ -8,20 +10,18 @@ CREATE USER seedr_user@localhost IDENTIFIED BY '*BlackKitty5';
 GRANT ALL ON seedr_db.* TO seedr_user@localhost;
 
 
+#       ------------------------        Seeder Part
+
 # USERS TABLE - TEST DATA
 INSERT INTO users (id, first_name, last_name, username, email, password, zipcode, is_admin, email_updates)
 VALUE
 (1, 'Kate', 'McKinney', 'katmck14', 'katmck14@gmail.com', 'password', 78240, true, true);
 
 # GARDENS TABLE - TEST DATA
+# DELETE FROM gardens WHERE id = 1;
 INSERT INTO gardens (id, user_id, garden_name, created, updated)
 VALUE
-(1, 1, 'Kate Garden', '01/14/1996','01/14/1997');
-
-# SQUARES TABLE - TEST DATA
-INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date)
-VALUE
-(1, 1, 'A3', 1, '01/14/1996');
+(1, 1, 'Kate Garden', '2020-05-27', null);
 
 # PLANTS TABLE
 INSERT INTO plants (id, plant_name, API_id)
@@ -78,3 +78,7 @@ VALUES
 (49, 'Leek', '54afdc7f31666300023d0200'),
 (50, 'Mesclun', '5dc64fb22db8d000045ff82b');
 
+# SQUARES TABLE - TEST DATA
+INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date) #Fix this into an actual Java LocalDate thing
+    VALUE
+    (1, 1, 'A3', 1, '01/14/1996');
