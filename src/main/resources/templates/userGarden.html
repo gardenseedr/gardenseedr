@@ -1,15 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/partials :: head">
+    <title>Sign up</title>
 </head>
 <body>
 
-<!-- User garden grid -->
+<!--Header-->
+<nav th:replace="partials/partials :: header"></nav>
+
+<!--NavBar-->
+<nav th:replace="partials/partials :: navbar"></nav>
+
+<div class="container">
+
+    <h1 class="subheader">Create a Garden</h1>
+    <!-- User garden grid -->
+    <div class="garden-page">
+        <div class="top-left-container">Left Container</div>
+        <div class="bot-left-container">Bot Left Container</div>
+        <div class="garden-grid">
+            <div class="garden-square">A1</div>
+            <div class="garden-square">A2</div>
+            <div class="garden-square">A3</div>
+            <div class="garden-square">A4</div>
+            <div class="garden-square">B1</div>
+            <div class="garden-square">B2</div>
+            <div class="garden-square">B3</div>
+            <div class="garden-square">B4</div>
+            <div class="garden-square">C1</div>
+            <div class="garden-square">C2</div>
+            <div class="garden-square">C3</div>
+            <div class="garden-square">C4</div>
+            <div class="garden-square">D1</div>
+            <div class="garden-square">D2</div>
+            <div class="garden-square">D3</div>
+            <div class="garden-square">D4</div>
+            <div class="garden-square">E1</div>
+            <div class="garden-square">E2</div>
+            <div class="garden-square">E3</div>
+            <div class="garden-square">E4</div>
+            <div class="garden-square">F1</div>
+            <div class="garden-square">F2</div>
+            <div class="garden-square">F3</div>
+            <div class="garden-square">F4</div>
+            <div class="garden-square">G1</div>
+            <div class="garden-square">G2</div>
+            <div class="garden-square">G3</div>
+            <div class="garden-square">G4</div>
+            <div class="garden-square">H1</div>
+            <div class="garden-square">H2</div>
+            <div class="garden-square">H3</div>
+            <div class="garden-square">H4</div>
+        </div>
+
+    </div>
+
+
     <!--pop up info tags for each square that has a plant with water, sun, soil, etc info-->
-<!--Edit button (doesn't lead to another page)-->
-<!--Delete button-->
+    <!--Edit button (doesn't lead to another page)-->
+    <!--Delete button-->
 
 </body>
 </html>
