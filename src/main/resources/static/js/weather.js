@@ -49,17 +49,29 @@ function getWeather(x) {
             weatherIcon = '<i class="fas fa-poo-storm fa-3x"></i>';
         }
 
-        // FINISH THIS
+        var date;
+
+        if (i === 0){
+            date = (new Date().getMonth() + 1) + "/" + new Date().getDate() + "/" + new Date().getFullYear();
+        }
+        else if (i === 1){
+            date = (new Date().getMonth() + 1) + "/" + (new Date().getDate() + 1) + "/" + new Date().getFullYear();
+        }
+        else if (i === 2){
+            date = (new Date().getMonth() + 1) + "/" + (new Date().getDate() + 2) + "/" + new Date().getFullYear();
+        }
+
         content += (
             "<p>" +
-            "Temp range: " +
-            x.daily.data[i].temperatureHigh + "F - " +
+            date +
+            "</p>" +
+            "<p>" +
+            x.daily.data[i].temperatureHigh + "F | " +
             x.daily.data[i].temperatureLow + "F" +
             "</p>" +
             "<p>" +
-            "Feels like: " +
-            x.daily.data[i].apparentTemperatureHigh + "F - " +
-            x.daily.data[i].apparentTemperatureLow + "F" +
+            "Chance of rain: " +
+            (x.daily.data[i].precipProbability * 100)+ "%" +
             "</p>" +
             "<p>" +
             weatherIcon +
