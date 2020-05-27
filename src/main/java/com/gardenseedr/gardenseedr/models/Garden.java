@@ -101,4 +101,7 @@ public class Garden {
     public void setUpdated(String updated) {
         this.updated = updated;
     }
+
+    public void save(Garden garden) {
+    }
 }
