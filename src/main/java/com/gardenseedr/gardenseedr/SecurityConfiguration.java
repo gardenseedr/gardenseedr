@@ -52,7 +52,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/userGarden"
+                        "/userGarden",
+                         "/userGarden/{id}"
                          // only authenticated users can create garden
 
                 )

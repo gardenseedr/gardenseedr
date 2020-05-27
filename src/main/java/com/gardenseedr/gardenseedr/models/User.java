@@ -42,6 +42,15 @@ public class User {
     // ------------------------- Constructors
     // Empty
     public User (){}
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
+
     // Every field but id included
     public User (String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin, boolean email_updates){
         this.first_name = first_name;
@@ -66,8 +75,6 @@ public class User {
         this.email_updates = email_updates;
     }
 
-    public User(User user) {
-    }
 
     public long getId() {
         return id;
@@ -148,4 +155,7 @@ public class User {
     public void setGardens(List<Garden> gardens) {
         this.gardens = gardens;
     }
+
+
+
 }

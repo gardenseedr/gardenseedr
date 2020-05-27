@@ -13,20 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class GardenController {
     private GardenRepository gardenRepo;
 
-    public GardenController(GardenRepository gardenRepo) {
-        this.gardenRepo = gardenRepo;
-    }
+//    @GetMapping("garden")
+//    public String createGarden(Model model){
+//        model.addAttribute("garden", new Garden());
+//        return ("userGarden");
+//    }
+//
+//    @PostMapping("garden/{id}")
+//    public String saveGarden(@ModelAttribute Garden garden){
+//        gardenRepo.save(garden);
+//        return "userGarden";
+//    }
 
-    @GetMapping("userGarden")
-    public String createGarden(Model model){
-        model.addAttribute("garden", new Garden());
-        return ("userGarden");
-    }
-
-    @PostMapping("userGarden")
-    public String saveUser(@ModelAttribute Garden garden){
-        gardenRepo.save(garden);
-        return "userGarden";
-    }
 
 }

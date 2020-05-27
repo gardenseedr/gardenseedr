@@ -102,6 +102,5 @@ public class Garden {
         this.updated = updated;
     }
 
-    public void save(Garden garden) {
-    }
+
 }

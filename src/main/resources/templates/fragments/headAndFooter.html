@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <div th:fragment="head">
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/static/weather.css">
+        <link rel="stylesheet" href="/static/css/weather.css">
+        <link rel="stylesheet" href="/static/css/gardenPage.css">
     </div>
 </head>
 <body>
@@ -22,6 +24,15 @@
             <li class="nav-item"><a class="nav-link" href="https://www.codeup.com/" target="_blank">About Us</a></li>
         </ul>
     </div>
+        <ul>
+            <!-- More links here... -->
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
+        </ul>
+
 </footer_nav>
 
 <div th:fragment="footer" th:remove="tag">
