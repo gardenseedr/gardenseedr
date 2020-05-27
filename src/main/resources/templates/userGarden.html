@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials :: head">
+<head th:replace="fragments/headAndFooter :: head">
     <title>Sign up</title>
 </head>
 <body>
 
 <!--Header-->
-<nav th:replace="partials/partials :: header"></nav>
+<!--<nav th:replace="fragments/headAndFooter :: header">-->
 
 <!--NavBar-->
-<nav th:replace="partials/partials :: navbar"></nav>
+<!--<nav th:replace="fragments/headAndFooter :: navbar">-->
 
 <div class="container">
 
     <h1 class="subheader">Create a Garden</h1>
     <!-- User garden grid -->
     <div class="garden-page">
-        <div class="top-left-container">Left Container</div>
-        <div class="bot-left-container">Bot Left Container</div>
+        <div class="top-left-container">Top Left Container</div>
+<!--        Contains all other gardens-->
+        <div class="bot-left-container">Bottom Left Container</div>
+<!--        This is the Grid to contain the entire garden-->
         <div class="garden-grid">
+
+
+<!--            Each garden square when clicked will have a dropdown of all avail veg and an active searchbar-->
             <div class="garden-square">A1</div>
             <div class="garden-square">A2</div>
             <div class="garden-square">A3</div>
@@ -51,14 +56,39 @@
             <div class="garden-square">H2</div>
             <div class="garden-square">H3</div>
             <div class="garden-square">H4</div>
+
+
+            <!--            This is the modal that will contain info on each individual square. -->
+            <!--pop up info tags for each square that has a plant with water, sun, soil, etc info-->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
+</div>
 
 
-    <!--pop up info tags for each square that has a plant with water, sun, soil, etc info-->
     <!--Edit button (doesn't lead to another page)-->
     <!--Delete button-->
+
+    <!--<nav th:replace="fragments/headAndFooter :: navbar">-->
 
 </body>
 </html>

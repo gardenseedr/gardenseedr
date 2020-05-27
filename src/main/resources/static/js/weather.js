@@ -94,3 +94,10 @@ function reportWeather(la, lo){
 }
 
 reportWeather(lat, long);
+
+
+$(document).ready(function () {
+
+    $(".square").click(function(){
+        alert("paaoi");/* REPLACE THIS WITH YOUR OWN CODE */
+    });});
