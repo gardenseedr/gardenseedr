@@ -1,0 +1,38 @@
+//package com.gardenseedr.gardenseedr.services;
+//
+//import com.gardenseedr.gardenseedr.models.User;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.mail.MailException;
+//import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.stereotype.Service;
+//
+//@Service("EmailService")
+//public class EmailService {
+//
+//    public JavaMailSender emailSender;
+//
+//    @Value("${spring.mail.from}")
+//    private String from;
+//
+//    public EmailService(JavaMailSender emailSender) {
+//        this.emailSender = emailSender;
+//    }
+//
+//    public void prepareAndSend(User user, String subject, String body) {
+//        SimpleMailMessage msg = new SimpleMailMessage();
+//        msg.setFrom(from);
+//        msg.setTo(user.getUser().getEmail());
+//        msg.setSubject(subject);
+//        msg.setText(body);
+//
+//        try{
+//            this.emailSender.send(msg);
+//        }
+//        catch (MailException ex) {
+//            // simply log it and go on...
+//            System.err.println(ex.getMessage());
+//        }
+//    }
+//
+//}

@@ -66,6 +66,9 @@ public class User {
         this.email_updates = email_updates;
     }
 
+    public User(User user) {
+    }
+
     public long getId() {
         return id;
     }

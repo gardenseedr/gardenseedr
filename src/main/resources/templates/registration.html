@@ -18,23 +18,22 @@
     <form th:action="@{/register}" method="POST" th:object="${user}">
 
         <!--  username, PW, email, zipcode, yes or no on emails  -->
-
         <label for="username">Username</label>
         <input id="username" th:field="*{username}" />
 
         <label for="email">Email</label>
         <input id="email" th:field="*{email}" />
 
+        <label for="zipcode">Zipcode</label>
+        <input id="zipcode" type="text" th:field="*{zipcode}" />
+        <br>
+        <br>
+
         <label for="password">Password</label>
         <input id="password" type="password" th:field="*{password}" />
 
-        <label for="zipcode">Zipcode</label>
-        <input id="zipcode" type="zipcode" th:field="*{zipcode}" />
-        <br>
-        <br>
-
         <!--Checkbox!!! Would you like to receive email updates?-->
-        <input type="checkbox" id="emailUpdates" th:field="*{emailUpdates}">
+        <input type="checkbox" id="emailUpdates" th:field="*{email_updates}">
         <label for="emailUpdates">Would You Like Email Updates?</label><br>
 
         <!--Submit button-->
