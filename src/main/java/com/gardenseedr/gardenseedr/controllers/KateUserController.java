@@ -25,6 +25,7 @@ public class KateUserController {
     @GetMapping("/dashboard/{id}")
     public String showDashboard(@PathVariable long id, Model model){
         model.addAttribute("user", userDao.getOne(id));
+        model.addAttribute("allTheGardens", userDao.getOne(id).getGardens());
 //        model.addAttribute("garde)
         return "userDashboard";
     }
