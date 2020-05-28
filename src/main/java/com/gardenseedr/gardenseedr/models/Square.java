@@ -1,6 +1,8 @@
 package com.gardenseedr.gardenseedr.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="squares")
@@ -13,7 +15,7 @@ public class Square {
     private String square_num;
 
     @Column(name="plant_date", nullable = false)
-    private String plant_date;
+    private LocalDate plant_date;
 
 
     //  Many Squares to one Garden
@@ -32,14 +34,14 @@ public class Square {
     // Empty
     public Square (){}
     // Every field but id included
-    public Square (String square_num, String plant_date, Garden garden, Plant plant){
+    public Square (String square_num, LocalDate plant_date, Garden garden, Plant plant){
         this.square_num = square_num;
         this.plant_date = plant_date;
         this.garden = garden;
         this.plant = plant;
     }
     // Every field included
-    public Square (long id, String square_num, String plant_date, Garden garden, Plant plant){
+    public Square (long id, String square_num, LocalDate plant_date, Garden garden, Plant plant){
         this.id = id;
         this.square_num = square_num;
         this.plant_date = plant_date;
@@ -51,7 +53,6 @@ public class Square {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -59,7 +60,6 @@ public class Square {
     public Garden getGarden() {
         return garden;
     }
-
     public void setGarden(Garden garden) {
         this.garden = garden;
     }
@@ -67,23 +67,20 @@ public class Square {
     public Plant getPlant() {
         return plant;
     }
-
     public void setPlant(Plant plant) {
         this.plant = plant;
     }
 
-    public String getPlant_date() {
+    public LocalDate getPlant_date() {
         return plant_date;
     }
-
-    public void setPlant_date(String plant_date) {
+    public void setPlant_date(LocalDate plant_date) {
         this.plant_date = plant_date;
     }
 
     public String getSquare_num() {
         return square_num;
     }
-
     public void setSquare_num(String square_num) {
         this.square_num = square_num;
     }

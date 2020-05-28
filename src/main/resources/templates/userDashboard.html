@@ -22,7 +22,9 @@
 </div>
 
 <!--Create a new garden button -->
-<form th:action="@{/dashboard/${user.getId()}}" th:method="post" th:object="${newGarden}"> <!--  pass it a garden obj right?  -->
+<form th:action="@{/dashboard/${user.getId()}}" th:method="post" th:object="${newGarden}">
+    <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
+     which then passes it to GardenController: createGarden   -->
     Create New Garden:
     <input type="submit">
 </form>

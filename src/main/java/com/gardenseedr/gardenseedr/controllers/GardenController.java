@@ -2,6 +2,8 @@ package com.gardenseedr.gardenseedr.controllers;
 
 import com.gardenseedr.gardenseedr.models.Garden;
 
+import com.gardenseedr.gardenseedr.models.Plant;
+import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.models.User;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class GardenController {
@@ -27,35 +30,37 @@ public class GardenController {
         this.userDao = userDao;
     }
 
-    // Create garden from dashboard button
+    // Create blank garden from dashboard button
+    // (the GetMapping for dashboard/{userId} is in UserController)
     @PostMapping("/dashboard/{userId}")
-    public String createGarden (@ModelAttribute Garden garden, @PathVariable long userId){
-        LocalDate today = LocalDate.now();
-        garden.setCreated(today);
-        garden.setUser(userDao.getOne(userId));
-        gardenRepo.save(garden);
+    public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
+        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-        return "redirect:/garden/" + garden.getId();
+        newgarden.setCreated(today);
+        newgarden.setUser(userDao.getOne(userId));
+        gardenRepo.save(newgarden);
+
+        return "redirect:/garden/" + newgarden.getId();
     }
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
     public String seeGarden(@PathVariable long gardenId, Model model){
-        model.addAttribute("garden", gardenRepo.getOne(gardenId));
+        model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
+        model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
+        model.addAttribute("newSquare", new Square()); // so user can make new square
+
         return ("userGarden");
     }
 
-    // Create a new garden and go to that page
-    @GetMapping("/userGarden")
-    public String createGarden(Model model){
-        model.addAttribute("garden", new Garden());
-        return ("userGarden");
-    }
+    // Add Squares to existing garden
+    @PostMapping("/garden/{gardenId}")
+    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId){
+        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-    @PostMapping("/userGarden")
-    public String saveUser(@ModelAttribute Garden garden){
-        gardenRepo.save(garden);
-        return "userGarden";
-    }
+        newSquare.setGarden(gardenRepo.getOne(gardenId));
+        newSquare.setPlant_date(today);
 
+        return "redirect:/garden/" + gardenId;
+    }
 }

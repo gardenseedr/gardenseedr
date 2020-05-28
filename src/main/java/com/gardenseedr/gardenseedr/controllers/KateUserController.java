@@ -25,15 +25,13 @@ public class KateUserController {
         this.userDao = userDao;
         this.gardenDao = gardenDao;
     }
+
     // User's dashboard page
     @GetMapping("/dashboard/{userId}")
     public String showDashboard(@PathVariable long userId, Model model){
-        model.addAttribute("user", userDao.getOne(userId));
-        model.addAttribute("allTheGardens", userDao.getOne(userId).getGardens());
-        model.addAttribute("newGarden", new Garden());
-
-//        LocalDate today = LocalDate.now();
-//        System.out.println(today);
+        model.addAttribute("user", userDao.getOne(userId));  // so dashboard can say "Hi user!"
+        model.addAttribute("allTheGardens", userDao.getOne(userId).getGardens()); // so dashboard can see all user's gardens
+        model.addAttribute("newGarden", new Garden()); // so dashboard can generate a new garden assigned to user
 
         return "userDashboard";
     }
