@@ -23,13 +23,12 @@
         <!--        Contains all other gardens-->
         <div class="bot-left-container">Bottom Left Container</div>
         <!--        This is the Grid to contain the entire garden-->
-        <form th:action="@{/garden/{id}}" method="post" th:object="${square}" class="garden-grid">
+        <form th:action="@{/garden/{id}}" method="post" th:object="${newSquare}" class="garden-grid">
 
 
             <!--            Each garden square when clicked will have a dropdown of all avail veg and an active searchbar-->
             <div class="garden-square" th:value="A1">
-                <span th:if="*{square_num == null}">Brown Dirt</span>
-                <span th:unless="*{square_num  == null}">Picture</span>
+                <p th:each="square : ${allTheSquares}" ><span th:text="${square.getPlant().getPlant_name()}"></span></p>
             </div>
             <!--            <div class="garden-square" th:field="*{square_num}" th:value="A2"></div>-->
             <!--            <div class="garden-square" th:field="*{square_num}" th:value="A3"></div>-->
