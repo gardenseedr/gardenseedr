@@ -40,7 +40,7 @@ public class GardenController {
         newgarden.setUser(userDao.getOne(userId));
         gardenRepo.save(newgarden);
 
-        return "redirect:/garden/" + newgarden.getId();
+        return "redirect: /garden/" + newgarden.getId();
     }
 
     // Go to already existing garden's page
@@ -55,7 +55,7 @@ public class GardenController {
 
     // Add Squares to existing garden
     @PostMapping("/garden/{gardenId}")
-    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId){
+    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId ){
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
         newSquare.setGarden(gardenRepo.getOne(gardenId));
