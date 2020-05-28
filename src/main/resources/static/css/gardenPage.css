@@ -1,18 +1,39 @@
 .garden-page{
+    display: grid;
     background: #D2CDB2;
+    height: 110%;
+    width: 75%;
+    grid-template-areas:
+            'tlc gg'
+            'blc gg';
 }
 
 .top-left-container{
+    display: grid;
+    grid-area: tlc;
     border: 2px solid #523C23;
 }
 
 .bot-left-container{
+    display: grid;
+    grid-area: blc;
     background: #523C23;
 }
 
 .garden-grid{
-    background: #D2CDB2;
-    border: black;
+    padding: 8px;
+    width: 260px;
+    height: 500px;
+    display: grid;
+    grid-area: gg;
+    grid-template-columns: 60px 60px 60px 60px;
+    grid-template-rows: 1fr;
+}
+
+.garden-square{
+    height: 60px;
+    width: 60px;
+    border: #523C23 2px solid;
 }
 
 .modal{

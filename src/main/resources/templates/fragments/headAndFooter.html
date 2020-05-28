@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <div th:fragment="head">
+<head th:fragment="head">
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/static/css/weather.css">
-        <link rel="stylesheet" href="/static/css/gardenPage.css">
-    </div>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/weather.css}">
+        <link rel="stylesheet" th:href="@{/css/gardenPage.css}">
 </head>
 <body>
 
