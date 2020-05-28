@@ -27,4 +27,6 @@ public class SquareController {
         squareDao.save(square);
         return ("/userGarden");
     }
+
+
 }
