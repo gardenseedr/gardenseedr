@@ -79,6 +79,6 @@ VALUES
 (50, 'Mesclun', '5dc64fb22db8d000045ff82b');
 
 # SQUARES TABLE - TEST DATA
-INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date) #Fix this into an actual Java LocalDate thing
+INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date)
     VALUE
-    (1, 1, 'A3', 1, '01/14/1996');
+    (1, 1, 'A3', 1, '2020-05-28');
