@@ -40,7 +40,7 @@ public class GardenController {
         newgarden.setUser(userDao.getOne(userId));
         gardenRepo.save(newgarden);
 
-        return "redirect: /garden/" + newgarden.getId();
+        return "redirect:/garden/" + newgarden.getId();
     }
 
     // Go to already existing garden's page
