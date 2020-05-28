@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/dashboard") // user's home page, it can be any URL
+                .defaultSuccessUrl("/dashboard/success" ) // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -52,8 +52,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/userGarden",
-                         "/userGarden/{id}"
+                        "/garden",
+                         "/dashboard/{userId}"
                          // only authenticated users can create garden
 
                 )
