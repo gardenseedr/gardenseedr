@@ -80,5 +80,5 @@ VALUES
 
 # SQUARES TABLE - TEST DATA
 INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date)
-    VALUE
+    VALUES
     (1, 1, 5, 1, '2020-05-28');
