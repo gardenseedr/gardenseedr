@@ -88,7 +88,6 @@ function getWeather(x) {
 
 function reportWeather(la, lo){
     $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + DarkSkyToken + "/" + la + "," + lo).done(function (data) {
-        getWeather(data)
     });
     // $(".subheader").html("The weather in: " + markerLocation);
 }
