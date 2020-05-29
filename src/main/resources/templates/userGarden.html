@@ -9,15 +9,11 @@
 
 <div class="container">
 
-<!-- Kate edits -->
-    <h1 class="subheader">KATE USER GARDEN</h1>
+    <!-- Kate edits -->
+    <h1 class="subheader">USER GARDEN</h1>
 
 
-
-
-
-
-<!-- End of Kate edits -->
+    <!-- End of Kate edits -->
     <!-- User garden grid -->
     <div class="garden-page">
         <div class="top-left-container">
@@ -32,36 +28,53 @@
         <!--            Each garden square when clicked will have a dropdown of all avail veg and an active searchbar-->
         <!--        th:field="*{square_num}"-->
         <div class="garden-grid">
-            <div th:each="i : ${#numbers.sequence(1, 32, 1)}" th:id="'square' + ${i}" class="garden-square" th:value="${i}" >
-                <span th:each="square : ${allTheSquares}" th:if="${i} == ${square.getSquare_num()}" th:text="${square.getPlant().getId()}">
+
+            <!--        Andy MODAL attempt-->
+
+
+            <button type="button" data-toggle="modal" data-target="#gardenModal" class="btn btn-primary garden-square"
+                    th:each="i : ${#numbers.sequence(1, 32, 1)}" th:id="'square' + ${i}" th:value="${i}">
+                <span th:each="square : ${allTheSquares}" th:if="${i} == ${square.getSquare_num()}"
+                      th:text="${square.getPlant().getId()}">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
-            </div>
-        </div>
-        <!--            <br>-->
-        <!--            <button value="Save Garden" type="submit"></button>-->
-        <!--            This is the modal that will contain info on each individual square. -->
-        <!--pop up info tags for each square that has a plant with water, sun, soil, etc info-->
+            </button>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            <div class="modal fade" id="gardenModal" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Modal title</h5>
+                        </div>
+                        <div class="modal-body">
+                            <span th:each="square : ${allTheSquares}">
+                            <span th:if="${square.square_num == null}">This will be the Search!!</span>
+                            <span th:unless="${square.square_num == null}">
+                                <span th:text="${square.getPlant().getPlant_name()}">
+
+                                </span></span>
+                                </span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!--        <div th:each="i : ${#numbers.sequence(1, 32, 1)}" th:id="'square' + ${i}" class="garden-square" th:value="${i}" >-->
+        <!--                <span th:each="square : ${allTheSquares}" th:if="${i} == ${square.getSquare_num()}" th:text="${square.getPlant().getId()}">-->
+        <!--                    <span th:unless="${i} == ${square.getSquare_num()}"></span>-->
+        <!--                </span>-->
+        <!--        </div>-->
+
+        <!--            <br>-->
+        <button value="Save Garden" type="submit"></button>
+        <!--            This is the modal that will contain info on each individual square. -->
+        <!--pop up info tags for each square that has a plant with water, sun, soil, etc info-->
+
 
     </div>
 </div>
@@ -70,6 +83,8 @@
 <!--Delete button-->
 
 <nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
+<nav th:replace="fragments/headAndFooter :: footer"></nav>
+
 
 </body>
 </html>

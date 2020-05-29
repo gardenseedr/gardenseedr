@@ -5,6 +5,7 @@ import com.gardenseedr.gardenseedr.models.Garden;
 import com.gardenseedr.gardenseedr.models.Plant;
 import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.models.User;
+import com.gardenseedr.gardenseedr.repositories.SquareRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,13 @@ public class GardenController {
 
     private UserRepository userDao;
     private GardenRepository gardenRepo;
+    private SquareRepository squareRepo;
 
-    public GardenController(GardenRepository gardenRepo, UserRepository userDao) {
+
+    public GardenController(GardenRepository gardenRepo, UserRepository userDao, SquareRepository squareRepo) {
         this.gardenRepo = gardenRepo;
         this.userDao = userDao;
+        this.squareRepo = squareRepo;
     }
 
     // Create blank garden from dashboard button
@@ -35,7 +39,6 @@ public class GardenController {
     @PostMapping("/dashboard/{userId}")
     public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
         newgarden.setCreated(today);
         newgarden.setUser(userDao.getOne(userId));
         gardenRepo.save(newgarden);
@@ -49,7 +52,7 @@ public class GardenController {
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
-
+        model.addAttribute("viewSquare", squareRepo.getOne(gardenId).getPlant().getPlant_name());// so user can view squares in the garden
         return ("userGarden");
     }
 
