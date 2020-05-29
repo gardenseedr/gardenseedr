@@ -12,7 +12,7 @@ public class Square {
     private long id;
 
     @Column(name = "square_num", nullable = false)
-    private String square_num;
+    private int square_num;
 
     @Column(name="plant_date", nullable = false)
     private LocalDate plant_date;
@@ -34,14 +34,14 @@ public class Square {
     // Empty
     public Square (){}
     // Every field but id included
-    public Square (String square_num, LocalDate plant_date, Garden garden, Plant plant){
+    public Square (int square_num, LocalDate plant_date, Garden garden, Plant plant){
         this.square_num = square_num;
         this.plant_date = plant_date;
         this.garden = garden;
         this.plant = plant;
     }
     // Every field included
-    public Square (long id, String square_num, LocalDate plant_date, Garden garden, Plant plant){
+    public Square (long id, int square_num, LocalDate plant_date, Garden garden, Plant plant){
         this.id = id;
         this.square_num = square_num;
         this.plant_date = plant_date;
@@ -78,10 +78,10 @@ public class Square {
         this.plant_date = plant_date;
     }
 
-    public String getSquare_num() {
+    public int getSquare_num() {
         return square_num;
     }
-    public void setSquare_num(String square_num) {
+    public void setSquare_num(int square_num) {
         this.square_num = square_num;
     }
 }
