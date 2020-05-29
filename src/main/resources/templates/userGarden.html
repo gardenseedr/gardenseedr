@@ -10,19 +10,31 @@
 <div class="container">
 
 <!-- Kate edits -->
-    <h1 class="subheader">KATE USER GARDEN</h1>
 
+    <h1 class="subheader" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
+        <form th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post" th:object="${garden}">
+            <h1>Give your garden a name:
+            <input th:field="*{garden_name}">
+            <!-- This stuff has to be restated as what it already is or they'll reset to null/0-->
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{user}">
+            <input type="hidden" th:field="*{created}">
 
-
-
+            <input type="submit">
+            </h1>
+        </form>
+    <!-- Delete button -->
+    <form th:action="@{'/dashboard/'+ ${garden.getUser().getId()}}" th:method="post" th:object="${garden.getId()}">
+        <input type="submit" value="Delete" name="delete">
+    </form>
 
 <!-- End of Kate edits -->
     <!-- User garden grid -->
     <div class="garden-page">
         <div class="top-left-container">
             Top Left Container
-            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>
+<!--            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>-->
         </div>
         <!--        Contains all other gardens-->
         <div class="bot-left-container">Bottom Left Container</div>

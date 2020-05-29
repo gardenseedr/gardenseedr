@@ -32,16 +32,26 @@ public class GardenController {
 
     // Create blank garden from dashboard button
     // (the GetMapping for dashboard/{userId} is in UserController)
-    @PostMapping("/dashboard/{userId}")
-    public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
-        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-        newgarden.setCreated(today);
-        newgarden.setUser(userDao.getOne(userId));
-        gardenRepo.save(newgarden);
+    @PostMapping("/dashboard/{userId}")
+        public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
+            newgarden.setCreated(today);
+            newgarden.setUser(userDao.getOne(userId));
+
+            gardenRepo.save(newgarden);
 
         return "redirect:/garden/" + newgarden.getId();
-    }
+        }
+//    -------------------------------    THIS (deleteGarden) DOESN'T WORK, FIX IT
+    @PostMapping("/dashboard/{userId}")
+        public String deleteGarden (@ModelAttribute long gardenId, @PathVariable long userId){
+            Garden gardenToDelete = gardenRepo.getOne(gardenId);
+            gardenRepo.delete(gardenToDelete);
+
+            return "redirect:/dashboard/" + userId;
+        }
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
@@ -53,14 +63,27 @@ public class GardenController {
         return ("userGarden");
     }
 
-    // Add Squares to existing garden
-    @PostMapping("/garden/{gardenId}")
-    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId ){
-        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+//        // Add Squares to existing garden  -----------------------    THIS (addSquares) DOESN'T WORK, FIX IT
+//        @PostMapping("/garden/{gardenId}")
+//        public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId ){
+//            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+//
+//            newSquare.setGarden(gardenRepo.getOne(gardenId));
+//            newSquare.setPlant_date(today);
+//
+//            return "redirect:/garden/" + gardenId;
+//        }
 
-        newSquare.setGarden(gardenRepo.getOne(gardenId));
-        newSquare.setPlant_date(today);
+        // Name newly created garden
+        @PostMapping("/garden/{gardenId}")
+        public String nameGarden(@ModelAttribute Garden garden, @PathVariable long gardenId ){
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-        return "redirect:/garden/" + gardenId;
-    }
+            garden.setCreated(garden.getCreated());
+            garden.setUpdated(today);
+
+            gardenRepo.save(garden);
+
+            return "redirect:/garden/" + gardenId;
+        }
 }
