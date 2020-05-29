@@ -6,8 +6,6 @@
 </head>
 <body>
 
-<!-- DIVIDE PAGE BY COMMENT LINES TOMORROW AND START WORKING ON NAME GARDEN FUNCTION-->
-
 
 <!--Header-->
 <!--<nav th:replace="fragments/headAndFooter :: header">-->
@@ -29,10 +27,19 @@
 
 
             <!--            Each garden square when clicked will have a dropdown of all avail veg and an active searchbar-->
+
             <div class="garden-square" th:value="A1">
-                <p th:each="square : ${allTheSquares}" ><span th:text="${square.getPlant().getPlant_name()}"></span></p>
+                <span th:if="${newSquare.getSquare_num() != 'A1'}"></span>
+                <span th:unless="${newSquare.getSquare_num() != 'A1'}">
+                    <span th:text="${newSquare.getPlant().getPlant_name()}"></span></p>
+                </span>
             </div>
-            <!--            <div class="garden-square" th:field="*{square_num}" th:value="A2"></div>-->
+
+            <div class="garden-square" th:value="A2">
+                <p th:each="square : ${allTheSquares}" >
+                    <span th:text="${square.getPlant().getPlant_name()}"></span>
+                </p>
+            </div>
             <!--            <div class="garden-square" th:field="*{square_num}" th:value="A3"></div>-->
             <!--            <div class="garden-square" th:field="*{square_num}" th:value="A4"></div>-->
             <!--            <div class="garden-square" th:field="*{square_num}" th:value="B1"></div>-->
