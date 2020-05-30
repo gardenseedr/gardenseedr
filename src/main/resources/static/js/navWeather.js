@@ -38,12 +38,13 @@ function getOpenWeather(data) {
         $("#icon").append(content);
 
     console.log(data.weather[0].main);
+    console.log(data);
 
 }
 
 
 function reportWeather(){
-    $.ajax("https://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + OpenWeatherToken).done(function (data) {
+    $.ajax("https://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&appid=" + OpenWeatherToken + "&units=imperial").done(function (data) {
         getOpenWeather(data);
 
         // var currentTemp = (data.main.temp - 273.15) * 1.8 + 32;
