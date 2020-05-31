@@ -25,8 +25,12 @@
             </h1>
         </form>
     <!-- Delete button -->
-    <form th:action="@{'/dashboard/'+ ${garden.getUser().getId()}}" th:method="post" th:object="${garden.getId()}">
-        <input type="submit" value="Delete" name="delete">
+    <form th:action="@{'/garden/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+        <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{user}">
+        <input type="hidden" th:field="*{created}">
+        <input type="submit" name="delete" value="delete">
     </form>
 
 <!-- End of Kate edits -->
