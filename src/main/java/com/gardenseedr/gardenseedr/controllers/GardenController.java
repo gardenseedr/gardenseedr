@@ -62,6 +62,15 @@ public class GardenController {
 
                 return "redirect:/dashboard/" + userId;
             }
+            // Add a square to the garden ------ ADD THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
+//            else if(){
+//                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+//
+//                newSquare.setGarden(gardenRepo.getOne(gardenId));
+//                newSquare.setPlant_date(today);
+//
+//                return "redirect:/garden/" + gardenId;
+//            }
             // Name the garden
             else{
                 LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
@@ -73,14 +82,5 @@ public class GardenController {
 
                 return "redirect:/garden/" + gardenId;
             }
-            // Add a square to the garden ------ ADD THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE (change the above else to an else if)
-//            else{
-//                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-//
-//                newSquare.setGarden(gardenRepo.getOne(gardenId));
-//                newSquare.setPlant_date(today);
-//
-//                return "redirect:/garden/" + gardenId;
-//            }
         }
 }
