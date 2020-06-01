@@ -1,7 +1,7 @@
 
 //zipcode for new openweather api
 //hardcoded for now will need to change later
-var zipcode = 78624,us;
+var zipcode = 78215,us;
 
 <!-- GETTING AND DISPLAYING SA WEATHER INFO -->
 function getOpenWeather(data) {
@@ -41,6 +41,7 @@ function getOpenWeather(data) {
     console.log(data);
 
 }
+
 
 
 function reportWeather(){
