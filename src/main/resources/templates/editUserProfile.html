@@ -36,7 +36,12 @@
         <input type="password" th:field="*{password}">
     <!--Submit button-->
     <input type="submit">
+    <!-- Delete Button -->
+    <button type="submit" th:formaction="@{'/delete/profile/' + ${user.getId()}}">Delete</button> <!-- ignore this error -->
 </form>
+
+
+
 
 <div th:replace="fragments/headAndFooter :: footer"></div>
 </body>

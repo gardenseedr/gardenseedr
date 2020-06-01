@@ -25,11 +25,12 @@
         </h1>
     </form>
     <!-- Delete button -->
-    <form class="alert-danger" th:action="@{'/garden/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+    <form class="alert-danger" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
         <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{user}">
         <input type="hidden" th:field="*{created}">
+        <input type="hidden" th:field="*{updated}">
         <input type="submit" name="delete" value="delete">
     </form>
 
