@@ -8,12 +8,13 @@
 
 
 <div class="container">
-<!-- Kate edits -->
+    <!-- Kate edits -->
 
     <h1 class="subheader" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
-        <form th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post" th:object="${garden}">
-            <h1>Give your garden a name:
+    <form th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post"
+          th:object="${garden}">
+        <h1>Give your garden a name:
             <input th:field="*{garden_name}">
             <!-- This stuff has to be restated as what it already is or they'll reset to null/0-->
             <input type="hidden" th:field="*{id}">
@@ -21,10 +22,10 @@
             <input type="hidden" th:field="*{created}">
 
             <input type="submit">
-            </h1>
-        </form>
+        </h1>
+    </form>
     <!-- Delete button -->
-    <form th:action="@{'/garden/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+    <form class="alert-danger" th:action="@{'/garden/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
         <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{user}">
@@ -32,12 +33,12 @@
         <input type="submit" name="delete" value="delete">
     </form>
 
-<!-- End of Kate edits -->
+    <!-- End of Kate edits -->
     <!-- User garden grid -->
     <div class="garden-page">
         <div class="top-left-container">
             Top Left Container
-<!--            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>-->
+            <!--            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>-->
 
         </div>
         <!--        Contains all other gardens-->
@@ -48,9 +49,14 @@
             <!--        Andy MODAL attempt-->
             <!--            Each garden square when clicked will have a modal of all avail veg and an active searchbar-->
             <button id="button" type="button" data-toggle="modal" data-target="#gardenModal"
-                    class="btn btn-primary garden-square" th:each="i : ${#numbers.sequence(1, 32, 1)}"
-                    th:id="${i}" th:value="${i}">
-                <span th:each="square : ${allTheSquares}" th:if="${i} == ${square.getSquare_num()}"
+                    class="btn btn-primary garden-square"
+                    th:each="i : ${#numbers.sequence(1, 32, 1)}"
+                    th:id="${i}"
+                    th:value="${i}">
+                <span th:plant-name="${square.getPlant().getPlant_name()}"
+                      th:plant-body="${square.getPlant().getAPI_id()}"
+                      th:each="square : ${allTheSquares}"
+                      th:if="${i} == ${square.getSquare_num()}"
                       th:text="${square.getPlant().getId()}">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
@@ -58,21 +64,21 @@
 
             <!--            This is the modal that will contain info on each individual square. -->
             <!--pop up info tags for each square that has a plant with water, sun, soil, etc info-->
-            <div  class="modal fade squareId" id="gardenModal" tabindex="-1" role="dialog" aria-labelledby="modal-title" >
+            <div class="modal fade squareId" id="gardenModal" tabindex="-1" role="dialog" aria-labelledby="modal-title">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal-title">MT</h5>
+                            <h5 class="modal-title" id="modal-title"></h5>
+
                         </div>
-                        <div class="modal-body">
-                            <span th:each="square : ${allTheSquares}">
-                            <span th:if="${square.getSquare_num() != '4'}">This will be the Search Function!!</span>
-                            <span th:unless="${square.getSquare_num() != '4'}">
-                                <span class="square"
-                                      th:text="${square.getPlant().getPlant_name()}"></span>
-                                <label for="square"/><input name="square" id="square" hidden="hidden" value=""/>
-                            </span>
-                            </span>
+                        <div class="plantSearch">
+                            <form  class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">
+                                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                                       aria-label="Search">
+                            </form>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

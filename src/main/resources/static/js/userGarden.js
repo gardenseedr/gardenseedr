@@ -4,18 +4,33 @@ $(".label").click(function () {
 $(this).css("color", "white")
 });
 
-// $(".btn").click(function () {
-//     var squareIdNum = $(this).val(id);
-//     $(".squareId").val(this.id);
-//     alert("you clicked "+ this.id)
-// });
-//
-// $(".btn").click(function () {
-// $('squareId').val($('.btn option:selected').attr(this.id));
-// });
 
-$(".btn").on("click", function () {
-    $(".modal-body").load('content.sql', function () {
-        $("#gardenModal").modal({show:true})
-    });
+$(".garden-square").click(function () {
+$(".plantSearch").hide();
+    var plantName = null;
+    plantName = $(this).children().attr('plant-name');
+    $("#modal-title").text(plantName);
+    console.log(plantName);
+    if (plantName == undefined){
+        var plantSearch = "Find a plant to plant";
+        $("#modal-title").html(plantSearch);
+    }
+    var plantBody = null;
+    plantBody = $(this).children().attr('plant-body');
+    $("#modal-body").text(plantBody);
+    if (plantBody == undefined){
+        var plantSearch = "search";
+        $(".plantSearch").show();
+        $("#modal-body").text(plantSearch);
+
+    }
+
 });
+
+
+
+// $(".btn").on("click", function () {
+//     $(".modal-body").load('content.sql', function () {
+//         $("#gardenModal").modal({show:true})
+//     });
+// });

@@ -34,39 +34,39 @@ public class GardenController {
     // (the GetMapping for dashboard/{userId} is in UserController)
 
     @PostMapping("/dashboard/{userId}")
-        public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
-            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+    public String createGarden(@ModelAttribute Garden newgarden, @PathVariable long userId) {
+        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-            newgarden.setCreated(today);
-            newgarden.setUser(userDao.getOne(userId));
+        newgarden.setCreated(today);
+        newgarden.setUser(userDao.getOne(userId));
 
-            gardenRepo.save(newgarden);
+        gardenRepo.save(newgarden);
 
 
         return "redirect:/garden/" + newgarden.getId();
-        }
+    }
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
-    public String seeGarden(@PathVariable long gardenId, Long squareId, Model model){
-//        model.addAttribute("viewSquare", gardenRepo.getOne(gardenId).getSquares().isEmpty());// so user can view squares in the garden
+    public String seeGarden(@PathVariable long gardenId, Model model) {
+//        model.addAttribute("viewSquare", squareRepo.getOne(squareId));// so user can view squares in the garden
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
         return ("userGarden");
     }
 
-        // Name newly created garden
-        @PostMapping("/garden/{gardenId}")
-        public String alterTheGarden(@ModelAttribute Garden garden, @ModelAttribute Square newSquare, @PathVariable long gardenId){
-            // Delete the garden
-            if (garden.getGarden_name() == null) { // only the delete form in userGarden.html resets the name to null
-                long userId = garden.getUser().getId();
-                gardenRepo.delete(garden);
+    // Name newly created garden
+    @PostMapping("/garden/{gardenId}")
+    public String alterTheGarden(@ModelAttribute Garden garden, @ModelAttribute Square newSquare, @PathVariable long gardenId) {
+        // Delete the garden
+        if (garden.getGarden_name() == null) { // only the delete form in userGarden.html resets the name to null
+            long userId = garden.getUser().getId();
+            gardenRepo.delete(garden);
 
-                return "redirect:/dashboard/" + userId;
-            }
-            // Add a square to the garden ------ ADD THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
+            return "redirect:/dashboard/" + userId;
+        }
+        // Add a square to the garden ------ ADD THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
 //            else if(){
 //                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 //
@@ -75,17 +75,17 @@ public class GardenController {
 //
 //                return "redirect:/garden/" + gardenId;
 //            }
-            // Name the garden
-            else{
-                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+        // Name the garden
+        else {
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
 
-                garden.setCreated(garden.getCreated());
-                garden.setUpdated(today);
+            garden.setCreated(garden.getCreated());
+            garden.setUpdated(today);
 
-                gardenRepo.save(garden);
+            gardenRepo.save(garden);
 
-                return "redirect:/garden/" + gardenId;
-            }
+            return "redirect:/garden/" + gardenId;
         }
+    }
 }
