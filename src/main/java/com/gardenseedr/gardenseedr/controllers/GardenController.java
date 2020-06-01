@@ -5,6 +5,7 @@ import com.gardenseedr.gardenseedr.models.Garden;
 import com.gardenseedr.gardenseedr.models.Plant;
 import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.models.User;
+import com.gardenseedr.gardenseedr.repositories.SquareRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,13 @@ import java.util.List;
 
 @Controller
 public class GardenController {
-
+    private SquareRepository squareRepo;
     private UserRepository userDao;
     private GardenRepository gardenRepo;
 
-    public GardenController(GardenRepository gardenRepo, UserRepository userDao) {
+
+    public GardenController(GardenRepository gardenRepo, UserRepository userDao, SquareRepository squareRepo) {
+        this.squareRepo = squareRepo;
         this.gardenRepo = gardenRepo;
         this.userDao = userDao;
     }
@@ -39,16 +42,17 @@ public class GardenController {
 
             gardenRepo.save(newgarden);
 
+
         return "redirect:/garden/" + newgarden.getId();
         }
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
-    public String seeGarden(@PathVariable long gardenId, Model model){
+    public String seeGarden(@PathVariable long gardenId, Long squareId, Model model){
+//        model.addAttribute("viewSquare", gardenRepo.getOne(gardenId).getSquares().isEmpty());// so user can view squares in the garden
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
-
         return ("userGarden");
     }
 
@@ -74,6 +78,7 @@ public class GardenController {
             // Name the garden
             else{
                 LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
 
                 garden.setCreated(garden.getCreated());
                 garden.setUpdated(today);
