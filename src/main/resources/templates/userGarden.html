@@ -8,17 +8,37 @@
 
 
 <div class="container">
+<!-- Kate edits -->
 
-    <!-- Kate edits -->
-    <h1 class="subheader">USER GARDEN</h1>
+    <h1 class="subheader" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
+        <form th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post" th:object="${garden}">
+            <h1>Give your garden a name:
+            <input th:field="*{garden_name}">
+            <!-- This stuff has to be restated as what it already is or they'll reset to null/0-->
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{user}">
+            <input type="hidden" th:field="*{created}">
 
-    <!-- End of Kate edits -->
+            <input type="submit">
+            </h1>
+        </form>
+    <!-- Delete button -->
+    <form th:action="@{'/garden/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+        <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{user}">
+        <input type="hidden" th:field="*{created}">
+        <input type="submit" name="delete" value="delete">
+    </form>
+
+<!-- End of Kate edits -->
     <!-- User garden grid -->
     <div class="garden-page">
         <div class="top-left-container">
-            <p class="label">Top Left Container</p>
-            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>
+            Top Left Container
+<!--            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>-->
+
         </div>
         <!--        Contains all other gardens-->
         <div class="bot-left-container">Bottom Left Container</div>

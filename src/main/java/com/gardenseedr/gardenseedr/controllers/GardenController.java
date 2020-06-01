@@ -10,11 +10,8 @@ import com.gardenseedr.gardenseedr.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import com.gardenseedr.gardenseedr.repositories.GardenRepository;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -35,15 +32,19 @@ public class GardenController {
 
     // Create blank garden from dashboard button
     // (the GetMapping for dashboard/{userId} is in UserController)
+
     @PostMapping("/dashboard/{userId}")
-    public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
-        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-        newgarden.setCreated(today);
-        newgarden.setUser(userDao.getOne(userId));
-        gardenRepo.save(newgarden);
+        public String createGarden (@ModelAttribute Garden newgarden, @PathVariable long userId){
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
+            newgarden.setCreated(today);
+            newgarden.setUser(userDao.getOne(userId));
+
+            gardenRepo.save(newgarden);
+
 
         return "redirect:/garden/" + newgarden.getId();
-    }
+        }
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
@@ -55,13 +56,36 @@ public class GardenController {
         return ("userGarden");
     }
 
-    // Add Squares to existing garden
-    @PostMapping("/garden/{gardenId}")
-    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId, @PathVariable long squareId ){
-        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-        newSquare.setGarden(gardenRepo.getOne(gardenId));
-        newSquare.setPlant_date(today);
+        // Name newly created garden
+        @PostMapping("/garden/{gardenId}")
+        public String alterTheGarden(@ModelAttribute Garden garden, @ModelAttribute Square newSquare, @PathVariable long gardenId){
+            // Delete the garden
+            if (garden.getGarden_name() == null) { // only the delete form in userGarden.html resets the name to null
+                long userId = garden.getUser().getId();
+                gardenRepo.delete(garden);
 
-        return "redirect:/garden/" + gardenId;
-    }
+                return "redirect:/dashboard/" + userId;
+            }
+            // Add a square to the garden ------ ADD THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
+//            else if(){
+//                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+//
+//                newSquare.setGarden(gardenRepo.getOne(gardenId));
+//                newSquare.setPlant_date(today);
+//
+//                return "redirect:/garden/" + gardenId;
+//            }
+            // Name the garden
+            else{
+                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
+
+                garden.setCreated(garden.getCreated());
+                garden.setUpdated(today);
+
+                gardenRepo.save(garden);
+
+                return "redirect:/garden/" + gardenId;
+            }
+        }
 }
