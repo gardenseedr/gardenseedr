@@ -83,9 +83,9 @@ public class GardenController {
     // Delete garden
     @PostMapping("/garden/delete/{gardenId}")
     public String deleteGarden(@PathVariable long gardenId) {
-
+            long userId = gardenRepo.getOne(gardenId).getUser().getId();
             gardenRepo.delete(gardenRepo.getOne(gardenId));
 
-            return "redirect:/dashboard/" + gardenRepo.getOne(gardenId).getUser().getId();
+            return "redirect:/dashboard/" + userId;
     }
 }
