@@ -79,7 +79,6 @@ public class GardenController {
             else{
                 LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-
                 garden.setCreated(garden.getCreated());
                 garden.setUpdated(today);
 
