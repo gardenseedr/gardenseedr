@@ -2,30 +2,28 @@ package com.gardenseedr.gardenseedr.controllers;
 
 import com.gardenseedr.gardenseedr.models.Garden;
 
-import com.gardenseedr.gardenseedr.models.Plant;
 import com.gardenseedr.gardenseedr.models.Square;
-import com.gardenseedr.gardenseedr.models.User;
-import com.gardenseedr.gardenseedr.repositories.SquareRepository;
+import com.gardenseedr.gardenseedr.repositories.PlantRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.gardenseedr.gardenseedr.services.PlantService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.gardenseedr.gardenseedr.repositories.GardenRepository;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+
 
 @Controller
 public class GardenController {
-    private SquareRepository squareRepo;
+    private PlantRepository plantRepo;
     private UserRepository userDao;
     private GardenRepository gardenRepo;
 
 
-    public GardenController(GardenRepository gardenRepo, UserRepository userDao, SquareRepository squareRepo) {
-        this.squareRepo = squareRepo;
+    public GardenController(GardenRepository gardenRepo, UserRepository userDao, PlantRepository plantRepo) {
+        this.plantRepo = plantRepo;
         this.gardenRepo = gardenRepo;
         this.userDao = userDao;
     }
@@ -49,12 +47,13 @@ public class GardenController {
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
     public String seeGarden(@PathVariable long gardenId, Model model) {
-//        model.addAttribute("viewSquare", squareRepo.getOne(squareId));// so user can view squares in the garden
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
+        model.addAttribute("allThePlants", plantRepo.getAllPlants());
         return ("userGarden");
     }
+
 
     // Name newly created garden
     @PostMapping("/garden/{gardenId}")
