@@ -22,16 +22,15 @@ import java.util.List;
 
 @Controller
 public class GardenController {
-
+    private SquareRepository squareRepo;
     private UserRepository userDao;
     private GardenRepository gardenRepo;
-    private SquareRepository squareRepo;
 
 
     public GardenController(GardenRepository gardenRepo, UserRepository userDao, SquareRepository squareRepo) {
+        this.squareRepo = squareRepo;
         this.gardenRepo = gardenRepo;
         this.userDao = userDao;
-        this.squareRepo = squareRepo;
     }
 
     // Create blank garden from dashboard button
@@ -48,19 +47,18 @@ public class GardenController {
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
-    public String seeGarden(@PathVariable long gardenId, Model model){
+    public String seeGarden(@PathVariable long gardenId, Long squareId, Model model){
+//        model.addAttribute("viewSquare", gardenRepo.getOne(gardenId).getSquares().isEmpty());// so user can view squares in the garden
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
-        model.addAttribute("viewSquare", squareRepo.getOne(gardenId).getPlant().getPlant_name());// so user can view squares in the garden
         return ("userGarden");
     }
 
     // Add Squares to existing garden
     @PostMapping("/garden/{gardenId}")
-    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId ){
+    public String addSquares(@ModelAttribute Square newSquare, @PathVariable long gardenId, @PathVariable long squareId ){
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
 

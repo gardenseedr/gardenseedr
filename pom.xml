@@ -74,6 +74,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <!--        Jquery Dependency-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.3.1</version>
+        </dependency>
         <!--	Services Email Dependency 	-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
