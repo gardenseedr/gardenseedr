@@ -80,8 +80,8 @@ public class UserController {
     }
         // Actually editing the Profile
         @PostMapping("/edit/profile/{userId}")
-        // Add in the delete function after lunch
         public String editingUserProfile (@PathVariable long userId, @ModelAttribute User user){
+            // Editing profile
             if (user.getEmail().equals("")){
                 user.setEmail(userDao.getOne(userId).getEmail());
             }
@@ -101,4 +101,11 @@ public class UserController {
             userDao.save(user);
             return "redirect:/profile/" + userId;
         }
+
+    // Deleting profile/account
+    @PostMapping("/delete/profile/{userId}")
+    public String deleteUserProfile (@PathVariable long userId) {
+        userDao.delete(userDao.getOne(userId));
+        return "redirect:/";
+    }
 }
