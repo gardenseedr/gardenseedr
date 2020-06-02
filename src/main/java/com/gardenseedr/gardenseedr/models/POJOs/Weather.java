@@ -49,6 +49,17 @@ public class Weather implements Serializable{
         setWeatherDescription((String) weather.get("description"));
     }
 
+    @JsonProperty("main")
+    public double getTemperature(){
+        return temperature;
+    }
+
+
+
+
+
+
+
 
 
 
