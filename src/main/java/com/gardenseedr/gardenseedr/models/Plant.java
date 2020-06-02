@@ -49,4 +49,5 @@ public class Plant {
     public void setPlant_name(String plant_name) {
         this.plant_name = plant_name;
     }
+
 }

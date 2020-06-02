@@ -28,9 +28,34 @@ $(".plantSearch").hide();
 });
 
 
-
-// $(".btn").on("click", function () {
-//     $(".modal-body").load('content.sql', function () {
-//         $("#gardenModal").modal({show:true})
-//     });
+// $('#txtSearch').on('keyup', function () {
+//     var value = $(this).val();
+//
+//     console.log("value = " + value);
+//     var data = filterFunction(value, plant);
+//
+//     rebuildTable(data)
 // });
+//
+// function filterFunction(value, data) {
+//     var filteredData = [];
+//     for (var i = 0; i<data.length; i++){
+//         var plant = data[i].toLowerCase();
+//
+//         if (plant.includes(value)){
+//             filteredData.push(data[i])
+//         }
+//     }
+//     return filteredData;
+// }
+//
+// function rebuildTable(data) {
+//     var table = document.getElementById('plantTable');
+//     table.innerHTML='';
+//     for (var i = 0; i <data.length; i++){
+//         var row = <span>
+//                 ${data[i]}
+//             </span>;
+//         table.innerHTML += row
+//     }
+// }
