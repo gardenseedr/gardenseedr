@@ -18,8 +18,33 @@ public class Weather implements Serializable{
     //need to figure zip code out, hardcoding zip into url
 
     //data.main.temp
-    private double temperature;
+    private double currentTemp;
+    private double lowTemp;
+    private double highTemp;
 
+    public double getCurrentTemp() {
+        return currentTemp;
+    }
+
+    public void setCurrentTemp(double currentTemp) {
+        this.currentTemp = currentTemp;
+    }
+
+    public double getLowTemp() {
+        return lowTemp;
+    }
+
+    public void setLowTemp(double lowTemp) {
+        this.lowTemp = lowTemp;
+    }
+
+    public double getHighTemp() {
+        return highTemp;
+    }
+
+    public void setHighTemp(double highTemp) {
+        this.highTemp = highTemp;
+    }
 
     @Bean
     public Weather weather() {
@@ -50,10 +75,13 @@ public class Weather implements Serializable{
     }
 
     @JsonProperty("main")
-    public double getTemperature(){
-        return temperature;
-    }
+    public void setMain(Map<String, Double> main) {
+        setCurrentTemp(main.get("temp"));
+        setLowTemp(main.get("temp_min"));
+        setHighTemp(main.get("temp_max"));
 
+
+    }
 
 
 
