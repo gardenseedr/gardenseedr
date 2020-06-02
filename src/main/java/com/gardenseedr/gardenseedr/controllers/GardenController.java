@@ -84,7 +84,7 @@ public class GardenController {
     }
 
     // Add a square to the garden --------------------------- ADJUST THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
-    @PostMapping("/garden/addsquare/{gardenId}")
+    @PostMapping("/garden/addSquare/{gardenId}")
     public String addGardenSquare(@ModelAttribute Square newSquare, @PathVariable long gardenId) {
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 

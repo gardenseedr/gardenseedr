@@ -37,7 +37,7 @@
     <!-- End of Kate edits -->
     <!-- User garden grid -->
     <div class="garden-page">
-        <div class="top-left-container">
+        <div class="label top-left-container">
             Top Left Container
             <!--            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>-->
 
@@ -70,15 +70,19 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal-title"></h5>
+                            <h5 class="modal-title" id="modal-title">TITLE</h5>
 
                         </div>
                         <div class="plantSearch">
-                            <form th:action="@{'/garden/' + ${garden.getId()}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">
-                                <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-                            </form>
-                        <span id="plantTable" th:each="plant : ${allThePlants}"
-                              th:text="${plant}"><br></span>
+                            <!--                            <form th:action="@{'/garden/' + ${garden.getId()}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">-->
+                            <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
+                                   type="text" placeholder="Search" aria-label="Search">
+                            <!--                            </form>-->
+
+
+                            <span class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></span>
+                        // form to assign plant_id and square_num
+
                         </div>
 
                         <div class="modal-body" id="modal-body">
@@ -104,43 +108,47 @@
 <nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
 <nav th:replace="fragments/headAndFooter :: footer"></nav>
 
-<!--<script th:inline ="javascript">-->
-<!--/*<![CDATA[*/-->
-<!-- var plant = /*[[${allThePlants}]]*/ 'plant';-->
-<!--/*]]>*/-->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var plant = /*[[${allThePlants}]]*/ 'plant';
+    /*]]>*/
 
-<!--    // $('#txtSearch').on('keyup', function () {-->
-<!--    //     var value = $(this).val();-->
-<!--    //-->
-<!--    //     console.log("value = " + value);-->
-<!--    //     var data = filterFunction(value, plant);-->
-<!--    //-->
-<!--    //     rebuildTable(data)-->
-<!--    // });-->
-<!--    //-->
-<!--    // function filterFunction(value, data) {-->
-<!--    //     var filteredData = [];-->
-<!--    //     for (var i = 0; i<data.length; i++){-->
-<!--    //         var plant = data[i].toLowerCase();-->
-<!--    //-->
-<!--    //         if (plant.includes(value)){-->
-<!--    //             filteredData.push(data[i])-->
-<!--    //         }-->
-<!--    //     }-->
-<!--    //     return filteredData;-->
-<!--    // }-->
-<!--    //-->
-<!--    // function rebuildTable(data) {-->
-<!--    //     var table = document.getElementById('plantTable');-->
-<!--    //     table.innerHTML='';-->
-<!--    //     for (var i = 0; i <data.length; i++){-->
-<!--    //         var row = <span>-->
-<!--    //             ${data[i]}-->
-<!--    //         </span>;-->
-<!--    //         table.innerHTML += row-->
-<!--    //     }-->
-<!--    // }-->
-<!--// </script>-->
+    // $(".change").click(function () {
+    //     $('.modal-title').css("color", "blue")
+    // });
+
+
+    $('#txtSearch').on('keyup', function () {
+        var value = $(this).val();
+        var filteredData = filterFunction(value, plant);
+
+        rebuildTable(filteredData);
+    });
+
+    function filterFunction(value, data) {
+        var filteredData = [];
+        for (var i = 0; i < data.length; i++) {
+            var plant = data[i].toLowerCase();
+            if (plant.includes(value)) {
+                filteredData.push(data[i])
+            }
+        }
+        return filteredData;
+    }
+
+    function rebuildTable(data) {
+        console.log(data);
+        var table = document.getElementById('plantTable');
+        var html = '<div class="modal-body">';
+        data.forEach(function (plantName) {
+            html +=
+                '<span>' +
+                plantName +
+                '</span>';
+        });
+        table.innerHTML = html;
+    }
+</script>
 
 </body>
 </html>

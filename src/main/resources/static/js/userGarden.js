@@ -1,4 +1,6 @@
 
+$( document ).ready(function() {
+
 
 $(".label").click(function () {
 $(this).css("color", "white")
@@ -28,13 +30,18 @@ $(".plantSearch").hide();
 });
 
 
+
+// /*<![CDATA[*/
+// var plant = /*[[${allThePlants}]]*/;
+// /*]]>*/
+
 // $('#txtSearch').on('keyup', function () {
 //     var value = $(this).val();
 //
-//     console.log("value = " + value);
+//     console.log("plant = " + plant);
 //     var data = filterFunction(value, plant);
 //
-//     rebuildTable(data)
+//     rebuildTable(data);
 // });
 //
 // function filterFunction(value, data) {
@@ -46,16 +53,19 @@ $(".plantSearch").hide();
 //             filteredData.push(data[i])
 //         }
 //     }
+//     console.log("filtered data " + filteredData);
 //     return filteredData;
 // }
 //
 // function rebuildTable(data) {
 //     var table = document.getElementById('plantTable');
-//     table.innerHTML='';
-//     for (var i = 0; i <data.length; i++){
-//         var row = <span>
-//                 ${data[i]}
-//             </span>;
-//         table.innerHTML += row
-//     }
+//     console.log("table " + table);
+//     // table.innerHTML='';
+//     // for (var i = 0; i <data.length; i++){
+//     //     var row = <span>
+//     //             ${data[i]}
+//     //         </span>;
+//     //     table.innerHTML += row
+//     // }
 // }
+});
