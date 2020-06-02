@@ -35,14 +35,14 @@ public class UserController {
         return "registration";
     }
 
-    // actually registering
-    @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        userDao.save(user);
-        return "/login";
-    }
+        // actually registering
+        @PostMapping("/register")
+        public String saveUser(@ModelAttribute User user){
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            userDao.save(user);
+            return "/login";
+        }
 
     //                                                  Things from KateUserController
     // User's dashboard page
@@ -57,5 +57,55 @@ public class UserController {
             model.addAttribute("newGarden", new Garden()); // so dashboard can generate a new garden assigned to user
             return "userDashboard";
         }
+    }
+
+    // About Us Page
+    @GetMapping("/aboutus")
+    public String aboutUs (){
+        return "aboutUs";
+    }
+
+    // User Profile Page
+    @GetMapping("/profile/{userId}")
+    public String viewUserProfile (@PathVariable long userId, Model model){
+        model.addAttribute("user", userDao.getOne(userId));
+        return "userProfile";
+    }
+
+    // Edit User Profile Page
+    @GetMapping("/edit/profile/{userId}")
+    public String editUserProfile (@PathVariable long userId, Model model){
+        model.addAttribute("user", userDao.getOne(userId));
+        return "editUserProfile";
+    }
+        // Actually editing the Profile
+        @PostMapping("/edit/profile/{userId}")
+        public String editingUserProfile (@PathVariable long userId, @ModelAttribute User user){
+            // Editing profile
+            if (user.getEmail().equals("")){
+                user.setEmail(userDao.getOne(userId).getEmail());
+            }
+            if (user.getFirst_name().equals("")){
+                user.setFirst_name(userDao.getOne(userId).getFirst_name());
+            }
+            if (user.getLast_name().equals("")){
+                user.setLast_name(userDao.getOne(userId).getLast_name());
+            }
+            if (user.getPassword().equals("")){
+                user.setPassword(userDao.getOne(userId).getPassword());
+            }
+                else{
+                String hash = passwordEncoder.encode(user.getPassword());
+                user.setPassword(hash);
+                }
+            userDao.save(user);
+            return "redirect:/profile/" + userId;
+        }
+
+    // Deleting profile/account
+    @PostMapping("/delete/profile/{userId}")
+    public String deleteUserProfile (@PathVariable long userId) {
+        userDao.delete(userDao.getOne(userId));
+        return "redirect:/";
     }
 }

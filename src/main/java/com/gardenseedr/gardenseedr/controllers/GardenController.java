@@ -57,27 +57,8 @@ public class GardenController {
 
     // Name newly created garden
     @PostMapping("/garden/{gardenId}")
-    public String alterTheGarden(@ModelAttribute Garden garden, @ModelAttribute Square newSquare, @PathVariable long gardenId) {
-        // Delete the garden
-        if (garden.getGarden_name() == null) { // only the delete form in userGarden.html resets the name to null
-            long userId = garden.getUser().getId();
-            gardenRepo.delete(garden);
-
-            return "redirect:/dashboard/" + userId;
-        }
-        // Add a square to the garden ------ ADD THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
-//            else if(){
-//                LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-//
-//                newSquare.setGarden(gardenRepo.getOne(gardenId));
-//                newSquare.setPlant_date(today);
-//
-//                return "redirect:/garden/" + gardenId;
-//            }
-        // Name the garden
-        else {
+    public String nameGarden(@ModelAttribute Garden garden, @PathVariable long gardenId) {
             LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
 
             garden.setCreated(garden.getCreated());
             garden.setUpdated(today);
@@ -85,6 +66,25 @@ public class GardenController {
             gardenRepo.save(garden);
 
             return "redirect:/garden/" + gardenId;
-        }
+    }
+
+    // Add a square to the garden --------------------------- ADJUST THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
+    @PostMapping("/garden/addsquare/{gardenId}")
+    public String addGardenSquare(@ModelAttribute Square newSquare, @PathVariable long gardenId) {
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
+            newSquare.setGarden(gardenRepo.getOne(gardenId));
+            newSquare.setPlant_date(today);
+
+            return "redirect:/garden/" + gardenId;
+    }
+
+    // Delete garden
+    @PostMapping("/garden/delete/{gardenId}")
+    public String deleteGarden(@PathVariable long gardenId) {
+            long userId = gardenRepo.getOne(gardenId).getUser().getId();
+            gardenRepo.delete(gardenRepo.getOne(gardenId));
+
+            return "redirect:/dashboard/" + userId;
     }
 }

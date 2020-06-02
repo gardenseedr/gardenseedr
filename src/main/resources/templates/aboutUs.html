@@ -1,12 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headAndFooter :: head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
-<!-- Show pics of us that link to the alumni page -->
-
+<h1>About Us</h1>
+<div class="container">
+<!-- Andy Ball -->
+<div class="card" style="width: 18rem;">
+    <img src="images/AndyAboutUs.jpeg" class="card-img-top" alt="Andy Ball">
+    <div class="card-body">
+        <h5 class="card-title">Andy Ball</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Codeup Alumni Page</a>
+    </div>
+</div>
+<!-- Jackie Muralles -->
+<div class="card" style="width: 18rem;">
+    <img src="images/JackieAboutUs.jpg" class="card-img-top" alt="Jackie Muralles">
+    <div class="card-body">
+        <h5 class="card-title">Jackie Muralles</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Codeup Alumni Page</a>
+    </div>
+</div>
+<!-- Jasmine Rivera -->
+<div class="card" style="width: 18rem;">
+    <img src="images/JasmineAboutUs.jpg" class="card-img-top" alt="Jasmine Rivera">
+    <div class="card-body">
+        <h5 class="card-title">Jasmine Rivera</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Codeup Alumni Page</a>
+    </div>
+</div>
+<!-- Kate McKinney -->
+<div class="card" style="width: 18rem;">
+    <img src="images/KateAboutUs.jpeg" class="card-img-top" alt="Kate McKinney">
+    <div class="card-body">
+        <h5 class="card-title">Kate McKinney</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Codeup Alumni Page</a>
+    </div>
+</div>
+</div>
+<div th:replace="fragments/headAndFooter :: footer"></div>
 </body>
 </html>

@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headAndFooter :: head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
-<!--Display username, email, zipcode-->
-<!--Edit button (can't edit username)-->
-<!--Delete account button (maybe pop up/alert to verify the delete, no separate page)-->
+<h1>Profile Page for: <span th:text="${user.getFirst_name()}"></span></h1>
+<!-- Display user's info -->
+<div>
+    <div>First and Last Name: <span th:text="${user.getFirst_name() + ' ' + user.getLast_name()}"></span></div>
+    <div>Username: <span th:text="${user.getUsername()}"></span></div>
+    <div>Email Address:<span th:text="${user.getEmail()}"></span></div>
+    <div>Receiving email updates:
+        <span th:if="${user.isEmail_updates()} == true" th:text="Yes"></span>
+        <span th:unless="${user.isEmail_updates()} == true" th:text="No"></span>
+    </div>
+    <div>Zipcode: <span th:text="${user.getZipcode()}"></span></div>
+    <div>User status:
+        <span th:if="${user.isIs_admin()} == true" th:text="Admin"></span>
+        <span th:unless="${user.isIs_admin()} == true" th:text="'Not an Admin'"></span>
+    </div>
+</div>
+<!-- Edit button which sends user to the page for actually editing -->
+<a th:href="'/edit/profile/' + ${user.getId()}">Edit Profile</a>
+<div th:replace="fragments/headAndFooter :: footer"></div>
 </body>
 </html>

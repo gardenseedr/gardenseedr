@@ -9,12 +9,16 @@
 <div>Here's where the navbar fragment goes</div>
 
 <!-- "Welcome back, User!" -->
-<h1> Welcome back, <span th:text="${user.getFirst_name()}"></span>!</h1>
+<!--<h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${user.getFirst_name()}"></span></a>!</h1>-->
 
 
 <!-- 3 day weather forecast for their zipcode -->
 <!--<div th:fragment=""></div>-->
 <div>Here's where the weather fragment will go</div>
+
+<h1 th:text="${weather.getWeatherDescription()}"></h1>
+
+<!--<td><span th:text="${weather.getWeatherDescription()}"></span></td>-->
 
 <!-- List of links to User's garden(s) -->
 <div th:each="garden : ${allTheGardens}">
