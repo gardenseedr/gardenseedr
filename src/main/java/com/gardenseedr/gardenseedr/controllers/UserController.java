@@ -1,9 +1,16 @@
 package com.gardenseedr.gardenseedr.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gardenseedr.gardenseedr.models.Garden;
+import com.gardenseedr.gardenseedr.models.POJOs.Weather;
 import com.gardenseedr.gardenseedr.models.User;
 import com.gardenseedr.gardenseedr.repositories.GardenRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,14 +19,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+
+
+
+
 
 @Controller
 public class UserController {
     private UserRepository userDao;
     private GardenRepository gardenDao;
     private PasswordEncoder passwordEncoder;
+@Autowired
+    private RestTemplate restTemplate;
+
+@Value("${openWeatherToken}")
+    private String openWeatherToken;
+
 
     public UserController(UserRepository userDao, GardenRepository gardenDao, PasswordEncoder passwordEncoder) { //change for actual UserController
         this.userDao = userDao;
@@ -47,19 +65,38 @@ public class UserController {
     //                                                  Things from KateUserController
     // User's dashboard page
     @GetMapping("/dashboard/{userId}")
-    public String showDashboard(@PathVariable long userId, Model model) {
+    public String showDashboard(@PathVariable long userId, Model model) throws JsonProcessingException {
+//        Weather weather = getWeather();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDao.getOne(userId);
+
+         int userZip = userDao.getOne(userId).getZipcode();
+
+
         if (userId != user.getId() || user == null) {
             return "redirect:/login";
         } else {
             model.addAttribute("user", userDao.getOne(userId));  // so dashboard can say "Hi user!"
             model.addAttribute("allTheGardens", userDao.getOne(userId).getGardens()); // so dashboard can see all user's gardens
             model.addAttribute("newGarden", new Garden()); // so dashboard can generate a new garden assigned to user
+            model.addAttribute("weather", getWeather(userZip)); // so dashboard can generate a new garden assigned to user
             return "userDashboard";
+
         }
+
     }
 
-    // About Us Page
+    public Weather getWeather(int userZip) throws JsonProcessingException {
+        String url = "https://api.openweathermap.org/data/2.5/weather?zip=" + userZip + ",us&appid=" + openWeatherToken + "&units=imperial";
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+        ObjectMapper mapper = new ObjectMapper();
+        Weather weather = mapper.readValue(response.getBody(), Weather.class);
+        return weather;
+    }
+
+
+
+        // About Us Page
     @GetMapping("/aboutus")
     public String aboutUs (){
         return "aboutUs";

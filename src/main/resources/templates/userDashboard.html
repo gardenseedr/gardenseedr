@@ -9,17 +9,24 @@
 <!--Navbar Frag-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
-<!-- "Welcome back, User!" -->
+
+ "Welcome back, User!"
+<!--capitalize first letter of first name-->
 <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${user.getFirst_name()}"></span></a>!</h1>
 
 
-<!-- 3 day weather forecast for their zipcode -->
-<!--<div th:fragment=""></div>-->
 <div>Here's where the weather fragment will go</div>
 
-<!--<h1 th:text="${weather.getWeatherDescription()}"></h1>-->
 
-<!--<td><span th:text="${weather.getWeatherDescription()}"></span></td>-->
+<!--notes for styling-->
+<!--limit temp to 2 numbers and add degree symbols-->
+<!--put description, current, hi, lo words-->
+<!--make big and beautiful to take up room of a three day forecast-->
+<!--icon if time allows-->
+<h1 th:text="${weather.weatherDescription}"></h1>
+<h1 th:text="${weather.currentTemp}"></h1>
+<h1 th:text="${weather.lowTemp}"></h1>
+<h1 th:text="${weather.highTemp}"></h1>
 
 <!-- List of links to User's garden(s) -->
 <div th:each="garden : ${allTheGardens}">
