@@ -6,7 +6,7 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<nav th:replace="fragments/visibleElements :: userNav"></nav>
+<nav th:replace="fragments/visibleElements :: Nav"></nav>
 
 <h1>Profile Page for: <span th:text="${user.getFirst_name()}"></span></h1>
 <!-- Display user's info -->
@@ -26,7 +26,6 @@
 </div>
 <!-- Edit button which sends user to the page for actually editing -->
 <a th:href="'/edit/profile/' + ${user.getId()}">Edit Profile</a>
-<div th:replace="fragments/invisibleElements :: footer"></div>
 
 
 <!-- Footer -->

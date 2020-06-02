@@ -6,7 +6,7 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<nav th:replace="fragments/visibleElements :: visitorNav"></nav> <!-- Is gonna have to be dynamic isn't it? -->
+<nav th:replace="fragments/visibleElements :: Nav"></nav>
 
 <h1>About Us</h1>
 <div class="container">
@@ -47,7 +47,6 @@
     </div>
 </div>
 </div>
-<div th:replace="fragments/invisibleElements :: footer"></div>
 
 
 <!-- Footer -->

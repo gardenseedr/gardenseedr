@@ -54,10 +54,10 @@ public class GardenController {
 
     // This will be where the SEARCH function resides... eventually.
     @GetMapping("/search")
-    public String findPlant(@PathVariable long gardenId, Model model, String keyword ) {
+    public String findPlant(@PathVariable long gardenId, Model model, String keyword) {
 
 
-        return ("userGarden");
+        return "userGarden";
     }
 
     // Go to already existing garden's page
@@ -73,7 +73,7 @@ public class GardenController {
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
-        return ("userGarden");
+        return "userGarden";
     }
 
 
