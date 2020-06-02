@@ -10,7 +10,7 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/dashboard/success")

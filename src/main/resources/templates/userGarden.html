@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
-<head th:replace="fragments/headAndFooter :: head">
-    <title>Sign up</title>
+<head>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
+    <title>Garden</title>
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 
 
 <div class="container">
@@ -101,8 +103,8 @@
 <!--Edit button (doesn't lead to another page)-->
 <!--Delete button-->
 
-<nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
-<nav th:replace="fragments/headAndFooter :: footer"></nav>
+<nav th:replace="fragments/invisibleElements :: footer_nav"></nav>
+<nav th:replace="fragments/invisibleElements :: footer"></nav>
 
 <!--<script th:inline ="javascript">-->
 <!--/*<![CDATA[*/-->
@@ -142,5 +144,9 @@
 <!--    // }-->
 <!--// </script>-->
 
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 </html>

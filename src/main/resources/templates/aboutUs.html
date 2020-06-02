@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/headAndFooter :: head">
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
+    <title>About Us</title>
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <h1>About Us</h1>
 <div class="container">
 <!-- Andy Ball -->
@@ -44,6 +45,12 @@
     </div>
 </div>
 </div>
-<div th:replace="fragments/headAndFooter :: footer"></div>
+<div th:replace="fragments/invisibleElements :: footer"></div>
+
+
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 </html>

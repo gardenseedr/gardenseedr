@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/headAndFooter :: head">
+<head>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Login</title>
-
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 
 <h1 class="subheader">Log In</h1>
 <div th:if="${param.error}" class="subheader">
@@ -31,10 +32,10 @@
 
 
 
-<nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
-<nav th:replace="fragments/headAndFooter :: footer"></nav>
-
-
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 
 </html>

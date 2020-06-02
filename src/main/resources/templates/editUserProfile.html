@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/headAndFooter :: head">
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
+    <title>Edit Profile</title>
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <h1>EDIT USER PAGE</h1>
 
 <!--Edit form-->
@@ -43,6 +44,9 @@
 
 
 
-<div th:replace="fragments/headAndFooter :: footer"></div>
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 </html>
