@@ -41,7 +41,7 @@ public class UserController {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
             userDao.save(user);
-            return "login";
+            return "redirect:/login";
         }
 
     //                                                  Things from KateUserController
