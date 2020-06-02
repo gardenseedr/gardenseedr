@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/headAndFooter :: head">
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head>
+    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
+    <title>Edit Profile</title>
 </head>
 <body>
 <h1>EDIT USER PAGE</h1>
@@ -44,5 +44,7 @@
 
 
 <div th:replace="fragments/headAndFooter :: footer"></div>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="fragments/headAndFooter :: head">
-    <title>Title</title>
+<head>
+    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
+    <title>Landing Page</title>
 </head>
 <body>
 
@@ -51,6 +52,7 @@
 
 <!--footer Displaying about us link?-->
 <nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
-
+<!-- JavaScript  -->
+<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
 </body>
 </html>

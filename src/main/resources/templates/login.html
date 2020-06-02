@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/headAndFooter :: head">
+<head>
+    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
     <title>Login</title>
-
 </head>
 <body>
 
@@ -34,7 +34,8 @@
 <nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
 <nav th:replace="fragments/headAndFooter :: footer"></nav>
 
-
+<!-- JavaScript  -->
+<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
 </body>
 
 </html>

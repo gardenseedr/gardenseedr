@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
     <title>Dashboard</title>
 </head>
 <body>
@@ -33,6 +33,7 @@
      which then passes it to GardenController: createGarden   -->
     <input type="submit" value="Create New Garden">
 </form>
-
+<!-- JavaScript  -->
+<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
 </body>
 </html>

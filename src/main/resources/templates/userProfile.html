@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/headAndFooter :: head">
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head>
+    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
+    <title>Profile</title>
 </head>
 <body>
 
@@ -25,5 +25,8 @@
 <!-- Edit button which sends user to the page for actually editing -->
 <a th:href="'/edit/profile/' + ${user.getId()}">Edit Profile</a>
 <div th:replace="fragments/headAndFooter :: footer"></div>
+
+<!-- JavaScript  -->
+<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
 </body>
 </html>
