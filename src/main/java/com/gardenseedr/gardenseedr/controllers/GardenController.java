@@ -4,6 +4,7 @@ import com.gardenseedr.gardenseedr.models.Garden;
 
 import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.repositories.PlantRepository;
+import com.gardenseedr.gardenseedr.repositories.SquareRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
 import com.gardenseedr.gardenseedr.services.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,14 @@ public class GardenController {
     private PlantRepository plantRepo;
     private UserRepository userDao;
     private GardenRepository gardenRepo;
+    private SquareRepository squareRepo;
 
 
-    public GardenController(GardenRepository gardenRepo, UserRepository userDao, PlantRepository plantRepo) {
+    public GardenController(GardenRepository gardenRepo, UserRepository userDao, PlantRepository plantRepo, SquareRepository squareRepo) {
         this.plantRepo = plantRepo;
         this.gardenRepo = gardenRepo;
         this.userDao = userDao;
+        this.squareRepo = squareRepo;
     }
 
     // Create blank garden from dashboard button
@@ -90,6 +93,8 @@ public class GardenController {
 
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
+
+        squareRepo.save(newSquare);
 
         return "redirect:/garden/" + gardenId;
     }
