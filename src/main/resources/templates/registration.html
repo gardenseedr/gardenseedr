@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Register</title>
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 
 <!--Header-->
 <!--<nav th:replace="fragments/headAndFooter :: header"></nav>-->
@@ -47,10 +48,10 @@
     </form>
 </div>
 
-<!--Footer-->
-<nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
 <!-- JavaScript  -->
-<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 </html>
 

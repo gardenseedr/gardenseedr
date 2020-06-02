@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<!--  PASTE THE BELOW CODE BETWEEN <head></head> TAGS TO USE: -->
-<!--  <th:block th:insert="fragments/headAndFooter :: head"></th:block>  -->
+
+                                                                <!--  HEAD  -->
+
+<!--  PASTE THE BELOW CODE BETWEEN <head>HERE</head> TAGS TO USE: -->
+<!--  <th:block th:insert="fragments/invisibleElements :: head"></th:block>  -->
 <div th:fragment="head">
         <meta charset="UTF-8" />
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
@@ -12,30 +15,17 @@
 </div>
 
 
+                                                                <!--  TOP OF PAGE ANCHOR  -->
+
+<!--  PASTE THE BELOW CODE BETWEEN AT VERY TOP OF BODY TO USE: -->
+<!--  <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>  -->
+<a th:fragment="topOfPage" id="topOfPage"></a>
 
 
-<footer_nav th:fragment="footer">
-    <!-- collapsing navbar elements -->
-    <div class="navbar navbar-expand-lg navbar-light footer">
+                                                                <!--  JAVASCRIPT TAGS  -->
 
-        <!-- left side content -->
-        <ul class="navbar-nav mr-auto" id="footer-nav">
-            <li class="nav-item"><a class="nav-link" href="/aboutus" target="_blank">About Us</a></li>
-        </ul>
-    </div>
-        <ul>
-            <!-- More links here... -->
-            <li>
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-                </form>
-            </li>
-        </ul>
-</footer_nav>
-
-
-<!--  PASTE THE BELOW CODE BETWEEN INTO THE <body></body> TO USE: -->
-<!--  <th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>  -->
+<!--  PASTE THE BELOW CODE BETWEEN INTO THE <body>HERE</body> TO USE: -->
+<!--  <th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>  -->
 <div th:fragment="JavaScript" th:remove="tag">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -44,6 +34,7 @@
     <script type="text/javascript" src="/js/userGarden.js"></script>
     <!--    additional JS-->
 </div>
+
 
 
 </html>

@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Landing Page</title>
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 
 
 <!--Landing page-->
@@ -50,9 +51,9 @@
 <button type="button" class="btn btn-primary btn-lg"><a href="/register">Register</a></button>
 
 
-<!--footer Displaying about us link?-->
-<nav th:replace="fragments/headAndFooter :: footer_nav"></nav>
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
 <!-- JavaScript  -->
-<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 </html>

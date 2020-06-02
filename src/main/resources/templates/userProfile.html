@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:insert="fragments/headAndFooter :: head"></th:block>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Profile</title>
 </head>
 <body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 
 <h1>Profile Page for: <span th:text="${user.getFirst_name()}"></span></h1>
 <!-- Display user's info -->
@@ -24,9 +25,12 @@
 </div>
 <!-- Edit button which sends user to the page for actually editing -->
 <a th:href="'/edit/profile/' + ${user.getId()}">Edit Profile</a>
-<div th:replace="fragments/headAndFooter :: footer"></div>
+<div th:replace="fragments/invisibleElements :: footer"></div>
 
+
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
 <!-- JavaScript  -->
-<th:block th:insert="fragments/headAndFooter :: JavaScript"></th:block>
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 </body>
 </html>
