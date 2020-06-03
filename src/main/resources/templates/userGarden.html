@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
-<head>
-    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
-    <title>Garden</title>
+<th:block th:insert="fragments/invisibleElements :: head"></th:block>
+<title>Sign up</title>
 </head>
 <body>
-<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<nav th:replace="fragments/visibleElements :: userNav"></nav>
+
 
 <div class="container">
     <!-- Kate edits -->
@@ -80,11 +78,7 @@
                             <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
                                    type="text" placeholder="Search" aria-label="Search">
                             <!--                            </form>-->
-
-
                             <span class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></span>
-                        // form to assign plant_id and square_num
-
                         </div>
 
                         <div class="modal-body" id="modal-body">
@@ -104,23 +98,23 @@
     </div>
 </div>
 
+
+<nav th:replace="fragments/visibleElements :: userNav"></nav>
+
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
+
 <!--Edit button (doesn't lead to another page)-->
 <!--Delete button-->
 
-<nav th:replace="fragments/invisibleElements :: footer_nav"></nav>
-<nav th:replace="fragments/invisibleElements :: footer"></nav>
 
 <script th:inline="javascript">
+
     /*<![CDATA[*/
     var plant = /*[[${allThePlants}]]*/ 'plant';
     /*]]>*/
 
-    // $(".change").click(function () {
-    //     $('.modal-title').css("color", "blue")
-    // });
-
-
     $('#txtSearch').on('keyup', function () {
+        $('#txtSearch').css('background', 'green');
         var value = $(this).val();
         var filteredData = filterFunction(value, plant);
 
@@ -152,9 +146,7 @@
     }
 </script>
 
-<!-- Footer -->
-<footer th:replace="fragments/visibleElements :: footer"></footer>
-<!-- JavaScript  -->
-<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
+
+
 </body>
 </html>
