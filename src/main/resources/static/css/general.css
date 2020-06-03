@@ -17,10 +17,8 @@ nav{
     background: #216418;
 }
 footer{
-    background-color: #523C23;
-    background-image: url("../images/asfalt-light.png");
-
-    /*color: white;*/
+    background: #523C23 url("../images/asfalt-light.png");
+    color: white;
 
     position:absolute;
     bottom:0;
