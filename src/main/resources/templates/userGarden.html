@@ -27,15 +27,6 @@
             <input type="submit">
         </h1>
     </form>
-    <!-- Delete button -->
-    <form class="alert" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
-        <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
-        <input type="hidden" th:field="*{id}">
-        <input type="hidden" th:field="*{user}">
-        <input type="hidden" th:field="*{created}">
-        <input type="hidden" th:field="*{updated}">
-        <input type="submit" name="delete" value="delete">
-    </form>
 
     <!-- End of Kate edits -->
     <!-- User garden grid -->
@@ -54,7 +45,7 @@
             <!--            Each garden square when clicked will have a modal of all avail veg and an active searchbar-->
 
             <button id="button" type="button" data-toggle="modal" data-target="#gardenModal"
-                    class="btn btn-primary garden-square"
+                    class="btn btn-success garden-square" ><!-- changed from btn-primary -->
                     th:each="i : ${#numbers.sequence(1, 32, 1)}"
                     th:id="${i}"
                     th:value="${i}">
@@ -96,7 +87,16 @@
         </div>
 
         <button value="Save Garden" type="submit"/>
-
+        x
+        <!-- Delete button -->
+        <form class="alert" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+            <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{user}">
+            <input type="hidden" th:field="*{created}">
+            <input type="hidden" th:field="*{updated}">
+            <input type="submit" name="delete" value="delete">
+        </form>
 
     </div>
 </div>
