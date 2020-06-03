@@ -103,6 +103,8 @@
 
 <!-- Footer -->
 <footer th:replace="fragments/visibleElements :: footer"></footer>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
 
 <script th:inline="javascript">
 
@@ -143,8 +145,7 @@
     }
 </script>
 
-<!-- JavaScript  -->
-<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
+
 
 </body>
 </html>
