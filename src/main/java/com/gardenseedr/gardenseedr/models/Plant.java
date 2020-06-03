@@ -16,9 +16,12 @@ public class Plant {
     @Column (name = "API_id", nullable = false)
     private String API_id;
 
+
+
 //    UNCOMMENT THIS TO RESET UP THE DB DESIGN
-//    @Column (name = "pic_file_name", nullable = false)
-//    private String pic_file_name;
+
+    @Column (name = "pic_file_name", nullable = false)
+    private String pic_file_name;
 
     //  One Plant to many Squares
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plant")
@@ -55,10 +58,10 @@ public class Plant {
     }
 
 //    UNCOMMENT THIS TO RESET UP THE DB DESIGN
-//    public String getPic_file_name() {
-//        return pic_file_name;
-//    }
-//    public void setPic_file_name(String pic_file_name) {
-//        this.pic_file_name = pic_file_name;
-//    }
+    public String getPic_file_name() {
+        return pic_file_name;
+    }
+    public void setPic_file_name(String pic_file_name) {
+        this.pic_file_name = pic_file_name;
+    }
 }
