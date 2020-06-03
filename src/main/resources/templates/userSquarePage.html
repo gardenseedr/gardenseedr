@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
-    <title>DYNAMIC TITLE</title>
+    <title th:text="${square.getPlant().getPlant_name()}"></title>
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
@@ -10,17 +10,69 @@
 <div th:replace="fragments/visibleElements :: Banner"></div>
 <!-- Navbar -->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
-
-
-SQUARE INFO PAGE
 <!-- Elements this page gets passed:
         - user,
         - garden,
+        - square,
         - allTheNotes,
         - newNote
+        - period between (daysOld)
 -->
 
-<div th:text=""></div>
+    <!-- Info about plant -->
+    <div>
+        <img class="littlePlantSvg" th:src="'/images/' + ${square.getPlant().getPic_file_name()}" th:alt="${square.getPlant().getPlant_name()}">
+        <div th:text="'Last watered on: ' + ${square.getLast_watered()}"></div>
+        <div th:text="'Planted on: ' + ${square.getPlant_date()}"></div>
+        <div th:text="'Days old: ' + ${daysOld.getDays()}"></div>
+    </div>
+
+    <!-- Make a new note -->
+    <form th:action="@{'/square/' + ${square.getId()}}" th:method="post" th:object="${newNote}">
+        <h4>Note to Self</h4>
+        <label for="journal">Leave yourself a note:</label>
+        <br>
+        <textarea id="journal" th:field="*{body}"></textarea>
+        <br>
+        <input type="submit">
+    </form>
+
+    <!-- Notes previously made -->
+    <div th:each="note : ${allTheNotes}">
+        <h5 th:text="${note.getCreated()}"></h5>
+        <p th:text="${note.getBody()}"></p>
+    </div>
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"> Left Space</div>
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"> Right Space </div>
+    </div>
+</div>
+
+
 
 
 

@@ -26,3 +26,9 @@ footer{
     display: flex;
     justify-content: center;
 }
+
+
+/* Stuff related to the userSquarePage */
+.littlePlantSvg{
+    height: 100px;
+}
