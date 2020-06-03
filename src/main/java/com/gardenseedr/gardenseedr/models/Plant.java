@@ -16,10 +16,6 @@ public class Plant {
     @Column (name = "API_id", nullable = false)
     private String API_id;
 
-
-
-//    UNCOMMENT THIS TO RESET UP THE DB DESIGN
-
     @Column (name = "pic_file_name", nullable = false)
     private String pic_file_name;
 

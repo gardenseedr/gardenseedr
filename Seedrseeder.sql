@@ -80,11 +80,14 @@ VALUES
 
 
 # SQUARES TABLE - TEST DATA
-INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date)
+INSERT INTO squares (id, garden_id, square_num, plant_id, plant_date, last_watered)
     VALUES
-    (1, 1, 5, 1, '2020-05-28');
+    (1, 1, 5, 1, '2020-05-28','2020-06-01');
 
-
+# NOTES TABLE - TEST DATA
+INSERT INTO notes (id, created, body, square_id)
+VALUES
+(1, '2020-05-28', 'all the body, such body', 1);
 
 # DON'T USE THIS
 UPDATE gardens

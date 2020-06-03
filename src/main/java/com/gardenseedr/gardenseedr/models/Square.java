@@ -3,6 +3,7 @@ package com.gardenseedr.gardenseedr.models;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="squares")
@@ -17,6 +18,8 @@ public class Square {
     @Column(name="plant_date", nullable = false)
     private LocalDate plant_date;
 
+    @Column(name="last_watered")
+    private LocalDate last_watered;
 
     //  Many Squares to one Garden
     @ManyToOne
@@ -28,7 +31,9 @@ public class Square {
     @JoinColumn(name = "plant_id")
     private Plant plant;
 
-
+    //  One Square to many Notes
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "square")
+    private List<Note> notes;
 
     // ------------------------- Constructors
     // Empty
@@ -78,10 +83,26 @@ public class Square {
         this.plant_date = plant_date;
     }
 
+    public LocalDate getLast_watered() {
+        return last_watered;
+    }
+
+    public void setLast_watered(LocalDate last_watered) {
+        this.last_watered = last_watered;
+    }
+
     public int getSquare_num() {
         return square_num;
     }
     public void setSquare_num(int square_num) {
         this.square_num = square_num;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 }
