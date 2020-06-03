@@ -47,7 +47,6 @@ public class GardenController {
 
         gardenRepo.save(newgarden);
 
-
         return "redirect:/garden/" + newgarden.getId();
     }
 
