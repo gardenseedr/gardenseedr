@@ -63,6 +63,7 @@ public class GardenController {
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
     public String seeGarden(@PathVariable long gardenId, Model model, String keyword) {
+        model.addAttribute("user", userDao.getOne(gardenRepo.getOne(gardenId).getUser().getId())); //so the dashboard link on the nav works
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square

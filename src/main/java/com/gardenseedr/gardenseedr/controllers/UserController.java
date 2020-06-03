@@ -85,20 +85,21 @@ public class UserController {
         }
 
     }
+                public Weather getWeather(int userZip) throws JsonProcessingException {
+                    String url = "https://api.openweathermap.org/data/2.5/weather?zip=" + userZip + ",us&appid=" + openWeatherToken + "&units=imperial";
+                    ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+                    ObjectMapper mapper = new ObjectMapper();
+                    Weather weather = mapper.readValue(response.getBody(), Weather.class);
+                    return weather;
+                }
 
-    public Weather getWeather(int userZip) throws JsonProcessingException {
-        String url = "https://api.openweathermap.org/data/2.5/weather?zip=" + userZip + ",us&appid=" + openWeatherToken + "&units=imperial";
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
-        ObjectMapper mapper = new ObjectMapper();
-        Weather weather = mapper.readValue(response.getBody(), Weather.class);
-        return weather;
-    }
-
-
-
-        // About Us Page
+    // About Us Page
     @GetMapping("/aboutus")
-    public String aboutUs (){
+    public String aboutUs (Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user != null){ // so the dashboard link will work if there's a user
+            model.addAttribute("user", userDao.getOne(user.getId()));
+        }
         return "aboutUs";
     }
 

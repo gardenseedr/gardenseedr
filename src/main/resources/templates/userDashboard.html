@@ -6,11 +6,10 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
+<div th:replace="fragments/visibleElements :: Banner"></div>
 <!--Navbar Frag-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
-
- "Welcome back, User!"
 <!--capitalize first letter of first name-->
 <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${user.getFirst_name()}"></span></a>!</h1>
 
