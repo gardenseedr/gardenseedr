@@ -6,8 +6,6 @@ import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.repositories.PlantRepository;
 import com.gardenseedr.gardenseedr.repositories.SquareRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
-import com.gardenseedr.gardenseedr.services.PlantService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

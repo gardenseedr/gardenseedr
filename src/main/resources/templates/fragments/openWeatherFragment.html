@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
 </head>
 <body>
-
+<!--<script src="../../static/js/jquery-2.2.4.js"></script>-->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
+<script src="../../static/js/openWeatherForecast.js"></script>
 </body>
 </html>
