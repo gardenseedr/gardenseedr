@@ -22,18 +22,19 @@
 
 .garden-grid{
     padding: 8px;
-    width: 260px;
-    height: 500px;
+    width: 800px;
+    height: 400px;
     display: grid;
     grid-area: gg;
-    grid-template-columns: 60px 60px 60px 60px;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
     grid-template-rows: 1fr;
 }
 
 .garden-square{
-    height: 60px;
-    width: 60px;
-    border: #523C23 2px solid;
+    height: 100px;
+    width: 100px;
+    /*border: #523C23 2px solid;*/
+    background: #523C23 url("../images/asfalt-light.png");
 }
 
 .modal{

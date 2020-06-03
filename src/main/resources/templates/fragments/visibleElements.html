@@ -8,7 +8,7 @@
 <!--  PASTE THE BELOW CODE INSIDE THE BODY ABOVE THE NAV TO USE: -->
 <!--  <div th:replace="fragments/visibleElements :: Banner"></div>  -->
 <div id="bannerDiv" th:fragment="Banner">
-    <img class="bigLogo" src="images/GRDNSDR.svg" alt="Logo">
+    <img class="bigLogo" src="../images/GRDNSDR.svg" alt="Logo">
     <h5>Grow what you eat!</h5>
 </div>
                                                                     <!--  DYNAMIC NAV  -->
@@ -25,7 +25,9 @@
             <a class="nav-item nav-link" href="#">Stuff</a>
             <!--  Users can see  -->
             <a sec:authorize="isAuthenticated()" class="nav-item nav-link" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a>
-            <a sec:authorize="isAuthenticated()" class="nav-item nav-link" href="/login?logout">Logout</a> <!-- what's the actual href for this?? -->
+            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn-anchor">Logout</button>
+            </form>
             <!--  Visitors can see  -->
             <a sec:authorize="isAnonymous()" class="nav-item nav-link" href="/login">Login</a>
             <a sec:authorize="isAnonymous()" class="nav-item nav-link" href="/register">Register</a>
