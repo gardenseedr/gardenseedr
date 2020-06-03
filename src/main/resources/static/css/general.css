@@ -1,0 +1,27 @@
+body{
+    background: white;
+}
+#bannerDiv{
+    background: #E0DECC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+    .bigLogo{
+        height: 75px;
+    }
+
+nav{
+    background: #216418;
+}
+footer{
+    background: #523C23;
+    color: white;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}

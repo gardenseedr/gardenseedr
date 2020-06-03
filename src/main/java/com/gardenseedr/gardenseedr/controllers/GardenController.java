@@ -40,6 +40,10 @@ public class GardenController {
 
         newgarden.setCreated(today);
         newgarden.setUser(userDao.getOne(userId));
+        System.out.println(newgarden.getId());
+        System.out.println(newgarden.getUser().getFirst_name());
+        System.out.println(newgarden.getUser().getLast_name());
+        System.out.println(newgarden.getGarden_name());
 
         gardenRepo.save(newgarden);
 
@@ -49,15 +53,16 @@ public class GardenController {
 
     // This will be where the SEARCH function resides... eventually.
     @GetMapping("/search")
-    public String findPlant(@PathVariable long gardenId, Model model, String keyword ) {
+    public String findPlant(@PathVariable long gardenId, Model model, String keyword) {
 
 
-        return ("userGarden");
+        return "userGarden";
     }
 
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
     public String seeGarden(@PathVariable long gardenId, Model model, String keyword) {
+        model.addAttribute("user", userDao.getOne(gardenRepo.getOne(gardenId).getUser().getId())); //so the dashboard link on the nav works
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
@@ -68,7 +73,7 @@ public class GardenController {
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
-        return ("userGarden");
+        return "userGarden";
     }
 
 
