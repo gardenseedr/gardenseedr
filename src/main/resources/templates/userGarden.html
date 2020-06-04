@@ -80,7 +80,7 @@
                         <div class="modal-footer">
 
                             <form th:action="@{'/garden/addSquare/' + ${garden.getId()}}" th:method="post" th:object="${newSquare}">
-<!--                                <input type="hidden" name="plant-id" id="plant-id" class="field" th:field="*{plant}">-->
+                                <input type="hidden" name="plant-id" id="plant-id" class="field">
                                 <input type="hidden" name="square-num" id="square-num" class="field" th:field="*{square_num}">
                                 <input type="submit" name="submit" value="Plant it!">
                             </form>
@@ -166,13 +166,14 @@
         var plantId = $(this).data('id');
         console.log(apiId);
 
-    //un-hardcode later!!
+
     var plantUrl = "https://openfarm.cc/api/v1/crops/" + apiId;
     fetch(plantUrl)
     .then(response => response.json())
     .then(data => {
         var crop = data.data.attributes;
         console.log(crop);
+        $("#plant-id").val(plantId)
         //add fun info later!!
     });
     });

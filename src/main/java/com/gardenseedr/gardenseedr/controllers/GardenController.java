@@ -91,6 +91,7 @@ public class GardenController {
         newSquare.setPlant(plantRepo.getOne(plantId));
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
+        newSquare.setLast_watered(today);
         System.out.println(plantId);
         squareRepo.save(newSquare);
 

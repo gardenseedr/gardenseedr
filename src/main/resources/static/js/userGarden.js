@@ -7,6 +7,9 @@ $(this).css("color", "white")
 });
 
 $(".garden-square").click(function () {
+    var plantSquare =  $(this).attr("id");
+    console.log(plantSquare);
+    $("#square-num").val(plantSquare);
 $(".plantSearch").hide();
     var plantName = null;
     plantName = $(this).children().attr('plant-name');
