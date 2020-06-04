@@ -23,7 +23,6 @@
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:field="*{user}">
             <input type="hidden" th:field="*{created}">
-
             <input type="submit">
         </h1>
     </form>
@@ -80,7 +79,15 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form th:action="@{'/garden/addSquare/' + ${garden.getId()}"
+                                  th:method="post">
+                                <input type="submit" name="submit" value="submit">
+                                <button type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal">
+                                    Close
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
