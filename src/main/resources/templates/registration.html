@@ -17,22 +17,22 @@
 
         <!--  username, PW, email, zipcode, yes or no on emails  -->
         <label for="firstname">First Name</label>
-        <input id="firstname" th:field="*{first_name}" />
+        <input id="firstname" th:field="*{first_name}" th:placeholder="Grace" pattern="[A-Za-z]{2,}"/>
         <br>
         <label for="lastname">Last Name</label>
-        <input id="lastname" th:field="*{last_name}" />
+        <input id="lastname" th:field="*{last_name}" th:placeholder="Hopper" pattern="[A-Za-z]{2,}"/>
         <br>
         <label for="username">Username</label>
-        <input id="username" th:field="*{username}" />
+        <input id="username" th:field="*{username}" th:placeholder="GHopper" pattern="{1,20}"/>
         <br>
         <label for="email">Email</label>
-        <input id="email" th:field="*{email}" />
+        <input id="email" th:field="*{email}" th:placeholder="'Ghopper@gmail.com'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
         <br>
         <label for="zipcode">Zipcode</label>
-        <input id="zipcode" type="text" th:field="*{zipcode}" />
+        <input id="zipcode" th:field="*{zipcode}" pattern="[0-9]{5}"/>
         <br>
         <label for="password">Password</label>
-        <input id="password" type="password" th:field="*{password}" />
+        <input id="password" type="password" th:field="*{password}" /> <!-- add in pattern="{8}"-->
         <br>
         <!--Checkbox!!! Would you like to receive email updates?-->
         <input type="checkbox" id="emailUpdates" th:field="*{email_updates}">
@@ -48,6 +48,12 @@
 <footer th:replace="fragments/visibleElements :: footer"></footer>
 <!-- JavaScript  -->
 <th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
+<!-- This script is here to prevent that 0 from popping into the zipcode field
+        idk why it does that, but this fixes it -->
+<script>
+    $("#zipcode").val("");
+    $("#zipcode").attr("placeholder", "12345");
+</script>
 </body>
 </html>
 
