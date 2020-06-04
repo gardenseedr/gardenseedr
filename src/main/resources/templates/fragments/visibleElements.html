@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <!--  Both can see  -->
-            <a class="nav-item nav-link" href="#">Stuff</a>
+            <a class="nav-item nav-link" href="/catalog">Catalog</a>
             <!--  Users can see  -->
             <a sec:authorize="isAuthenticated()" class="nav-item nav-link" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a>
             <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">

@@ -21,11 +21,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDate;
-
-
-
-
 
 @Controller
 public class UserController {
@@ -101,6 +96,16 @@ public class UserController {
             model.addAttribute("user", userDao.getOne(user.getId()));
         }
         return "aboutUs";
+    }
+
+    // Catalog Page
+    @GetMapping("/catalog")
+    public String catalog (Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user != null){ // so the dashboard link will work if there's a user
+            model.addAttribute("user", userDao.getOne(user.getId()));
+        }
+        return "catalog";
     }
 
     // User Profile Page
