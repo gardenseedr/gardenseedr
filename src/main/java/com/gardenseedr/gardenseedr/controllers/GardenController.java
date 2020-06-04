@@ -105,12 +105,12 @@ public class GardenController {
 
     // Add a square to the garden --------------------------- ADJUST THIS ONCE THERE'S A FORM TO CREATE A NEW SQUARE
     @PostMapping("/garden/addSquare/{gardenId}")
-    public String addGardenSquare(@ModelAttribute Square newSquare, @PathVariable long gardenId) {
+    public String addGardenSquare(@RequestParam(name = "plant-id") long plantId, @ModelAttribute Square newSquare, @PathVariable long gardenId) {
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
+        newSquare.setPlant(plantRepo.getOne(plantId));
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
-
+      
         squareRepo.save(newSquare);
 
         return "redirect:/garden/" + gardenId;

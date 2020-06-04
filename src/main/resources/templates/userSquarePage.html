@@ -6,31 +6,14 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<!-- Elements this page gets passed:
-        - user,
-        - garden,
-        - square,
-        - allTheNotes,
-        - newNote
-        - period between (daysOld)
--->
-<!-- Add button to water -->
-<!-- Add delete button to delete this square -->
-
-
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-12">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                </div>
-            </div>
-        </div>
-
-
-
+                                                                                    <!-- Elements this page gets passed:
+                                                                                            - user,
+                                                                                            - garden,
+                                                                                            - square,
+                                                                                            - allTheNotes,
+                                                                                            - newNote
+                                                                                            - period between (daysOld)
+                                                                                    -->
 <!-- Banner -->
 <div th:replace="fragments/visibleElements :: Banner"></div>
 <!-- Navbar -->
@@ -55,28 +38,42 @@
                 <div th:text="'Planted on: ' + ${square.getPlant_date()}"></div>
                 <div th:text="'Days old: ' + ${daysOld.getDays()}"></div>
             </div>
+            <!-- Water button -->
+            <form th:action="@{'/square/water/' + ${square.getId()}}" th:method="post" th:object="${square}">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{plant}">
+                <input type="hidden" th:field="*{garden}">
+                <input type="hidden" th:field="*{plant_date}">
+                <input type="hidden" th:field="*{notes}">
+                <input type="hidden" th:field="*{square_num}">
+
+                <input type="submit" class="btn btn-info" value="Water this plant">
+                <br>
+                <!-- Delete button -->
+                <button type="submit" class="btn btn-danger" th:formaction="@{'/square/delete/' + ${square.getId()}}">Delete this plant</button> <!-- ignore this error -->
+            </form>
         </div>
         <!--  Note column  -->
         <div class="col-md-6 notesDiv">
-            <div class="row">
-                <div class="col-md-12 noteMaker">
-                    <!-- Make a new note -->
-                    <form th:action="@{'/square/' + ${square.getId()}}" th:method="post" th:object="${newNote}">
-                        <h4>Note to Self</h4>
-                        <label for="journal">Leave yourself a note:</label>
-                        <br>
-                        <textarea id="journal" class="noteTextarea" th:field="*{body}"></textarea>
-                        <br>
-                        <input type="submit">
-                    </form>
-                </div>
-            </div>
+            <!-- Make a new note -->
+            <form th:action="@{'/square/' + ${square.getId()}}" th:method="post" th:object="${newNote}" class="noteForm">
+                <h4>Note to Self</h4>
+                <label for="journal">Leave yourself a note:</label>
+                <br>
+                <textarea id="journal" class="noteTextarea" th:field="*{body}"></textarea>
+                <br>
+                <input type="submit" class="btn btn-light">
+            </form>
             <div class="row">
                 <div class="col-md-12 existingNotesDiv">
                     <!-- Notes previously made -->
                     <div th:each="note : ${allTheNotes}">
                         <h5 th:text="${note.getCreated()}"></h5>
                         <p th:text="${note.getBody()}"></p>
+                        <form th:action="@{'/square/delete/' + ${note.getId()}}" th:method="post">
+                            <!-- Delete button -->
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -47,16 +47,48 @@ public class SquareController {
         return "userSquarePage";
     }
 
-    // Create new Note using the blank one sent from GetMapping("/square/{squareId}")
-    @PostMapping("/square/{squareId}")
-    public String createNote(@ModelAttribute Note newnote, @PathVariable long squareId) {
-        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+        // Create new Note using the blank one sent from GetMapping("/square/{squareId}")
+        @PostMapping("/square/{squareId}")
+        public String createNote(@ModelAttribute Note newnote, @PathVariable long squareId) {
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
-        newnote.setCreated(today);
-        newnote.setSquare(squareRepo.getOne(squareId));
+            newnote.setCreated(today);
+            newnote.setSquare(squareRepo.getOne(squareId));
 
-        noteRepo.save(newnote);
+            noteRepo.save(newnote);
 
-        return "redirect:/square/" + squareId;
-    }
+            return "redirect:/square/" + squareId;
+        }
+
+        // Delete a Note
+        @PostMapping("/square/delete/{noteId}")
+        public String deleteNote(@PathVariable long noteId) {
+            long squareId = noteRepo.getOne(noteId).getSquare().getId();
+
+            noteRepo.delete(noteRepo.getOne(noteId));
+
+            return "redirect:/square/" + squareId;
+        }
+
+        // Water the individual square sent from GetMapping("/square/{squareId}")
+        @PostMapping("/square/water/{squareId}")
+        public String waterSquare(@ModelAttribute Square square, @PathVariable long squareId) {
+            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
+            square.setLast_watered(today);
+
+            squareRepo.save(square);
+
+            return "redirect:/square/" + squareId;
+        }
+
+        // Delete individual square sent from GetMapping("/square/{squareId}")
+        @PostMapping("/square/delete/{squareId}")
+        public String deleteSquare(@PathVariable long squareId) {
+
+            long gardenId = squareRepo.getOne(squareId).getGarden().getId();
+            squareRepo.delete(squareRepo.getOne(squareId));
+
+            return "redirect:/garden/" + gardenId;
+        }
 }
