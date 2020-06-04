@@ -123,7 +123,7 @@
     function filterFunction(value, data) {
         var filteredData = [];
         for (var i = 0; i < data.length; i++) {
-            var plant = data[i].toLowerCase();
+            var plant = data[i].plant_name.toLowerCase();
             if (plant.includes(value)) {
                 filteredData.push(data[i])
             }
@@ -135,10 +135,13 @@
         console.log(data);
         var table = document.getElementById('plantTable');
         var html = '<div class="modal-body">';
-        data.forEach(function (plantName) {
+        data.forEach(function (plant) {
             html +=
-                '<span>' +
-                plantName +
+                '<span data-id"' +
+                    plant.id +
+                    '"data.api=" +' +
+                    ' plant.api_id">' +
+                plant.plant_Name +
                 '</span>';
         });
         table.innerHTML = html;

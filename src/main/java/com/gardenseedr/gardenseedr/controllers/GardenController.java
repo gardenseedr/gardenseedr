@@ -67,7 +67,7 @@ public class GardenController {
 
 
         if (keyword == null) {
-            model.addAttribute("allThePlants", plantRepo.getAllPlants());
+            model.addAttribute("allThePlants", plantRepo.findAll());
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
@@ -95,6 +95,19 @@ public class GardenController {
 
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
+
+        squareRepo.save(newSquare);
+
+        return "redirect:/garden/" + gardenId;
+    }
+    @PostMapping("/garden/addSquare1/{gardenId}")
+    public String addGardenSquare1(@ModelAttribute Square newSquare, @PathVariable long gardenId) {
+        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
+
+        newSquare.setGarden(gardenRepo.getOne(gardenId));
+        newSquare.setPlant_date(today);
+        //last watered
+        //api id and db id
 
         squareRepo.save(newSquare);
 
