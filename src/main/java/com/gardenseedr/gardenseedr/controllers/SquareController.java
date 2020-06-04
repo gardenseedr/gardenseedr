@@ -60,6 +60,16 @@ public class SquareController {
             return "redirect:/square/" + squareId;
         }
 
+        // Delete a Note
+        @PostMapping("/square/delete/{noteId}")
+        public String deleteNote(@PathVariable long noteId) {
+            long squareId = noteRepo.getOne(noteId).getSquare().getId();
+
+            noteRepo.delete(noteRepo.getOne(noteId));
+
+            return "redirect:/square/" + squareId;
+        }
+
         // Water the individual square sent from GetMapping("/square/{squareId}")
         @PostMapping("/square/water/{squareId}")
         public String waterSquare(@ModelAttribute Square square, @PathVariable long squareId) {
