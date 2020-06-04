@@ -45,12 +45,14 @@
             <!--            Each garden square when clicked will have a modal of all avail veg and an active searchbar-->
 
             <button id="button" type="button" data-toggle="modal" data-target="#gardenModal"
-                    class="btn btn-success garden-square"
+                    class="button btn btn-success garden-square"
                     th:each="i : ${#numbers.sequence(1, 32, 1)}"
                     th:id="${i}"
                     th:value="${i}">
                 <span th:plant-name="${square.getPlant().getPlant_name()}"
                       th:plant-body="${square.getPlant().getAPI_id()}"
+                      th:plant-lastWatered="${square.getLast_watered()}"
+                      th:plant-today="${standardDate}"
                       th:each="square : ${allTheSquares}"
                       th:if="${i} == ${square.getSquare_num()}"
                       th:text="${square.getPlant().getId()}">
@@ -72,13 +74,18 @@
                             <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
                                    type="text" placeholder="Search" aria-label="Search">
                             <!--                            </form>-->
-<!--                            <a href="" class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></a>-->
-                            <div class="change" id="plantTable"></div>
+                            <span class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></span>
                         </div>
 
-                        <div class="modal-body" id="modal-body">
+                        <div class="modal-body" id="modal-body"></div>
+                        <p>Last Watered</p>
+                        <div class="modal-body" id="modal-lastWatered"></div>
+                        <p>Todays Date</p>
+                        <div class="modal-body" id="modal-today"></div>
+                        <p>Alert</p>
+                        <div class="modal-body" id="modal-compare"></div>
 
-                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
@@ -90,7 +97,8 @@
         <button value="Save Garden" type="submit"/>
         x
         <!-- Delete button -->
-        <form class="alert" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+        <form class="alert" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete"
+              th:object="${garden}">
             <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:field="*{user}">
@@ -124,7 +132,7 @@
     function filterFunction(value, data) {
         var filteredData = [];
         for (var i = 0; i < data.length; i++) {
-            var plant = data[i].plant_name.toLowerCase();
+            var plant = data[i].toLowerCase();
             if (plant.includes(value)) {
                 filteredData.push(data[i])
             }
@@ -136,19 +144,15 @@
         console.log(data);
         var table = document.getElementById('plantTable');
         var html = '<div class="modal-body">';
-        data.forEach(function (plant) {
+        data.forEach(function (plantName) {
             html +=
-                '<span class="selected-plant" data-id"' +
-                    plant.id +
-                    '" data-api="' +
-                     plant.api_id +'">' +
-                plant.plant_name +
+                '<span>' +
+                plantName +
                 '</span>';
         });
         table.innerHTML = html;
     }
 </script>
-
 
 
 </body>
