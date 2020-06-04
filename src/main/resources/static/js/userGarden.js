@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     $(".subheader").css("background", "blue");
 
 
@@ -56,7 +57,59 @@ $(".plantSearch").hide();
 
     }
 
-});
+
+
+
+
+
+    let lastWatered = null;
+    lastWatered = $(".plantData").attr('plant-lastWatered');
+    console.log(lastWatered);
+    let lastWateredConv = convertDate(lastWatered);
+    let today = $(".plantData").attr('plant-today');
+    let todayDateConv = convertDate(today);
+
+    let dateMath = Math.floor((todayDateConv - lastWateredConv) / (24 * 3600 * 1000));
+
+    if (lastWatered == null) {
+        $(".innerBox").hide();
+    } else {
+        if(dateMath > 15) {
+            $(".plantData").css("background", "red");
+            console.log("red? " + dateMath);
+        }
+        else if (dateMath < 10) {
+            $(".plantData").css("background", "orange");
+            console.log("orange? " + dateMath);
+        }
+        else if (dateMath < 5) {
+            $(".plantData").css("background", "yellow");
+            console.log("yellow? " + dateMath);
+        }
+        else if (dateMath < 3) {
+            $(".plantData").css("background", "green");
+            console.log("green? " + dateMath);
+        }
+        else {
+            $(".plantData").css("background", "blue");
+            console.log("blue? " + dateMath);
+        }
+
+    }
+
+    function convertDate(str) {
+        var parts = str.split("-");
+        return new Date(parts[1] + "/" + parts[2] + "/" + parts[0]);
+    }
+
+})
+;
+
+
+
+
+
+
 // .text("We are well watered!")
 // .text("We're getting thirsty! It's been " + dateMath + " days")
 // .text("Don't forget to water us! It's been " + dateMath + " days")

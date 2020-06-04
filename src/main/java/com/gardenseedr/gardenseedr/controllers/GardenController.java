@@ -6,12 +6,18 @@ import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.repositories.PlantRepository;
 import com.gardenseedr.gardenseedr.repositories.SquareRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
+import com.gardenseedr.gardenseedr.services.PlantService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.gardenseedr.gardenseedr.repositories.GardenRepository;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 
 @Controller
@@ -38,6 +44,10 @@ public class GardenController {
 
         newgarden.setCreated(today);
         newgarden.setUser(userDao.getOne(userId));
+        System.out.println(newgarden.getId());
+        System.out.println(newgarden.getUser().getFirst_name());
+        System.out.println(newgarden.getUser().getLast_name());
+        System.out.println(newgarden.getGarden_name());
 
         gardenRepo.save(newgarden);
 
@@ -56,18 +66,26 @@ public class GardenController {
     // Go to already existing garden's page
     @GetMapping("/garden/{gardenId}")
     public String seeGarden(@PathVariable long gardenId, Model model, String keyword) {
+//        model.addAttribute("today", Period.between(squareRepo.getOne(squareId).getPlant_date(),LocalDate.now()));
         model.addAttribute("user", userDao.getOne(gardenRepo.getOne(gardenId).getUser().getId())); //so the dashboard link on the nav works
         model.addAttribute("garden", gardenRepo.getOne(gardenId)); //so userGarden can display user's garden
         model.addAttribute("allTheSquares", gardenRepo.getOne(gardenId).getSquares()); //so userGarden can see garden's List<Square>
         model.addAttribute("newSquare", new Square()); // so user can make new square
+        model.addAttribute("viewSquare", squareRepo);
 
-
+        //the date for the comparator will use
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String stringDate = simpleDateFormat.format(date);
+        model.addAttribute("standardDate", stringDate);
 
         if (keyword == null) {
-            model.addAttribute("allThePlants", plantRepo.findAll());
+            model.addAttribute("allThePlants", plantRepo.getAllPlants());
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
+
+
         return "userGarden";
     }
 
@@ -92,13 +110,11 @@ public class GardenController {
         newSquare.setPlant(plantRepo.getOne(plantId));
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
-        newSquare.setLast_watered(today);
-        System.out.println(plantId);
+      
         squareRepo.save(newSquare);
 
         return "redirect:/garden/" + gardenId;
     }
-
 
     // Delete garden
     @PostMapping("/garden/delete/{gardenId}")
