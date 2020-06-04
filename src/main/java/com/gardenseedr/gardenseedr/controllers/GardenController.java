@@ -95,17 +95,6 @@ public class GardenController {
 
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
-
-        squareRepo.save(newSquare);
-
-        return "redirect:/garden/" + gardenId;
-    }
-    @PostMapping("/garden/addSquare1/{gardenId}")
-    public String addGardenSquare1(@ModelAttribute Square newSquare, @PathVariable long gardenId) {
-        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
-        newSquare.setGarden(gardenRepo.getOne(gardenId));
-        newSquare.setPlant_date(today);
         //last watered
         //api id and db id
 
@@ -113,6 +102,7 @@ public class GardenController {
 
         return "redirect:/garden/" + gardenId;
     }
+
 
     // Delete garden
     @PostMapping("/garden/delete/{gardenId}")

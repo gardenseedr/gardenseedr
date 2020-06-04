@@ -72,7 +72,8 @@
                             <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
                                    type="text" placeholder="Search" aria-label="Search">
                             <!--                            </form>-->
-                            <a href="" class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></a>
+<!--                            <a href="" class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></a>-->
+                            <div class="change" id="plantTable"></div>
                         </div>
 
                         <div class="modal-body" id="modal-body">
@@ -137,11 +138,11 @@
         var html = '<div class="modal-body">';
         data.forEach(function (plant) {
             html +=
-                '<span data-id"' +
+                '<span class="selected-plant" data-id"' +
                     plant.id +
-                    '"data.api=" +' +
-                    ' plant.api_id">' +
-                plant.plant_Name +
+                    '" data-api="' +
+                     plant.api_id +'">' +
+                plant.plant_name +
                 '</span>';
         });
         table.innerHTML = html;
