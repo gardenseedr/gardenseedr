@@ -62,6 +62,7 @@ public class GardenController {
         model.addAttribute("newSquare", new Square()); // so user can make new square
 
 
+
         if (keyword == null) {
             model.addAttribute("allThePlants", plantRepo.findAll());
         } else {

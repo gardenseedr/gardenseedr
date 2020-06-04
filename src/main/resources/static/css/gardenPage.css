@@ -33,6 +33,7 @@
 .garden-square{
     height: 100px;
     width: 100px;
+    /*border: #523C23 2px solid;*/
     background: #523C23 url("../images/asfalt-light.png");
 }
 
