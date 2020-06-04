@@ -8,7 +8,10 @@
 <!--  PASTE THE BELOW CODE INSIDE THE BODY ABOVE THE NAV TO USE: -->
 <!--  <div th:replace="fragments/visibleElements :: Banner"></div>  -->
 <div id="bannerDiv" th:fragment="Banner">
-    <img class="bigLogo" src="../images/GRDNSDR.svg" alt="Logo">
+    <!--  Everyone can see  -->
+    <a href="/">
+        <img class="bigLogo" src="../images/GRDNSDR.svg" alt="Logo">
+    </a>
     <h5>Grow what you eat!</h5>
 </div>
                                                                     <!--  DYNAMIC NAV  -->
@@ -21,8 +24,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <!--  Both can see  -->
-            <a class="nav-item nav-link" href="#">Stuff</a>
+            <!--  Everyone can see  -->
+            <a class="nav-item nav-link" href="/catalog">Catalog</a>
             <!--  Users can see  -->
             <a sec:authorize="isAuthenticated()" class="nav-item nav-link" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a>
             <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
@@ -44,6 +47,7 @@
     <div class="navbar navbar-expand-lg navbar-light footer">
         <!-- left side content -->
         <ul class="navbar-nav mr-auto" id="footer-nav">
+            <!--  Everyone can see  -->
             <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="#topOfPage">Back to Top</a></li>
         </ul>

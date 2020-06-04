@@ -1,5 +1,8 @@
 package com.gardenseedr.gardenseedr.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -23,11 +26,13 @@ public class Square {
 
     //  Many Squares to one Garden
     @ManyToOne
+
     @JoinColumn(name = "garden_id")
     private Garden garden;
 
     //  Many Squares to one Plant
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "plant_id")
     private Plant plant;
 

@@ -1,5 +1,7 @@
 package com.gardenseedr.gardenseedr.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class Plant {
 
     //  One Plant to many Squares
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plant")
+    @JsonBackReference
     private List<Square> squares;
 
 //    No constructor(s) cause it should not change after values are seeded

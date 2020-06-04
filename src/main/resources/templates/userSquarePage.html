@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/invisibleElements :: head"></th:block>
+    <title th:text="${square.getPlant().getPlant_name()}"></title>
+</head>
+<body>
+<th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
+                                                                                    <!-- Elements this page gets passed:
+                                                                                            - user,
+                                                                                            - garden,
+                                                                                            - square,
+                                                                                            - allTheNotes,
+                                                                                            - newNote
+                                                                                            - period between (daysOld)
+                                                                                    -->
+<!-- Banner -->
+<div th:replace="fragments/visibleElements :: Banner"></div>
+<!-- Navbar -->
+<nav th:replace="fragments/visibleElements :: Nav"></nav>
+<!-- Mid Grid -->
+<div class="container">
+    <!--  Title row  -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Intro Stuff -->
+            <h2 th:text="${square.getPlant().getPlant_name()} + ' in square #'+ ${square.getSquare_num()} + ' of ' + ${garden.getGarden_name()}"></h2>
+        </div>
+    </div>
+    <!--  Info row  -->
+    <div class="row">
+        <!--  Info column  -->
+        <div class="col-md-6">
+            <!-- Info about plant -->
+            <div>
+                <img class="littlePlantSvg" th:src="'/images/' + ${square.getPlant().getPic_file_name()}" th:alt="${square.getPlant().getPlant_name()}">
+                <div th:text="'Last watered on: ' + ${square.getLast_watered()}"></div>
+                <div th:text="'Planted on: ' + ${square.getPlant_date()}"></div>
+                <div th:text="'Days old: ' + ${daysOld.getDays()}"></div>
+            </div>
+            <!-- Water button -->
+            <form th:action="@{'/square/water/' + ${square.getId()}}" th:method="post" th:object="${square}">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{plant}">
+                <input type="hidden" th:field="*{garden}">
+                <input type="hidden" th:field="*{plant_date}">
+                <input type="hidden" th:field="*{notes}">
+                <input type="hidden" th:field="*{square_num}">
+
+                <input type="submit" class="btn btn-info" value="Water this plant">
+                <br>
+                <!-- Delete button -->
+                <button type="submit" class="btn btn-danger" th:formaction="@{'/square/delete/' + ${square.getId()}}">Delete this plant</button> <!-- ignore this error -->
+            </form>
+        </div>
+        <!--  Note column  -->
+        <div class="col-md-6 notesDiv">
+            <!-- Make a new note -->
+            <form th:action="@{'/square/' + ${square.getId()}}" th:method="post" th:object="${newNote}" class="noteForm">
+                <h4>Note to Self</h4>
+                <label for="journal">Leave yourself a note:</label>
+                <br>
+                <textarea id="journal" class="noteTextarea" th:field="*{body}"></textarea>
+                <br>
+                <input type="submit" class="btn btn-light">
+            </form>
+            <div class="row">
+                <div class="col-md-12 existingNotesDiv">
+                    <!-- Notes previously made -->
+                    <div th:each="note : ${allTheNotes}">
+                        <h5 th:text="${note.getCreated()}"></h5>
+                        <p th:text="${note.getBody()}"></p>
+                        <form th:action="@{'/square/delete/' + ${note.getId()}}" th:method="post">
+                            <!-- Delete button -->
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer th:replace="fragments/visibleElements :: footer"></footer>
+<!-- JavaScript  -->
+<th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
+</body>
+</html>
