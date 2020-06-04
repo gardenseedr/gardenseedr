@@ -1,6 +1,4 @@
-*{
-
-}
+/* For ALL pages */
 body{
     background: #E0DECC;
     width: 100%;
@@ -34,7 +32,14 @@ footer{
 }
 
 
-/* Stuff related to the userSquarePage */
+/* For aboutUs */
+.aboutUsContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* For userSquarePage */
 .container{
     box-sizing: border-box;
     border: black 1px solid;
