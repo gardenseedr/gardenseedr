@@ -2,7 +2,6 @@ package com.gardenseedr.gardenseedr.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
     @Entity
     @Table(name="notes")
@@ -35,14 +34,13 @@ import java.util.List;
         public LocalDate getCreated() {
             return created;
         }
-        public void setCreated(LocalDate API_id) {
+        public void setCreated(LocalDate created) {
             this.created = created;
         }
 
         public String getBody() {
             return body;
         }
-
         public void setBody(String body) {
             this.body = body;
         }
@@ -50,7 +48,6 @@ import java.util.List;
         public Square getSquare() {
             return square;
         }
-
         public void setSquare(Square square) {
             this.square = square;
         }

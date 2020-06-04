@@ -6,8 +6,6 @@ import com.gardenseedr.gardenseedr.models.Square;
 import com.gardenseedr.gardenseedr.repositories.PlantRepository;
 import com.gardenseedr.gardenseedr.repositories.SquareRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
-import com.gardenseedr.gardenseedr.services.PlantService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,10 +38,6 @@ public class GardenController {
 
         newgarden.setCreated(today);
         newgarden.setUser(userDao.getOne(userId));
-        System.out.println(newgarden.getId());
-        System.out.println(newgarden.getUser().getFirst_name());
-        System.out.println(newgarden.getUser().getLast_name());
-        System.out.println(newgarden.getGarden_name());
 
         gardenRepo.save(newgarden);
 
@@ -69,7 +63,7 @@ public class GardenController {
 
 
         if (keyword == null) {
-            model.addAttribute("allThePlants", plantRepo.getAllPlants());
+            model.addAttribute("allThePlants", plantRepo.findAll());
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
@@ -97,11 +91,14 @@ public class GardenController {
 
         newSquare.setGarden(gardenRepo.getOne(gardenId));
         newSquare.setPlant_date(today);
+        //last watered
+        //api id and db id
 
         squareRepo.save(newSquare);
 
         return "redirect:/garden/" + gardenId;
     }
+
 
     // Delete garden
     @PostMapping("/garden/delete/{gardenId}")

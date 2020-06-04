@@ -2,6 +2,10 @@ package com.gardenseedr.gardenseedr.models.POJOs;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -100,4 +104,13 @@ public class Plants implements Serializable {
         setSpread((int) attributes.get("row_spacing"));
         setSpread((int) attributes.get("height"));
     }
+
+//
+//    public Plants getPlants(String apiId) throws JsonProcessingException {
+//        String url = "openfarm.cc/api/v1/crops/" + apiId;
+//        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+//        ObjectMapper mapper = new ObjectMapper();
+//        Plants plant = mapper.readValue(response.getBody(), Plants.class);
+//        return plant;
+//    }
 }

@@ -12,12 +12,10 @@ import org.springframework.context.annotation.Bean;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Weather implements Serializable{
 
-    //data.weather[0].description
+
     private String weatherDescription;
 
-    //need to figure zip code out, hardcoding zip into url
 
-    //data.main.temp
     private double currentTemp;
     private double lowTemp;
     private double highTemp;
@@ -53,11 +51,11 @@ public class Weather implements Serializable{
 
     public Weather() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
     public Weather(Weather weather) {
-        // TODO Auto-generated constructor stub
+
     }
 
     public String getWeatherDescription() {

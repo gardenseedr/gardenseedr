@@ -12,16 +12,16 @@ GRANT ALL ON seedr_db.* TO seedr_user@localhost;
 
 #       ------------------------        Seeder Part
 
-# USERS TABLE - TEST DATA
+# USERS TABLE - TEST DATA (the password hash is for "pass")
 INSERT INTO users (id, first_name, last_name, username, email, password, zipcode, is_admin, email_updates)
 VALUE
-(1, 'Kate', 'McKinney', 'katmck14', 'katmck14@gmail.com', 'password', 78240, true, true);
+(1, 'Kate', 'McKinney', 'katmck14', 'katmck14@gmail.com', '$2a$10$6rQQ6qTfqlCwTIXC3HxwuuRQhPGIH88efaPgEb5P9wjrlebWGdmCG', 78240, true, true);
 
 # GARDENS TABLE - TEST DATA
 # DELETE FROM gardens WHERE id = 1;
 INSERT INTO gardens (id, user_id, garden_name, created, updated)
 VALUE
-(1, 1, 'Kate Garden', '2020-05-27', null);
+(1, 1, 'Gigert', '2020-05-27', null);
 
 # PLANTS TABLE
 INSERT INTO plants (id, plant_name, API_id, pic_file_name)

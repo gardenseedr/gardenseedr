@@ -1,3 +1,6 @@
+*{
+
+}
 body{
     background: #E0DECC;
 }
@@ -19,9 +22,42 @@ nav{
 footer{
     background: #523C23 url("../images/asfalt-light.png");
     color: white;
+
     position:absolute;
     bottom:0;
     width:100%;
     display: flex;
     justify-content: center;
 }
+
+
+/* Stuff related to the userSquarePage */
+.littlePlantSvg{
+    height: 100px;
+}
+
+.container{
+    border: black 1px solid;
+    height: 100%;
+}
+    .col-md-12{
+        display: flex;
+        justify-content: center;
+    }
+    .notesDiv{
+    max-height: 622px;
+    }
+        .noteMaker{
+            max-height: 300px;
+        }
+            .noteTextarea{
+                height: 100px;
+                max-height: 200px;
+                width: 400px;
+            }
+        .existingNotesDiv{
+            display: flex;
+            flex-direction: column;
+            max-height: 300px;
+            overflow: scroll;
+        }
