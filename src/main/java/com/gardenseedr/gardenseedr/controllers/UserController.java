@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
+import java.security.Principal;
+
 
 @Controller
 public class UserController {
@@ -90,20 +92,20 @@ public class UserController {
 
     // About Us Page
     @GetMapping("/aboutus")
-    public String aboutUs (Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String aboutUs (Model model, Principal user){
         if (user != null){ // so the dashboard link will work if there's a user
-            model.addAttribute("user", userDao.getOne(user.getId()));
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("user", userDao.getOne(loggedInUser.getId()));
         }
         return "aboutUs";
     }
 
     // Catalog Page
     @GetMapping("/catalog")
-    public String catalog (Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String catalog (Model model, Principal user){
         if (user != null){ // so the dashboard link will work if there's a user
-            model.addAttribute("user", userDao.getOne(user.getId()));
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("user", userDao.getOne(loggedInUser.getId()));
         }
         return "catalog";
     }
