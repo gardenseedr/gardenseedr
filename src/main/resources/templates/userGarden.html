@@ -44,6 +44,7 @@
             <!--        Andy MODAL attempt-->
             <!--            Each garden square when clicked will have a modal of all avail veg and an active searchbar-->
 
+            <!-- Add a th:href pointing to "/square/{square.getId()}" into the button -->
             <button id="button" type="button" data-toggle="modal" data-target="#gardenModal"
                     class="button btn btn-success garden-square"
                     th:each="i : ${#numbers.sequence(1, 32, 1)}"
