@@ -1,38 +1,8 @@
 $(document).ready(function () {
 
-    $(".subheader").css("background", "blue");
-
-
     $(".label").click(function () {
-        $(this).css("color", "white")
+        $(".plantData").css("background", "white")
     });
-
-    function convertDate(str) {
-        var parts = str.split("-");
-        return new Date(parts[1] + "/" + parts[2] + "/" + parts[0]);
-    }
-
-    let lastWatered = $(this).children().attr('plant-lastWatered');
-    let lastWateredConv = convertDate(lastWatered);
-    let today = $(this).children().attr('plant-today');
-    let todayDateConv = convertDate(today);
-    let dateMath = Math.floor((todayDateConv - lastWateredConv) / (24 * 3600 * 1000));
-
-    if (dateMath < 1) {
-        $(".garden-square").css("background", "blue");
-    }
-    if (dateMath < 3) {
-        $(".garden-square").css("background", "green");
-    }
-    if (dateMath > 5) {
-        $(".garden-square").css("background", "yellow");
-    }
-    if (dateMath > 10) {
-        $(".garden-square").css("background", "orange");
-    }
-    if (dateMath > 15) {
-        $(".garden-square").css("background", "red");
-    }
 
 
     $(".garden-square").click(function () {
@@ -56,7 +26,59 @@ $(document).ready(function () {
         }
     });
 
-});
+
+
+
+
+
+    let lastWatered = null;
+    lastWatered = $(".plantData").attr('plant-lastWatered');
+    console.log(lastWatered);
+    let lastWateredConv = convertDate(lastWatered);
+    let today = $(".plantData").attr('plant-today');
+    let todayDateConv = convertDate(today);
+
+    let dateMath = Math.floor((todayDateConv - lastWateredConv) / (24 * 3600 * 1000));
+
+    if (lastWatered == null) {
+        $(".innerBox").hide();
+    } else {
+        if(dateMath > 15) {
+            $(".plantData").css("background", "red");
+            console.log("red? " + dateMath);
+        }
+        else if (dateMath < 10) {
+            $(".plantData").css("background", "orange");
+            console.log("orange? " + dateMath);
+        }
+        else if (dateMath < 5) {
+            $(".plantData").css("background", "yellow");
+            console.log("yellow? " + dateMath);
+        }
+        else if (dateMath < 3) {
+            $(".plantData").css("background", "green");
+            console.log("green? " + dateMath);
+        }
+        else {
+            $(".plantData").css("background", "blue");
+            console.log("blue? " + dateMath);
+        }
+
+    }
+
+    function convertDate(str) {
+        var parts = str.split("-");
+        return new Date(parts[1] + "/" + parts[2] + "/" + parts[0]);
+    }
+
+})
+;
+
+
+
+
+
+
 // .text("We are well watered!")
 // .text("We're getting thirsty! It's been " + dateMath + " days")
 // .text("Don't forget to water us! It's been " + dateMath + " days")
