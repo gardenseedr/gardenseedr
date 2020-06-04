@@ -23,7 +23,6 @@
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:field="*{user}">
             <input type="hidden" th:field="*{created}">
-
             <input type="submit">
         </h1>
     </form>
@@ -67,15 +66,17 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal-title">TITLE</h5>
+                            <h5 class="modal-title" id="modal-title">Search Crops</h5>
 
                         </div>
                         <div class="plantSearch">
                             <!--                            <form th:action="@{'/garden/' + ${garden.getId()}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">-->
                             <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
                                    type="text" placeholder="Search" aria-label="Search">
-                            <!--                            </form>-->
-                            <span class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></span>
+
+<!--                            <a href="" class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></a>-->
+                            <div class="change" id="plantTable"></div>
+
                         </div>
 
                         <div class="modal-body" id="modal-body"></div>
@@ -88,7 +89,15 @@
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                            <form th:action="@{'/garden/addSquare/' + ${garden.getId()}}" th:method="post" th:object="${newSquare}">
+                                <input type="hidden" name="plant-id" id="plant-id" class="field">
+                                <input type="hidden" name="square-num" id="square-num" class="field" th:field="*{square_num}">
+                                <input type="submit" name="submit" value="Plant it!">
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -118,12 +127,15 @@
 
 <script th:inline="javascript">
 
+
     /*<![CDATA[*/
     var plant = /*[[${allThePlants}]]*/ 'plant';
     /*]]>*/
+    console.log("var plant");
+    console.log(plant);
 
     $('#txtSearch').on('keyup', function () {
-        $('#txtSearch').css('background', 'green');
+        // $('#txtSearch').css('background', 'green');
         var value = $(this).val();
         var filteredData = filterFunction(value, plant);
 
@@ -145,14 +157,41 @@
         console.log(data);
         var table = document.getElementById('plantTable');
         var html = '<div class="modal-body">';
-        data.forEach(function (plantName) {
+
+        var apiId = $(this).data('api');
+        var plantId = $(this).data('id');
+        data.forEach(function (plant) {
             html +=
-                '<span>' +
-                plantName +
-                '</span>';
+                '<span class="selected-plant" data-id="' +
+                    plant.id +
+                    '" data-api="' +
+                     plant.api_id +'">' +
+                plant.plant_name +
+                '</span><br>';
+
         });
+        html += '<div class="plant-info"</div>';
         table.innerHTML = html;
     }
+
+    $(document).on("click", ".selected-plant", function (e) {
+        e.preventDefault();
+        var apiId = $(this).data('api');
+        var plantId = $(this).data('id');
+        console.log(apiId);
+
+
+    var plantUrl = "https://openfarm.cc/api/v1/crops/" + apiId;
+    fetch(plantUrl)
+    .then(response => response.json())
+    .then(data => {
+        var crop = data.data.attributes;
+        console.log(crop);
+        $("#plant-id").val(plantId)
+        //add fun info later!!
+    });
+    });
+
 </script>
 
 

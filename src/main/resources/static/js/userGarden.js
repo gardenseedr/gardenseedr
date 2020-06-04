@@ -3,10 +3,31 @@ $(document).ready(function () {
     $(".subheader").css("background", "blue");
 
 
-    $(".label").click(function () {
-        $(this).css("color", "white")
-    });
 
+
+$(".garden-square").click(function () {
+    var plantSquare =  $(this).attr("id");
+    console.log(plantSquare);
+    $("#square-num").val(plantSquare);
+$(".plantSearch").hide();
+    var plantName = null;
+    plantName = $(this).children().attr('plant-name');
+    $("#modal-title").text(plantName);
+    console.log(plantName);
+    /////////////commented out cause it was causing issues with the modal////////////
+    // if (plantName == undefined){
+    //     var plantSearch = "Find a plant to plant";
+    //     $("#modal-title").html(plantSearch);
+    // }
+    var plantBody = null;
+    plantBody = $(this).children().attr('plant-body');
+    $("#modal-body").text(plantBody);
+    if (plantBody == undefined){
+        var plantSearch = "search";
+        $(".plantSearch").show();
+        $("#modal-body").text(plantSearch);
+
+  
     function convertDate(str) {
         var parts = str.split("-");
         return new Date(parts[1] + "/" + parts[2] + "/" + parts[0]);
@@ -32,29 +53,8 @@ $(document).ready(function () {
     }
     if (dateMath > 15) {
         $(".garden-square").css("background", "red");
+
     }
-
-
-    $(".garden-square").click(function () {
-        $(".plantSearch").hide();
-        var plantName = null;
-        plantName = $(this).children().attr('plant-name');
-        $("#modal-title").text(plantName);
-        console.log(plantName);
-        if (plantName == undefined) {
-            var plantSearch = "Find a plant to plant";
-            $("#modal-title").html(plantSearch);
-        }
-        var plantBody = null;
-        plantBody = $(this).children().attr('plant-body');
-        $("#modal-body").text(plantBody);
-        if (plantBody == undefined) {
-            var plantSearch = "search";
-            $(".plantSearch").show();
-            $("#modal-body").text(plantSearch);
-
-        }
-    });
 
 });
 // .text("We are well watered!")
