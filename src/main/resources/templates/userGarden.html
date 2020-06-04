@@ -72,7 +72,8 @@
                             <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
                                    type="text" placeholder="Search" aria-label="Search">
                             <!--                            </form>-->
-                            <span class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></span>
+<!--                            <a href="" class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></a>-->
+                            <div class="change" id="plantTable"></div>
                         </div>
 
                         <div class="modal-body" id="modal-body">
@@ -123,7 +124,7 @@
     function filterFunction(value, data) {
         var filteredData = [];
         for (var i = 0; i < data.length; i++) {
-            var plant = data[i].toLowerCase();
+            var plant = data[i].plant_name.toLowerCase();
             if (plant.includes(value)) {
                 filteredData.push(data[i])
             }
@@ -135,10 +136,13 @@
         console.log(data);
         var table = document.getElementById('plantTable');
         var html = '<div class="modal-body">';
-        data.forEach(function (plantName) {
+        data.forEach(function (plant) {
             html +=
-                '<span>' +
-                plantName +
+                '<span class="selected-plant" data-id"' +
+                    plant.id +
+                    '" data-api="' +
+                     plant.api_id +'">' +
+                plant.plant_name +
                 '</span>';
         });
         table.innerHTML = html;
