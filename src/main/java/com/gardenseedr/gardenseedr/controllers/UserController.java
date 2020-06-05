@@ -74,7 +74,7 @@ public class UserController {
             model.addAttribute("user", userDao.getOne(userId));  // so dashboard can say "Hi user!"
             model.addAttribute("allTheGardens", userDao.getOne(userId).getGardens()); // so dashboard can see all user's gardens
             model.addAttribute("newGarden", new Garden()); // so dashboard can generate a new garden assigned to user
-            model.addAttribute("weather", getWeather(userZip)); // so dashboard can generate a new garden assigned to user
+            model.addAttribute("weather", getWeather(userZip)); // so dashboard can see the 3 day forecast
             return "userDashboard";
 
         }

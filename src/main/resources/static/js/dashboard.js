@@ -1,4 +1,5 @@
 // Get a random garden tip
+
 var gardeningTips = [
     "Pay attention to how sunlight plays through your yard before choosing a spot for your garden. Most edible plants, including many vegetables, herbs, and fruits, need at least 6 hours of sun in order to thrive.",
     "Plan your new garden near a water source. Make sure you can run a hose to your garden site, so you don't have to lug water to it each time your plants get thirsty.",
@@ -28,74 +29,3 @@ function getAClue(array) {
 }
 
 $("#gardeningTipsDiv").append(getAClue(gardeningTips));
-
-
-
-// Adding some stuff to the weather display
-function getWeather(x) {
-
-    for (var i = 0; i < 3; ++i){
-        var content = "";
-
-        var weatherIcon;
-
-        if (x.daily.data[i].icon === "clear-day") {
-            weatherIcon = '<i class="fas fa-sun fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "clear-night") {
-            weatherIcon = '<i class="fas fa-moon fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "rain") {
-            weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "snow") {
-            weatherIcon = '<i class="far fa-snowflake fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "sleet") {
-            weatherIcon = '<i class="fas fa-cloud-rain fa-3x"></i><i class="fas fa-temperature-low"></i>';
-        }
-        else if (x.daily.data[i].icon === "wind") {
-            weatherIcon = '<i class="fas fa-wind fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "fog") {
-            weatherIcon = '<i class="fas fa-smog fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "cloudy") {
-            weatherIcon = '<i class="fas fa-cloud fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "partly-cloudy-day") {
-            weatherIcon = '<i class="fas fa-cloud-sun fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "partly-cloudy-night") {
-            weatherIcon = '<i class="fas fa-cloud-moon fa-3x"></i>';
-        }
-        else if (x.daily.data[i].icon === "hail") {
-            weatherIcon = '<i class="fas fa-cloud-meatball fa-3x"></i><i class="fas fa-temperature-low"></i>';
-        }
-        else if (x.daily.data[i].icon === "thunderstorm") {
-            weatherIcon = '<i class="fas fa-poo-storm fa-3x"></i>';
-        }
-
-        content += (
-            "<p>" +
-            "Temp range: " +
-            x.daily.data[i].temperatureHigh + "F - " +
-            x.daily.data[i].temperatureLow + "F" +
-            "</p>" +
-            "<p>" +
-            "Feels like: " +
-            x.daily.data[i].apparentTemperatureHigh + "F - " +
-            x.daily.data[i].apparentTemperatureLow + "F" +
-            "</p>" +
-            "<p>" +
-            weatherIcon +
-            "</p>" +
-            "<p>" +
-            x.daily.data[i].summary +
-            "</p>"
-        );
-
-        var TheCorrectDiv = "#day" + i;
-        $(TheCorrectDiv).html("").append(content);
-    }
-}

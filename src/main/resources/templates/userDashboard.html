@@ -11,19 +11,27 @@
 
 <div class="container">
 
-    <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${user.getFirst_name()}"></span></a>!</h1>
+    <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
 
 
-    <!--notes for styling-->
-    <!--limit temp to 2 numbers and add degree symbols-->
-    <!--put description, current, hi, lo words-->
     <!--make big and beautiful to take up room of a three day forecast-->
-    <!--icon if time allows-->
-    <div id="weatherDiv">
-        <h1 th:text="${weather.weatherDescription}"></h1>
-        <h1 th:text="${weather.currentTemp}"></h1>
-        <h1 th:text="${weather.lowTemp}"></h1>
-        <h1 th:text="${weather.highTemp}"></h1>
+    <div id="weatherDiv" class="flex-row justify-content-center">
+        <h3><u>Today's Weather</u></h3>
+        <span th:text="${weather.weatherDescription}"></span>
+            <i th:if="${weather.weatherDescription.contains('rain')}" class="fas fa-cloud-rain"></i>
+            <i th:if="${weather.weatherDescription.contains('clouds')}" class="fas fa-cloud"></i>
+            <i th:if="${weather.weatherDescription.contains('sun')}" class="fas fa-sun"></i>
+            <i th:if="${weather.weatherDescription.contains('storm')}" class="fas fa-bolt"></i>
+        <br>
+        <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
+            <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
+            <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
+        <br>
+        <span th:text="'Low: ' + ${#strings.substring(weather.lowTemp,0,2)} + '°F'"></span>
+        <br>
+        <span th:text="'High: ' + ${#strings.substring(weather.highTemp,0,2)} + '°F'"></span>
+        <br>
+        <span th:text="'High: ' + ${weather.} + '°F'"></span>
     </div>
 
 
