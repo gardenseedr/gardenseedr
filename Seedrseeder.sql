@@ -13,9 +13,9 @@ GRANT ALL ON seedr_db.* TO seedr_user@localhost;
 #       ------------------------        Seeder Part
 
 # USERS TABLE - TEST DATA (the password hash is for "pass")
-INSERT INTO users (id, first_name, last_name, username, email, password, zipcode, is_admin, email_updates)
+INSERT INTO users (id, first_name, last_name, username, email, password, zipcode, is_admin)
 VALUE
-(1, 'Kate', 'McKinney', 'katmck14', 'katmck14@gmail.com', '$2a$10$6rQQ6qTfqlCwTIXC3HxwuuRQhPGIH88efaPgEb5P9wjrlebWGdmCG', 78240, true, true);
+(1, 'Kate', 'McKinney', 'katmck14', 'katmck14@gmail.com', '$2a$10$6rQQ6qTfqlCwTIXC3HxwuuRQhPGIH88efaPgEb5P9wjrlebWGdmCG', 78240, true);
 
 # GARDENS TABLE - TEST DATA
 # DELETE FROM gardens WHERE id = 1;

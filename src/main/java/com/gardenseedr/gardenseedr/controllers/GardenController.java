@@ -37,7 +37,6 @@ public class GardenController {
 
     // Create blank garden from dashboard button
     // (the GetMapping for dashboard/{userId} is in UserController)
-
     @PostMapping("/dashboard/{userId}")
     public String createGarden(@ModelAttribute Garden newgarden, @PathVariable long userId) {
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format

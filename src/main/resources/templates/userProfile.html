@@ -7,7 +7,7 @@
 <body>
 <!--Useless comment-->
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<div th:replace="fragments/visibleElements :: Banner"></div>
+<!--<div th:replace="fragments/visibleElements :: Banner"></div>-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
 <h1>Profile Page for: <span th:text="${user.getFirst_name()}"></span></h1>

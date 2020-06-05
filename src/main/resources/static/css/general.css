@@ -1,29 +1,21 @@
 /* For ALL pages */
 body{
-    background: #E0DECC;
+    background: white;
     width: 100%;
     height: 100%;
     margin: 0;
 }
-#bannerDiv{
-    background: #E0DECC url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-}
-    .bigLogo{
-        height: 75px;
-    }
 
 nav{
-    background: #216418;
+    background: #E0DECC;
 }
-footer{
-    background: #523C23 url("../images/asfalt-light.png");
-    color: white;
+    .bigLogo{ /* logo inside of nav */
+        width: 300px;
+    }
 
+footer{
+    background: rgba(44, 136, 32, 0.97);
+    color: white;
     position:absolute;
     bottom:0;
     width:100%;
