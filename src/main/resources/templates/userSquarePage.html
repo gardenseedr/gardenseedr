@@ -70,7 +70,7 @@
                     <div th:each="note : ${allTheNotes}">
                         <h5 th:text="${note.getCreated()}"></h5>
                         <p th:text="${note.getBody()}"></p>
-                        <form th:action="@{'/square/delete/' + ${note.getId()}}" th:method="post">
+                        <form th:action="@{'/note/delete/' + ${note.getId()}}" th:method="post">
                             <!-- Delete button -->
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
