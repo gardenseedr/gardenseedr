@@ -43,25 +43,20 @@
             <!--        Andy MODAL attempt-->
             <!--            Each garden square when clicked will have a modal of all avail veg and an active searchbar-->
 
-            <!-- Add a th:href pointing to "/square/{square.getId()}" into the button -->
             <button id="button" type="button" data-toggle="modal" data-target="#gardenModal"
-                    class="button btn btn-success garden-square"
+                    class="btn btn-success garden-square"
                     th:each="i : ${#numbers.sequence(1, 32, 1)}"
                     th:id="${i}"
                     th:value="${i}">
-
-                <span class="plantData"
-                      th:each="square : ${allTheSquares}"
-                      th:if="${i} == ${square.getSquare_num()}"
-                      th:plant-name="${square.getPlant().getPlant_name()}"
-                      th:plant-body="${square.getPlant().getAPI_id()}"
-                      th:plant-lastWatered="${square.getLast_watered()}"
-                      th:plant-today="${standardDate}"
-                      th:text="${square.getPlant().getId()}">
+                      <span th:each="square : ${allTheSquares}"
+                            th:if="${i} == ${square.getSquare_num()}"
+                            th:plant-name="${square.getPlant().getPlant_name()}"
+                            th:plant-body="${square.getPlant().getAPI_id()}"
+                            th:plant-id="${square.getId()}"
+                      >
+                        <img th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
-                <br>
-                <span class="innerBox">box</span>
             </button>
 
             <!--            This is the modal that will contain info on each individual square. -->
@@ -73,21 +68,23 @@
                             <h5 class="modal-title" id="modal-title">Search Crops</h5>
 
                         </div>
-                        <div class="plantSearch">
-                            <!--                            <form th:action="@{'/garden/' + ${garden.getId()}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2">-->
-                            <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
-                                   type="text" placeholder="Search" aria-label="Search">
-
-
-<!--                            <a href="" class="change" id="plantTable" th:each="plant : ${allThePlants}"><br></a>-->
-                            <div class="change" id="plantTable"></div>
-
-                        </div>
-
                         <div class="modal-body" id="modal-body">
+                            <div class="plantSearch">
+                                <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
+                                       type="text" placeholder="Search" aria-label="Search">
+                                <div class="change" id="plantTable"></div>
+                            </div>
+                            <div id="api-results">
+
+                            </div>
 
                         </div>
                         <div class="modal-footer">
+
+
+
+
+
 
                             <form th:action="@{'/garden/addSquare/' + ${garden.getId()}}" th:method="post" th:object="${newSquare}">
                                 <input type="hidden" name="plant-id" id="plant-id" class="field">
@@ -125,15 +122,16 @@
 
 <script th:inline="javascript">
 
-
     /*<![CDATA[*/
     var plant = /*[[${allThePlants}]]*/ 'plant';
     /*]]>*/
     console.log("var plant");
     console.log(plant);
 
+
+
     $('#txtSearch').on('keyup', function () {
-        // $('#txtSearch').css('background', 'green');
+        $("#api-results").html("");
         var value = $(this).val();
         var filteredData = filterFunction(value, plant);
 
@@ -152,11 +150,10 @@
     }
 
     function rebuildTable(data) {
+        console.log("filtered stuff");
         console.log(data);
         var table = document.getElementById('plantTable');
-        var html = '<div class="modal-body">';
-        var apiId = $(this).data('api');
-        var plantId = $(this).data('id');
+        var html = '<div id="filter-results">';
         data.forEach(function (plant) {
             html +=
                 '<span class="selected-plant" data-id="' +
@@ -165,7 +162,6 @@
                      plant.api_id +'">' +
                 plant.plant_name +
                 '</span><br>';
-
         });
         html += '<div class="plant-info"</div>';
         table.innerHTML = html;
@@ -178,6 +174,7 @@
         console.log(apiId);
 
 
+
     var plantUrl = "https://openfarm.cc/api/v1/crops/" + apiId;
     fetch(plantUrl)
     .then(response => response.json())
@@ -186,7 +183,16 @@
         console.log(crop);
         $("#plant-id").val(plantId)
         //add fun info later!!
+        var html = "";
+        html += "<h1>" + crop.name + "</h1>";
+        html += "<p>" + crop.description + "</p>";
+        html += "<p>" + crop.sun_requirements + "</p>";
+        html += "<p>" + crop.sowing_method + "</p>";
+        html += "<p>" + crop.spread + "</p>";
+        $("#filter-results").html("");
+        $("#api-results").html(html);
     });
+
     });
 
 </script>
