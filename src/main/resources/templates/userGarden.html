@@ -48,11 +48,13 @@
                     th:each="i : ${#numbers.sequence(1, 32, 1)}"
                     th:id="${i}"
                     th:value="${i}">
-                <span th:plant-name="${square.getPlant().getPlant_name()}"
-                      th:plant-body="${square.getPlant().getAPI_id()}"
-                      th:each="square : ${allTheSquares}"
-                      th:if="${i} == ${square.getSquare_num()}"
-                      th:text="${square.getPlant().getId()}">
+                      <span th:each="square : ${allTheSquares}"
+                            th:if="${i} == ${square.getSquare_num()}"
+                            th:plant-name="${square.getPlant().getPlant_name()}"
+                            th:plant-body="${square.getPlant().getAPI_id()}"
+                            th:plant-id="${square.getId()}"
+                      >
+                        <img th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
             </button>
@@ -126,6 +128,8 @@
     console.log("var plant");
     console.log(plant);
 
+
+
     $('#txtSearch').on('keyup', function () {
         $("#api-results").html("");
         var value = $(this).val();
@@ -170,6 +174,7 @@
         console.log(apiId);
 
 
+
     var plantUrl = "https://openfarm.cc/api/v1/crops/" + apiId;
     fetch(plantUrl)
     .then(response => response.json())
@@ -180,9 +185,14 @@
         //add fun info later!!
         var html = "";
         html += "<h1>" + crop.name + "</h1>";
+        html += "<p>" + crop.description + "</p>";
+        html += "<p>" + crop.sun_requirements + "</p>";
+        html += "<p>" + crop.sowing_method + "</p>";
+        html += "<p>" + crop.spread + "</p>";
         $("#filter-results").html("");
         $("#api-results").html(html);
     });
+
     });
 
 </script>
