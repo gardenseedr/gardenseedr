@@ -6,15 +6,10 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<!--<div th:replace="fragments/visibleElements :: Banner"></div>-->
 <!--Navbar Frag-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
-<!--capitalize first letter of first name-->
 <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${user.getFirst_name()}"></span></a>!</h1>
-
-
-<div>Here's where the weather fragment will go</div>
 
 
 <!--notes for styling-->
@@ -40,6 +35,14 @@
      which then passes it to GardenController: createGarden   -->
     <input type="submit" value="Create New Garden">
 </form>
+
+
+
+<!--Gardening tips-->
+<div id="gardeningTipsDiv">
+
+</div>
+
 
 <!-- Footer -->
 <footer th:replace="fragments/visibleElements :: footer"></footer>
