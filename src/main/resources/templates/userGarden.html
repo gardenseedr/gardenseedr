@@ -142,9 +142,6 @@
         console.log(data);
         var table = document.getElementById('plantTable');
         var html = '<div class="modal-body">';
-        var apiId = $(this).data('api');
-        console.log(apiId);
-        var plantId = $(this).data('id');
         data.forEach(function (plant) {
             html +=
                 '<span class="selected-plant" data-id="' +
