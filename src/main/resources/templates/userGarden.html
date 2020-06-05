@@ -131,7 +131,7 @@
         for (var i = 0; i < data.length; i++) {
             var plant = data[i].plant_name.toLowerCase();
             if (plant.includes(value)) {
-                filteredData.push(plant[i])
+                filteredData.push(data[i])
             }
         }
         return filteredData;
