@@ -5,25 +5,16 @@ body{
     height: 100%;
     margin: 0;
 }
-#bannerDiv{
+
+nav{
     background: #E0DECC;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:100%;
 }
-    .bigLogo{
+    .bigLogo{ /* logo inside of nav */
         width: 300px;
     }
 
-nav{
-    /*background: rgba(236, 197, 4, 0.95);*/
-    background: #E0DECC;
-}
 footer{
     background: rgba(44, 136, 32, 0.97);
-    /*background: rgba(88, 58, 24, 1);*/
     color: white;
     position:absolute;
     bottom:0;

@@ -2,18 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-
-                                                                    <!--  BANNER  -->
-
-<!--  PASTE THE BELOW CODE INSIDE THE BODY ABOVE THE NAV TO USE: -->
-<!--  <div th:replace="fragments/visibleElements :: Banner"></div>  -->
-<!--<div id="bannerDiv" th:fragment="Banner">-->
-<!--    &lt;!&ndash;  Everyone can see  &ndash;&gt;-->
-<!--    <a href="/">-->
-<!--        <img class="bigLogo" src="../images/GRDNSDR.svg" alt="Logo">-->
-<!--    </a>-->
-<!--    <h5>Grow what you eat!</h5>-->
-<!--</div>-->
                                                                     <!--  DYNAMIC NAV  -->
 
 <!--  PASTE THE BELOW CODE INSIDE THE BODY TO USE: -->
@@ -30,10 +18,9 @@
             </a>
             <a class="nav-item nav-link text-dark" href="/catalog">Catalog</a>
             <!--  Users can see  -->
-            <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a>
+            <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a> <!-- ignore the user.getId() error -->
             <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
                 <button class="nav-item nav-link text-dark">Logout</button>
-<!--                btn-link btn-anchor-->
             </form>
             <!--  Visitors can see  -->
             <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark" href="/login">Login</a>

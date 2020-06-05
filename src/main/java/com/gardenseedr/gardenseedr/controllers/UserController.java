@@ -36,13 +36,12 @@ public class UserController {
     private String openWeatherToken;
 
 
-    public UserController(UserRepository userDao, GardenRepository gardenDao, PasswordEncoder passwordEncoder) { //change for actual UserController
+    public UserController(UserRepository userDao, GardenRepository gardenDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.gardenDao = gardenDao;
         this.passwordEncoder = passwordEncoder;
     }
 
-    //                                                  Things from AndyUserController
     // registration page
     @GetMapping("/register")
     public String showSignupForm(Model model){
@@ -59,7 +58,6 @@ public class UserController {
             return "redirect:/login";
         }
 
-    //                                                  Things from KateUserController
     // User's dashboard page
     @GetMapping("/dashboard/{userId}")
     public String showDashboard(@PathVariable long userId, Model model) throws JsonProcessingException {

@@ -31,9 +31,6 @@ public class User {
     @Column (name = "is_admin", nullable = false)
     private boolean is_admin;
 
-    @Column (name = "email_updates", nullable = false)
-    private boolean email_updates;
-
     //  One User to many Gardens
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Garden> gardens;
@@ -52,7 +49,7 @@ public class User {
 
 
     // Every field but id included
-    public User (String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin, boolean email_updates){
+    public User (String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin){
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
@@ -60,10 +57,9 @@ public class User {
         this.password = password;
         this.zipcode = zipcode;
         this.is_admin = is_admin;
-        this.email_updates = email_updates;
     }
     // Every field included
-    public User (long id, String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin, boolean email_updates){
+    public User (long id, String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin){
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -72,7 +68,6 @@ public class User {
         this.password = password;
         this.zipcode = zipcode;
         this.is_admin = is_admin;
-        this.email_updates = email_updates;
     }
 
 
@@ -130,13 +125,6 @@ public class User {
     }
     public void setIs_admin(boolean is_admin) {
         this.is_admin = is_admin;
-    }
-
-    public boolean isEmail_updates() {
-        return email_updates;
-    }
-    public void setEmail_updates(boolean email_updates) {
-        this.email_updates = email_updates;
     }
 
     public List<Garden> getGardens() {
