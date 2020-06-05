@@ -80,7 +80,7 @@ public class GardenController {
         model.addAttribute("standardDate", stringDate);
 
         if (keyword == null) {
-            model.addAttribute("allThePlants", plantRepo.getAllPlants());
+            model.addAttribute("allThePlants", plantRepo.findAll());
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
@@ -109,6 +109,7 @@ public class GardenController {
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
         newSquare.setPlant(plantRepo.getOne(plantId));
         newSquare.setGarden(gardenRepo.getOne(gardenId));
+        newSquare.setLast_watered(today);
         newSquare.setPlant_date(today);
 
         squareRepo.save(newSquare);

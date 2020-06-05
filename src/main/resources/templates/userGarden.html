@@ -129,9 +129,9 @@
     function filterFunction(value, data) {
         var filteredData = [];
         for (var i = 0; i < data.length; i++) {
-            var plant = data[i].toLowerCase();
+            var plant = data[i].plant_name.toLowerCase();
             if (plant.includes(value)) {
-                filteredData.push(plant)
+                filteredData.push(plant[i])
             }
         }
         return filteredData;
