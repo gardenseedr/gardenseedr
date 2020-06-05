@@ -12,9 +12,9 @@ $(document).ready(function () {
         plantBody = $(this).children().attr('plant-body');
         $("#modal-body").text(plantBody);
         if (plantBody == undefined) {
-            var plantSearch = "search";
+            // var plantSearch = "search";
             $(".plantSearch").show();
-            $("#modal-body").text(plantSearch);
+            // $("#modal-body").text(plantSearch);
         }
     });
 });

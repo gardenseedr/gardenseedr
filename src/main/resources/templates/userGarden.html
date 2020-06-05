@@ -66,16 +66,23 @@
                             <h5 class="modal-title" id="modal-title">Search Crops</h5>
 
                         </div>
-                        <div class="plantSearch">
-                            <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
-                                   type="text" placeholder="Search" aria-label="Search">
-                            <div class="change" id="plantTable"></div>
-                        </div>
-
                         <div class="modal-body" id="modal-body">
+                            <div class="plantSearch">
+                                <input id="txtSearch" name="keyword" class="form-control form-control-sm ml-3 w-75"
+                                       type="text" placeholder="Search" aria-label="Search">
+                                <div class="change" id="plantTable"></div>
+                            </div>
+                            <div id="api-results">
+
+                            </div>
 
                         </div>
                         <div class="modal-footer">
+
+
+
+
+
 
                             <form th:action="@{'/garden/addSquare/' + ${garden.getId()}}" th:method="post" th:object="${newSquare}">
                                 <input type="hidden" name="plant-id" id="plant-id" class="field">
@@ -120,6 +127,7 @@
     console.log(plant);
 
     $('#txtSearch').on('keyup', function () {
+        $("#api-results").html("");
         var value = $(this).val();
         var filteredData = filterFunction(value, plant);
 
@@ -141,7 +149,7 @@
         console.log("filtered stuff");
         console.log(data);
         var table = document.getElementById('plantTable');
-        var html = '<div class="modal-body">';
+        var html = '<div id="filter-results">';
         data.forEach(function (plant) {
             html +=
                 '<span class="selected-plant" data-id="' +
@@ -170,6 +178,10 @@
         console.log(crop);
         $("#plant-id").val(plantId)
         //add fun info later!!
+        var html = "";
+        html += "<h1>" + crop.name + "</h1>";
+        $("#filter-results").html("");
+        $("#api-results").html(html);
     });
     });
 
