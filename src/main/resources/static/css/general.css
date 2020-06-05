@@ -22,12 +22,26 @@ footer{
     display: flex;
     justify-content: center;
 }
+.btn-success{
+    background: rgba(44, 136, 32, 0.97);
+    /*background: red;*/
+    border: 1px solid rgba(44, 136, 32, 0.97);
+}
 
 
 /* For aboutUs */
 .aboutUsContainer{
     display: flex;
     flex-direction: row;
+}
+
+/* For Dashboard */
+#gardeningTipsDiv{
+    font-weight: bold;
+    color: black;
+
+    width: 200px;
+    border: rgba(44, 136, 32, 0.97) 1px solid;
 }
 
 
