@@ -23,9 +23,9 @@ footer{
     justify-content: center;
 }
 .btn-success{
-    background: rgba(44, 136, 32, 0.97);
-    /*background: red;*/
-    border: 1px solid rgba(44, 136, 32, 0.97);
+    /*background: rgba(44, 136, 32, 0.97);*/
+    /*!*background: red;*!*/
+    /*border: 1px solid rgba(44, 136, 32, 0.97);*/
 }
 
 
