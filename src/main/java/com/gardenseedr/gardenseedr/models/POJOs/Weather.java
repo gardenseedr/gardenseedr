@@ -19,6 +19,15 @@ public class Weather implements Serializable{
     private double currentTemp;
     private double lowTemp;
     private double highTemp;
+    private String generalCondition;
+
+    public String getGeneralCondition() {
+        return generalCondition;
+    }
+
+    public void setGeneralCondition(String generalCondition) {
+        this.generalCondition = generalCondition;
+    }
 
     public double getCurrentTemp() {
         return currentTemp;
@@ -70,6 +79,7 @@ public class Weather implements Serializable{
     public void setWeather(List<Map<String, Object>> weatherEntries) {
         Map<String, Object> weather = weatherEntries.get(0);
         setWeatherDescription((String) weather.get("description"));
+        setGeneralCondition((String) weather.get("main"));
     }
 
     @JsonProperty("main")
@@ -80,14 +90,5 @@ public class Weather implements Serializable{
 
 
     }
-
-
-
-
-
-
-
-
-
 
 }

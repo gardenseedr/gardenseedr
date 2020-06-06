@@ -18,10 +18,12 @@
     <div id="weatherDiv" class="flex-row justify-content-center">
         <h3><u>Today's Weather</u></h3>
         <span th:text="${weather.weatherDescription}"></span>
-            <i th:if="${weather.weatherDescription.contains('rain')}" class="fas fa-cloud-rain"></i>
-            <i th:if="${weather.weatherDescription.contains('clouds')}" class="fas fa-cloud"></i>
-            <i th:if="${weather.weatherDescription.contains('sun')}" class="fas fa-sun"></i>
-            <i th:if="${weather.weatherDescription.contains('storm')}" class="fas fa-bolt"></i>
+            <i th:if="${weather.generalCondition == 'Drizzle'}" class="fas fa-cloud-showers-heavy"></i>
+            <i th:if="${weather.generalCondition == 'Clouds'}" class="fas fa-cloud"></i>
+            <i th:if="${weather.generalCondition == 'Rain'}" class="fas fa-cloud-rain"></i>
+            <i th:if="${weather.generalCondition == 'Thunderstorm'}" class="fas fa-bolt"></i>
+            <i th:if="${weather.generalCondition == 'Snow'}" class="fas fa-snowflake"></i>
+            <i th:if="${weather.generalCondition == 'Clear'}" class="fas fa-sun"></i>
         <br>
         <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
             <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
