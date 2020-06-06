@@ -24,7 +24,8 @@
     <div class="row">
         <div class="col-md-12">
             <!-- Intro Stuff -->
-            <h2 th:text="${square.getPlant().getPlant_name()} + ' in square #'+ ${square.getSquare_num()} + ' of ' + ${garden.getGarden_name()}"></h2>
+            <h2 th:text="${square.getPlant().getPlant_name()} + ' in square #' + ${square.getSquare_num()} + ' of ' + ${garden.getGarden_name()}"></h2>
+            <a th:href="@{'/garden/' + ${garden.getId()}}">Back</a>
         </div>
     </div>
     <!--  Info row  -->
