@@ -1,3 +1,8 @@
+:root { /* Custom Seedr colors */
+    --seedrGreen: rgba(44, 136, 32, 0.97);
+    /*--seedrBone: #E0DECC;*/
+    --seedrBone:#e8e6d9;
+}
 /* For ALL pages */
 body {
     background: white;
@@ -7,7 +12,7 @@ body {
 }
 
 nav {
-    background: #E0DECC;
+    background: var(--seedrBone);
     font-family: 'Playfair Display SC', serif;
 }
 
@@ -25,7 +30,7 @@ nav {
 }
 
 footer {
-    background: rgba(44, 136, 32, 0.97);
+    background: var(--seedrGreen);
     color: white;
     position: absolute;
     bottom: 0;
@@ -33,6 +38,17 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+.navIcon{ /* The little icons in the nav */
+    height: 30px;
+    line-height: 30px;
+}
+
+#weatherDiv{ /* Weather info in Dashboard */
+    border: var(--seedrGreen) 1px solid;
+}
+
+
 .btn-success{
     /*background: rgba(44, 136, 32, 0.97);*/
     /*!*background: red;*!*/
@@ -52,7 +68,7 @@ footer {
     color: black;
 
     width: 200px;
-    border: rgba(44, 136, 32, 0.97) 1px solid;
+    border: var(--seedrGreen) 1px solid;
 }
 
 

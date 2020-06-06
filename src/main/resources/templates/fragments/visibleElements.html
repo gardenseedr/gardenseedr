@@ -17,29 +17,32 @@
 
     <!--  Stuff that would be inside hamburger  -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-center">
             <!--  Everyone can see  -->
             <li class="nav-item active">
-                <a class="nav-item nav-link text-dark" href="/catalog">Catalog</a>
+                <a class="nav-item nav-link text-dark btn-outline-light" href="/catalog">Catalog</a>
             </li>
             <!--  Users can see  -->
             <li class="nav-item">
-                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a> <!-- ignore the user.getId() error -->
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark btn-outline-light" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a> <!-- ignore the user.getId() error -->
             </li>
             <li class="nav-item">
-                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/profile/' + ${user.getId()}}">Profile</a><!-- ignore the user.getId() error -->
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark btn-outline-light" th:href="@{'/profile/' + ${user.getId()}}">Profile</a><!-- ignore the user.getId() error -->
+            </li>
+            <li class="nav-item">
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/profile/' + ${user.getId()}}"><img sec:authorize="isAuthenticated()" class="navIcon" src="/images/profilepicc.png" alt="Icon"></a>
             </li>
             <li class="nav-item">
                 <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
-                    <button class="nav-item nav-link text-dark">Logout</button>
+                    <button class="btn nav-item nav-link text-dark btn-outline-light">Logout</button>
                 </form>
             </li>
             <!--  Visitors can see  -->
             <li class="nav-item">
-                <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark" href="/login">Login</a>
+                <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark btn-outline-light" href="/login">Login</a>
             </li>
             <li class="nav-item">
-                <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark" href="/register">Register</a>
+                <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark btn-outline-light" href="/register">Register</a>
             </li>
         </ul>
     </div>
