@@ -18,7 +18,7 @@ $(document).ready(function () {
             plantBody = $(this).children().attr('plant-body');
             var plantedSquareId = $(this).children().attr('plant-id');
             console.log(plantedSquareId);
-            plantBody = '<a href="/square/' + plantedSquareId + '">View More about this plant</a>'
+            plantBody = '<a href="/square/' + plantedSquareId + '">See more about your ' + plantName.toLowerCase() + '</a>';
             $("#api-results").html(plantBody);
         }
 
