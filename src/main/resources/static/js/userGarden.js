@@ -17,42 +17,30 @@ $(document).ready(function () {
             $("#modal-body").text(plantSearch);
         }
     });
+
+
+    let spanArray = [];
+    spanArray = $(".plantData");
+    for (var i = 0; i < spanArray.length; i++) {
+        console.log($(spanArray[i].attributes[3]));
+        //span array at index code
+        // $(spanArray[i]).parent().css("background-color", "green");
+
+        if ($(spanArray[i].attributes[3].value) >= 15) {
+            $(spanArray[i]).parent().css("background", "red");
+        }
+        if ($(spanArray[i].attributes[3].value) >= 10) {
+            $(spanArray[i]).parent().css("background", "orange");
+        }
+        if ($(spanArray[i].attributes[3].value) >= 5) {
+            $(spanArray[i]).parent().css("background", "yellow");
+        }
+        if ($(spanArray[i].attributes[3].value) >= 3) {
+            $(spanArray[i]).parent().css("background", "green");
+        }
+        if ($(spanArray[i].attributes[3].value) < 3) {
+            $(spanArray[i]).parent().css("background", "blue");
+        }
+    }
+
 });
-
-
-
-    // /*<![CDATA[*/
-    // var plant = /*[[${allThePlants}]]*/ 'plant';
-    // /*]]>*/
-    //
-    // $('#txtSearch').on('keyup', function () {
-    //     var value = $(this).val();
-    //     var filteredData = filterFunction(value, plant);
-    //
-    //     rebuildTable(filteredData);
-    // });
-    //
-    // function filterFunction(value, data) {
-    //     var filteredData = [];
-    //     for (var i = 0; i < data.length; i++) {
-    //         var plant = data[i].toLowerCase();
-    //         if (plant.includes(value)) {
-    //             filteredData.push(data[i])
-    //         }
-    //     }
-    //     return filteredData;
-    // }
-    //
-    // function rebuildTable(data) {
-    //     console.log(data);
-    //     var table = document.getElementById('plantTable');
-    //     var html = '<div class="modal-body">';
-    //     data.forEach(function (plantName) {
-    //         html +=
-    //             '<span>' +
-    //             plantName +
-    //             '</span>';
-    //     });
-    //     table.innerHTML = html;
-    // }
-
