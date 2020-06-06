@@ -19,6 +19,12 @@ $(document).ready(function () {
     });
 
 
+
+
+
+
+    // andys not working java goodtimes
+
     let spanArray = [];
     spanArray = $(".plantData");
     for (var i = 0; i < spanArray.length; i++) {
