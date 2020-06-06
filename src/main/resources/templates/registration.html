@@ -6,7 +6,7 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<div th:replace="fragments/visibleElements :: Banner"></div>
+<!--<div th:replace="fragments/visibleElements :: Banner"></div>-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
 <!--Registration form-->
@@ -16,27 +16,24 @@
     <form th:action="@{/register}" method="POST" th:object="${user}">
 
         <!--  username, PW, email, zipcode, yes or no on emails  -->
-        <label for="firstname">First Name</label>
+        <label for="firstname">First Name: </label><br>
         <input id="firstname" th:field="*{first_name}" th:placeholder="Grace" pattern="[A-Za-z]{2,}"/>
         <br>
-        <label for="lastname">Last Name</label>
+        <label for="lastname">Last Name:</label><br>
         <input id="lastname" th:field="*{last_name}" th:placeholder="Hopper" pattern="[A-Za-z]{2,}"/>
         <br>
-        <label for="username">Username</label>
+        <label for="username">Username:</label><br>
         <input id="username" th:field="*{username}" th:placeholder="GHopper" pattern="{1,20}"/>
         <br>
-        <label for="email">Email</label>
+        <label for="email">Email:</label><br>
         <input id="email" th:field="*{email}" th:placeholder="'Ghopper@gmail.com'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
         <br>
-        <label for="zipcode">Zipcode</label>
+        <label for="zipcode">Zipcode:</label><br>
         <input id="zipcode" th:field="*{zipcode}" pattern="[0-9]{5}"/>
         <br>
-        <label for="password">Password</label>
+        <label for="password">Password:</label><br>
         <input id="password" type="password" th:field="*{password}" /> <!-- add in pattern="{8}"-->
         <br>
-        <!--Checkbox!!! Would you like to receive email updates?-->
-        <input type="checkbox" id="emailUpdates" th:field="*{email_updates}">
-        <label for="emailUpdates">Would You Like Email Updates?</label><br>
         <br>
         <!--Submit button-->
         <input value="Sign me up!" type="submit" />

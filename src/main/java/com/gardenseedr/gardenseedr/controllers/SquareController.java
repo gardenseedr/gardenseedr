@@ -61,7 +61,7 @@ public class SquareController {
         }
 
         // Delete a Note
-        @PostMapping("/square/delete/{noteId}")
+        @PostMapping("/note/delete/{noteId}")
         public String deleteNote(@PathVariable long noteId) {
             long squareId = noteRepo.getOne(noteId).getSquare().getId();
 

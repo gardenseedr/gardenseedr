@@ -2,41 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-
-                                                                    <!--  BANNER  -->
-
-<!--  PASTE THE BELOW CODE INSIDE THE BODY ABOVE THE NAV TO USE: -->
-<!--  <div th:replace="fragments/visibleElements :: Banner"></div>  -->
-<div id="bannerDiv" th:fragment="Banner">
-    <!--  Everyone can see  -->
-    <a href="/">
-        <img class="bigLogo" src="../images/GRDNSDR.svg" alt="Logo">
-    </a>
-    <h5>Grow what you eat!</h5>
-</div>
                                                                     <!--  DYNAMIC NAV  -->
 
 <!--  PASTE THE BELOW CODE INSIDE THE BODY TO USE: -->
 <!--  <nav th:replace="fragments/visibleElements :: Nav"></nav>  -->
-<nav th:fragment="Nav" class="navbar navbar-expand-lg navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav th:fragment="Nav" class="navbar navbar-expand-lg navbar-light"> <!-- took off bg-light -->
+    <!--  Linked Logo  -->
+    <a href="/"><img class="bigLogo" src="../images/newlogo.png" alt="Logo"></a>
+
+    <!--  Hamburger Button when small  -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+
+    <!--  Stuff that would be inside hamburger  -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
             <!--  Everyone can see  -->
-            <a class="nav-item nav-link" href="/catalog">Catalog</a>
+            <li class="nav-item active">
+                <a class="nav-item nav-link text-dark" href="/catalog">Catalog</a>
+            </li>
             <!--  Users can see  -->
-            <a sec:authorize="isAuthenticated()" class="nav-item nav-link" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a>
-            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
-                <button class="btn-link btn-anchor">Logout</button>
-            </form>
+            <li class="nav-item">
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/dashboard/' + ${user.getId()}}">Dashboard</a> <!-- ignore the user.getId() error -->
+            </li>
+            <li class="nav-item">
+                <a sec:authorize="isAuthenticated()" class="nav-item nav-link text-dark" th:href="@{'/profile/' + ${user.getId()}}">Profile</a><!-- ignore the user.getId() error -->
+            </li>
+            <li class="nav-item">
+                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
+                    <button class="nav-item nav-link text-dark">Logout</button>
+                </form>
+            </li>
             <!--  Visitors can see  -->
-            <a sec:authorize="isAnonymous()" class="nav-item nav-link" href="/login">Login</a>
-            <a sec:authorize="isAnonymous()" class="nav-item nav-link" href="/register">Register</a>
-        </div>
+            <li class="nav-item">
+                <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a sec:authorize="isAnonymous()" class="nav-item nav-link text-dark" href="/register">Register</a>
+            </li>
+        </ul>
     </div>
 </nav>
+
+
+
+
+
+
 
                                                                     <!--  FOOTER  -->
 
@@ -48,8 +61,8 @@
         <!-- left side content -->
         <ul class="navbar-nav mr-auto" id="footer-nav">
             <!--  Everyone can see  -->
-            <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="#topOfPage">Back to Top</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="/aboutus">About Us</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#topOfPage">Back to Top</a></li>
         </ul>
     </div>
 </footer>

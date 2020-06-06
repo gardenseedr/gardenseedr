@@ -37,7 +37,6 @@ public class GardenController {
 
     // Create blank garden from dashboard button
     // (the GetMapping for dashboard/{userId} is in UserController)
-
     @PostMapping("/dashboard/{userId}")
     public String createGarden(@ModelAttribute Garden newgarden, @PathVariable long userId) {
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
@@ -80,7 +79,7 @@ public class GardenController {
         model.addAttribute("standardDate", stringDate);
 
         if (keyword == null) {
-            model.addAttribute("allThePlants", plantRepo.getAllPlants());
+            model.addAttribute("allThePlants", plantRepo.findAll());
         } else {
             model.addAttribute("allThePlants", plantRepo.findByKeyword(keyword));
         }
@@ -109,8 +108,9 @@ public class GardenController {
         LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
         newSquare.setPlant(plantRepo.getOne(plantId));
         newSquare.setGarden(gardenRepo.getOne(gardenId));
+        newSquare.setLast_watered(today);
         newSquare.setPlant_date(today);
-      
+
         squareRepo.save(newSquare);
 
         return "redirect:/garden/" + gardenId;
