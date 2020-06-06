@@ -7,39 +7,35 @@
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
-<h1>EDIT USER PAGE</h1>
+<h1 class="subheader">EDIT USER PAGE</h1>
 
 <!--Edit form-->
-<form th:action="@{'/edit/profile/' + ${user.getId()}}" th:method="post" th:object="${user}">
+<form class="subheader" th:action="@{'/edit/profile/' + ${user.getId()}}" th:method="post" th:object="${user}">
     <!-- Stuff they don't get to change: id, admin status -->
     <input type="hidden" th:field="*{id}">
     <input type="hidden" th:field="*{is_admin}">
     <input type="hidden" th:field="*{username}">
     <!-- Stuff they get to change: email, email_updates, first_name, last_name, password -->
-    <h4>First Name: </h4>
+    <h4 class="subheader">First Name: </h4>
         <input th:field="*{first_name}">
     <br>
-    <h4>Last Name: </h4>
+    <h4 class="subheader">Last Name: </h4>
         <input th:field="*{last_name}">
     <br>
-    <h4>Zipcode: </h4>
+    <h4 class="subheader">Zipcode: </h4>
     <input th:field="*{zipcode}">
     <br>
-    <h4>Email: </h4>
+    <h4 class="subheader">Email: </h4>
         <input type="email" th:field="*{email}">
     <br>
-    <h4>Email Updates: </h4>
-        <label for="true">Yes</label>
-            <input type="radio" id="true" name="email_update" th:value="true" th:field="*{email_updates}">
-        <label for="false">No</label>
-            <input type="radio" id="false" name="email_update" th:value="false" th:field="*{email_updates}">
-    <br>
-    <h4>Password: </h4>
+    <h4 class="subheader">Password: </h4>
         <input type="password" th:field="*{password}">
+    <br>
+    <br>
     <!--Submit button-->
     <input type="submit">
     <!-- Delete Button -->
-    <button type="submit" th:formaction="@{'/delete/profile/' + ${user.getId()}}">Delete</button> <!-- ignore this error -->
+    <button class="alert-danger" type="submit" th:formaction="@{'/delete/profile/' + ${user.getId()}}">Delete</button> <!-- ignore this error -->
 </form>
 
 
