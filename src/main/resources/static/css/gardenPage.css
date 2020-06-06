@@ -1,29 +1,29 @@
 .garden-page{
     display: grid;
     height: 110%;
-    width: 75%;
+    width: 100%;
     grid-template-areas:
             'tlc gg'
             'blc gg';
 }
 
-.top-left-container{
-    border-radius: 2px ;
-    display: grid;
-    grid-area: tlc;
-    margin: 4px;
-    box-shadow: 2px 2px 5px;
+/*.top-left-container{*/
+/*    border-radius: 2px ;*/
+/*    display: grid;*/
+/*    grid-area: tlc;*/
+/*    margin: 4px;*/
+/*    box-shadow: 2px 2px 5px;*/
 
-}
+/*}*/
 
-.bot-left-container{
-    display: grid;
-    grid-area: blc;
-    border-radius: 2px ;
-    width: 100px;
-    box-shadow: 2px 2px 5px;
-    margin: 4px;
-}
+/*.bot-left-container{*/
+/*    display: grid;*/
+/*    grid-area: blc;*/
+/*    border-radius: 2px ;*/
+/*    width: 100px;*/
+/*    box-shadow: 2px 2px 5px;*/
+/*    margin: 4px;*/
+/*}*/
 
 .garden-grid{
     padding: 8px;
