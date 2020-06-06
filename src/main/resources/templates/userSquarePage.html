@@ -24,8 +24,6 @@
     <div class="row">
         <div class="col-md-12">
             <!-- Intro Stuff -->
-            <a th:href="@{'/garden/' + ${garden.getId()}}">Back</a>
-
             <br>
             <h2 class="subheader"
                 th:text="${square.getPlant().getPlant_name()} + ' in square #'+ ${square.getSquare_num()}"></h2>
@@ -35,7 +33,7 @@
         </div>
         <div class="col-md-12">
             <br>
-            <h1 class="subheader" th:text="${garden.getGarden_name()}"></h1>
+            <a th:href="@{'/garden/' + ${garden.getId()}}"><h1 class="subheader" th:text="${garden.getGarden_name()}"></h1></a>
         </div>
     </div>
     <br>
