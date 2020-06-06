@@ -6,41 +6,58 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-<!--<div th:replace="fragments/visibleElements :: Banner"></div>-->
 <!--Navbar Frag-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
-<!--capitalize first letter of first name-->
-<h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${user.getFirst_name()}"></span></a>!</h1>
+<div class="container">
+
+    <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
 
 
-<div>Here's where the weather fragment will go</div>
+    <!--make big and beautiful to take up room of a three day forecast-->
+    <div id="weatherDiv" class="flex-row justify-content-center">
+        <h3><u>Today's Weather</u></h3>
+        <span th:text="${weather.weatherDescription}"></span>
+            <i th:if="${weather.weatherDescription.contains('rain')}" class="fas fa-cloud-rain"></i>
+            <i th:if="${weather.weatherDescription.contains('clouds')}" class="fas fa-cloud"></i>
+            <i th:if="${weather.weatherDescription.contains('sun')}" class="fas fa-sun"></i>
+            <i th:if="${weather.weatherDescription.contains('storm')}" class="fas fa-bolt"></i>
+        <br>
+        <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
+            <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
+            <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
+        <br>
+        <span th:text="'Low: ' + ${#strings.substring(weather.lowTemp,0,2)} + '°F'"></span>
+        <br>
+        <span th:text="'High: ' + ${#strings.substring(weather.highTemp,0,2)} + '°F'"></span>
+        <br>
+    </div>
 
 
-<!--notes for styling-->
-<!--limit temp to 2 numbers and add degree symbols-->
-<!--put description, current, hi, lo words-->
-<!--make big and beautiful to take up room of a three day forecast-->
-<!--icon if time allows-->
-<h1 th:text="${weather.weatherDescription}"></h1>
-<h1 th:text="${weather.currentTemp}"></h1>
-<h1 th:text="${weather.lowTemp}"></h1>
-<h1 th:text="${weather.highTemp}"></h1>
+    <!-- List of links to User's garden(s) -->
+    <div>
+        <div th:each="garden : ${allTheGardens}">
+            <a th:href="@{'/garden/' + ${garden.getId()}}">
+                <span th:text="${garden.getGarden_name()}"></span>
+            </a>
+        </div>
+    </div>
 
-<!-- List of links to User's garden(s) -->
-<div th:each="garden : ${allTheGardens}">
-    <a th:href="@{'/garden/' + ${garden.getId()}}">
-        <span th:text="${garden.getGarden_name()}"></span>
-    </a>
+    <!--Create a new garden button -->
+    <form th:action="@{'/dashboard/'+ ${userId}}" th:method="post" th:object="${newGarden}"> <!-- Where's this go? -->
+        <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
+         which then passes it to GardenController: createGarden   -->
+        <input type="submit" class="btn btn-success" value="Create New Garden">
+    </form>
+
+    <!--Gardening tips-->
+    <div id="gardeningTipsDiv">
+        A quick tip:
+        <br>
+        <!-- the tip will append here -->
+    </div>
+
 </div>
-
-<!--Create a new garden button -->
-<form th:action="@{'/dashboard/'+ ${userId}}" th:method="post" th:object="${newGarden}"> <!-- Where's this go? -->
-    <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
-     which then passes it to GardenController: createGarden   -->
-    <input type="submit" value="Create New Garden">
-</form>
-
 <!-- Footer -->
 <footer th:replace="fragments/visibleElements :: footer"></footer>
 <!-- JavaScript  -->
