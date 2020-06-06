@@ -8,22 +8,22 @@
 <!--Useless comment-->
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
-
-<h1>Profile Page for: <span th:text="${user.getFirst_name()}"></span></h1>
-<!-- Display user's info -->
-<div>
-    <div>First and Last Name: <span th:text="${user.getFirst_name() + ' ' + user.getLast_name()}"></span></div>
-    <div>Username: <span th:text="${user.getUsername()}"></span></div>
-    <div>Email Address:<span th:text="${user.getEmail()}"></span></div>
-    <div>Zipcode: <span th:text="${user.getZipcode()}"></span></div>
-    <div>User status:
-        <span th:if="${user.isIs_admin()} == true" th:text="Admin"></span>
-        <span th:unless="${user.isIs_admin()} == true" th:text="'Not an Admin'"></span>
+<div class="container">
+    <h1>Your Profile Details: <span th:text="${user.getFirst_name()}"></span></h1>
+    <!-- Display user's info -->
+    <div>
+        <div>Name: <span th:text="${user.getFirst_name() + ' ' + user.getLast_name()}"></span></div>
+        <div>Username: <span th:text="${user.getUsername()}"></span></div>
+        <div>Email: <span th:text="${user.getEmail()}"></span></div>
+        <div>Zipcode: <span th:text="${user.getZipcode()}"></span></div>
+        <div>Admin Status:
+            <span th:if="${user.isIs_admin()} == true" th:text="Admin"></span>
+            <span th:unless="${user.isIs_admin()} == true" th:text="'Not an Admin'"></span>
+        </div>
     </div>
+    <!-- Edit button which sends user to the page for actually editing -->
+    <a th:href="'/edit/profile/' + ${user.getId()}" class="btn btn-warning">Edit Profile</a>
 </div>
-<!-- Edit button which sends user to the page for actually editing -->
-<a th:href="'/edit/profile/' + ${user.getId()}">Edit Profile</a>
-
 
 <!-- Footer -->
 <footer th:replace="fragments/visibleElements :: footer"></footer>
