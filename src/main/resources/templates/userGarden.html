@@ -31,12 +31,11 @@
     <!-- User garden grid -->
     <div class="garden-page">
         <div class="label top-left-container">
-            Top Left Container
             <!--            <form th:action="@{'/garden/' + ${gardenId}}" method="post" th:object="${newSquare}"></form>-->
 
         </div>
         <!--        Contains all other gardens-->
-        <div class="bot-left-container">Bottom Left Container</div>
+        <div class="bot-left-container"></div>
         <!--        This is the Grid to contain the entire garden-->
         <div class="garden-grid">
 
@@ -57,6 +56,7 @@
                         <img th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
+
             </button>
 
             <!--            This is the modal that will contain info on each individual square. -->
@@ -76,7 +76,10 @@
                             </div>
                             <div id="api-results">
 
+
+
                             </div>
+
 
                         </div>
                         <div class="modal-footer">
@@ -86,9 +89,11 @@
 
 
 
-                            <form th:action="@{'/garden/addSquare/' + ${garden.getId()}}" th:method="post" th:object="${newSquare}">
+                            <form th:action="@{'/garden/addSquare/' + ${garden.getId()}}" th:method="post"
+                                  th:object="${newSquare}">
                                 <input type="hidden" name="plant-id" id="plant-id" class="field">
-                                <input type="hidden" name="square-num" id="square-num" class="field" th:field="*{square_num}">
+                                <input type="hidden" name="square-num" id="square-num" class="field"
+                                       th:field="*{square_num}">
                                 <input type="submit" name="submit" value="Plant it!">
                             </form>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -99,19 +104,19 @@
                 </div>
             </div>
         </div>
-
-        <button value="Save Garden" type="submit"/>
-        x
         <!-- Delete button -->
-        <form class="alert" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
-            <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
-            <input type="hidden" th:field="*{id}">
-            <input type="hidden" th:field="*{user}">
-            <input type="hidden" th:field="*{created}">
-            <input type="hidden" th:field="*{updated}">
-            <input type="submit" name="delete" value="delete">
-        </form>
 
+    </div>
+    <br>
+    <div class="button-field">
+    <form class="btn btn-danger" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
+        <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{user}">
+        <input type="hidden" th:field="*{created}">
+        <input type="hidden" th:field="*{updated}">
+        <input type="submit" name="delete" value="DELETE GARDEN">
+    </form>
     </div>
 </div>
 
@@ -157,9 +162,9 @@
         data.forEach(function (plant) {
             html +=
                 '<span class="selected-plant" data-id="' +
-                    plant.id +
-                    '" data-api="' +
-                     plant.api_id +'">' +
+                plant.id +
+                '" data-api="' +
+                plant.api_id + '">' +
                 plant.plant_name +
                 '</span><br>';
         });
@@ -172,6 +177,7 @@
         var apiId = $(this).data('api');
         var plantId = $(this).data('id');
         console.log(apiId);
+
 
 
 
@@ -193,10 +199,10 @@
         $("#api-results").html(html);
     });
 
+
     });
 
 </script>
-
 
 
 </body>

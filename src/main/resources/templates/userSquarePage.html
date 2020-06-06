@@ -6,14 +6,14 @@
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
-                                                                                    <!-- Elements this page gets passed:
-                                                                                            - user,
-                                                                                            - garden,
-                                                                                            - square,
-                                                                                            - allTheNotes,
-                                                                                            - newNote
-                                                                                            - period between (daysOld)
-                                                                                    -->
+<!-- Elements this page gets passed:
+        - user,
+        - garden,
+        - square,
+        - allTheNotes,
+        - newNote
+        - period between (daysOld)
+-->
 <!-- Banner -->
 <!--<div th:replace="fragments/visibleElements :: Banner"></div>-->
 <!-- Navbar -->
@@ -24,17 +24,29 @@
     <div class="row">
         <div class="col-md-12">
             <!-- Intro Stuff -->
-            <h2 th:text="${square.getPlant().getPlant_name()} + ' in square #' + ${square.getSquare_num()} + ' of ' + ${garden.getGarden_name()}"></h2>
             <a th:href="@{'/garden/' + ${garden.getId()}}">Back</a>
+
+            <br>
+            <h2 class="subheader"
+                th:text="${square.getPlant().getPlant_name()} + ' in square #'+ ${square.getSquare_num()}"></h2>
+        </div>
+        <div class="col-md-12">
+            <h2 class="subheader">OF</h2>
+        </div>
+        <div class="col-md-12">
+            <br>
+            <h1 class="subheader" th:text="${garden.getGarden_name()}"></h1>
         </div>
     </div>
+    <br>
     <!--  Info row  -->
     <div class="row">
         <!--  Info column  -->
         <div class="col-md-6">
             <!-- Info about plant -->
-            <div>
-                <img class="littlePlantSvg" th:src="'/images/' + ${square.getPlant().getPic_file_name()}" th:alt="${square.getPlant().getPlant_name()}">
+            <div class="noteForm">
+                <img class="littlePlantSvg" th:src="'/images/' + ${square.getPlant().getPic_file_name()}"
+                     th:alt="${square.getPlant().getPlant_name()}">
                 <div th:text="'Last watered on: ' + ${square.getLast_watered()}"></div>
                 <div th:text="'Planted on: ' + ${square.getPlant_date()}"></div>
                 <div th:text="'Days old: ' + ${daysOld.getDays()}"></div>
@@ -48,16 +60,21 @@
                 <input type="hidden" th:field="*{notes}">
                 <input type="hidden" th:field="*{square_num}">
 
+                <br>
+                <br>
                 <input type="submit" class="btn btn-info" value="Water this plant">
                 <br>
                 <!-- Delete button -->
-                <button type="submit" class="btn btn-danger" th:formaction="@{'/square/delete/' + ${square.getId()}}">Delete this plant</button> <!-- ignore this error -->
+                <button type="submit" class="btn btn-danger" th:action="@{'/square/delete/' + ${square.getId()}}">Delete
+                    this plant
+                </button> <!-- ignore this error -->
             </form>
         </div>
         <!--  Note column  -->
         <div class="col-md-6 notesDiv">
             <!-- Make a new note -->
-            <form th:action="@{'/square/' + ${square.getId()}}" th:method="post" th:object="${newNote}" class="noteForm">
+            <form th:action="@{'/square/' + ${square.getId()}}" th:method="post" th:object="${newNote}"
+                  class="noteForm">
                 <h4>Note to Self</h4>
                 <label for="journal">Leave yourself a note:</label>
                 <br>

@@ -21,6 +21,7 @@ $(document).ready(function () {
             plantBody = '<a href="/square/' + plantedSquareId + '">View More about this plant</a>'
             $("#api-results").html(plantBody);
         }
+
         // if (plantBody == undefined) {
         //     // var plantSearch = "search";
         //     $(".plantSearch").show();
@@ -28,3 +29,4 @@ $(document).ready(function () {
         // }
     })
     });
+

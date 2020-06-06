@@ -1,6 +1,5 @@
 .garden-page{
     display: grid;
-    background: #D2CDB2;
     height: 110%;
     width: 75%;
     grid-template-areas:
@@ -9,25 +8,32 @@
 }
 
 .top-left-container{
+    border-radius: 2px ;
     display: grid;
     grid-area: tlc;
-    border: 2px solid #523C23;
+    margin: 4px;
+    box-shadow: 2px 2px 5px;
+
 }
 
 .bot-left-container{
     display: grid;
     grid-area: blc;
-    background: #523C23;
+    border-radius: 2px ;
+    width: 100px;
+    box-shadow: 2px 2px 5px;
+    margin: 4px;
 }
 
 .garden-grid{
     padding: 8px;
-    width: 800px;
-    height: 400px;
+    width: 820px;
+    height: 410px;
     display: grid;
     grid-area: gg;
     grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
     grid-template-rows: 1fr;
+    margin: 4px;
 }
 
 .garden-square{
@@ -35,6 +41,7 @@
     width: 100px;
     /*border: #523C23 2px solid;*/
     background: #523C23 url("../images/asfalt-light.png");
+
 }
 
 .modal{
