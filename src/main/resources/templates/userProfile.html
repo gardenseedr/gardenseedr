@@ -16,10 +16,6 @@
     <div>First and Last Name: <span th:text="${user.getFirst_name() + ' ' + user.getLast_name()}"></span></div>
     <div>Username: <span th:text="${user.getUsername()}"></span></div>
     <div>Email Address:<span th:text="${user.getEmail()}"></span></div>
-    <div>Receiving email updates:
-        <span th:if="${user.isEmail_updates()} == true" th:text="Yes"></span>
-        <span th:unless="${user.isEmail_updates()} == true" th:text="No"></span>
-    </div>
     <div>Zipcode: <span th:text="${user.getZipcode()}"></span></div>
     <div>User status:
         <span th:if="${user.isIs_admin()} == true" th:text="Admin"></span>
