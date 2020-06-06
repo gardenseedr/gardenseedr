@@ -187,17 +187,34 @@
     .then(data => {
         var crop = data.data.attributes;
         console.log(crop);
-        $("#plant-id").val(plantId)
+        $("#plant-id").val(plantId);
         //add fun info later!!
         var html = "";
         html += "<h1 class='crop-name'>" + crop.name + "</h1>";
-        html += "<p>" + crop.description + "</p>";
-        html += "<p>" + crop.sun_requirements + "</p>";
-        html += "<p>" + crop.sowing_method + "</p>";
-        html += "<p>" + crop.spread + "</p>";
+        html += "<p id='ellipsis'>" + crop.description + "</p>";
+        html += "<p>" + "Sun Requirements: " + crop.sun_requirements + "</p>";
+        html += "<p>" + "Sowing Method: " + crop.sowing_method + "</p>";
+        html += "<p>" + "Spread: " + (((crop.spread) / 2.54).toFixed(0)) + " inches</p>";
+        html += "<p>" + "Row Spacing: " + (((crop.row_spacing) / 2.54).toFixed(0)) + " inches</p>";
+        html += "<p>" + "Height: " + (((crop.height) / 2.54).toFixed(0)) + " inches</p>";
+
         $("#filter-results").html("");
         $("#api-results").html(html);
+
+        var desc = $("#ellipsis");
+        desc.click(function () {
+            $(this).css("color", "pink");
+        });
+
+
     });
+
+
+        title.click(function () {
+            $(this).css("background-color", "lightblue");
+        });
+
+
 
 
     });
