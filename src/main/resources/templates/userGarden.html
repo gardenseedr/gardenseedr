@@ -90,7 +90,7 @@
                                        th:field="*{square_num}">
                                 <input id="submit-crop" type="submit" name="submit" value="Plant it!">
                             </form>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">
                                 Close
                             </button>
                         </div>
@@ -183,10 +183,10 @@
         var crop = data.data.attributes;
         console.log(crop);
         $("#plant-id").val(plantId);
-        //add fun info later!!
         var html = "";
         html += "<h1 class='crop-name'>" + crop.name + "</h1>";
         html += "<p id='crop-description'>" + crop.description + "</p>";
+        html += '<a id="expand-desc" href="#">Show more</a>';
         html += "<p><strong>Sun Requirements: </strong>" + crop.sun_requirements + "</p>";
         html += "<p><strong>Sowing Method: </strong>" + crop.sowing_method + "</p>";
         html += "<p><strong>Spread: </strong>" + (((crop.spread) / 2.54).toFixed(0)) + " inches</p>";
@@ -195,6 +195,12 @@
 
         $("#filter-results").html("");
         $("#api-results").html(html);
+
+        $("#expand-desc").click(function () {
+            $(this).toggleClass("expanded");
+            $("#crop-description").css("display", "block");
+
+        });
 
 
     });
