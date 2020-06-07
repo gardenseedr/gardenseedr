@@ -3,30 +3,60 @@
 <head>
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Login</title>
+    <style>
+        body{
+            background-image: url("/images/loginBackground.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        .loginForm{
+            background: rgba(255, 255, 255, 0.87);
+        }
+        .container{
+            width: 30%;
+            height: 590px;
+        }
+        .inputs{
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid darkgrey;
+            width: 50%;
+        }
+        .welcome{
+            padding-top: 90px;
+        }
+        #submit{
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
-<br><br><br>
-<div class="container col-10">
-    <h1 class="subheader">Log In</h1>
+<br><br><br><br>
+<div class="container col-10 loginForm">
+    <h1 class="subheader welcome">Welcome, gardener!</h1>
+    <br>
+    <br>
     <span th:if="${param.error}" class="subheader">Invalid Username and Password.</span>
     <span th:if="${param.logout}" class="subheader">You have been logged out.</span>
     <div class="subheader">
         <br>
         <form th:action="@{/login}" method="post">
-
-            <label class="info-label" for="username">Username</label>
-            <br>
-            <input id="username" name="username" type="text"/>
-            <br>
-            <label class="info-label" for="password">Password</label>
-            <br>
-            <input id="password" name="password" type="password"/>
+            <label class="info-label" for="username">Username:  </label>
+            <input class="inputs" id="username" name="username" type="text"/>
             <br>
             <br>
-            <input class="info-label" type="submit" value="Log In"/>
+            <br>
+            <label class="info-label" for="password">Password:  </label>
+            <input class="inputs" id="password" name="password" type="password"/>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <input id="submit" class="info-label btn btn-light" type="submit" value="Log In"/>
         </form>
         <br>
     </div>
