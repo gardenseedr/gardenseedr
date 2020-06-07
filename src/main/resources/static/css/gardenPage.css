@@ -12,7 +12,7 @@
 }
 
 .selected-plant:hover {
-    font-size: larger;
+    color: #394141;
     cursor: pointer;
 }
 
@@ -36,8 +36,11 @@
 
 }
 
-.modal{
-
+.modal-header{
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
 }
 
 .active-purple input.form-control[type=text] {

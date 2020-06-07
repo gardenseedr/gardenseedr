@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    //figure out how to use later
+    // $("#closeButton").click(function () {
+    //     $("#txtSearch").text("");
+    // });
 
     $(".garden-square").click(function () {
         $("#api-results").html("");
@@ -39,11 +43,13 @@ $(document).ready(function () {
 
         }
 
+
         // if (plantBody == undefined) {
         //     // var plantSearch = "search";
         //     $(".plantSearch").show();
         //     // $("#modal-body").text(plantSearch);
         // }
     })
+
     });
 
