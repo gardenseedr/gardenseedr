@@ -60,6 +60,10 @@
     overflow: hidden;
 }
 
+.expanded {
+    display: block;
+}
+
 .bold-title {
     font-weight: bold;
 }
