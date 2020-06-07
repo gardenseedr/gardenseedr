@@ -7,6 +7,10 @@
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
+
+
+<br><br><br>
+<div class="container align-middle">
 <h1 class="subheader">EDIT USER PAGE</h1>
 
 <!--Edit form-->
@@ -36,8 +40,9 @@
     <input type="submit">
     <!-- Delete Button -->
     <button class="alert-danger" type="submit" th:formaction="@{'/delete/profile/' + ${user.getId()}}">Delete</button> <!-- ignore this error -->
+    <br>
 </form>
-
+</div>
 
 
 

@@ -46,8 +46,7 @@
                             th:if="${i} == ${square.getSquare_num()}"
                             th:plant-name="${square.getPlant().getPlant_name()}"
                             th:plant-body="${square.getPlant().getAPI_id()}"
-                            th:plant-id="${square.getId()}"
-                      >
+                            th:plant-id="${square.getId()}">
                         <img th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
@@ -101,18 +100,19 @@
         </div>
         <!-- Delete button -->
 
+        <div class="button-field">
+            <form class="btn btn-danger" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete"
+                  th:object="${garden}">
+                <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{user}">
+                <input type="hidden" th:field="*{created}">
+                <input type="hidden" th:field="*{updated}">
+                <input type="submit" name="delete" value="DELETE GARDEN">
+            </form>
+        </div>
     </div>
     <br>
-    <div class="button-field">
-    <form class="btn btn-danger" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete" th:object="${garden}">
-        <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
-        <input type="hidden" th:field="*{id}">
-        <input type="hidden" th:field="*{user}">
-        <input type="hidden" th:field="*{created}">
-        <input type="hidden" th:field="*{updated}">
-        <input type="submit" name="delete" value="DELETE GARDEN">
-    </form>
-    </div>
 </div>
 
 <!-- Footer -->
