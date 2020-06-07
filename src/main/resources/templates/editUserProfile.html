@@ -14,12 +14,12 @@
 <h1 class="subheader">EDIT USER PAGE</h1>
 
 <!--Edit form-->
-<form class="subheader" th:action="@{'/edit/profile/' + ${user.getId()}}" th:method="post" th:object="${user}">
-    <!-- Stuff they don't get to change: id, admin status -->
+<form class="subheader" th:action="@{'/editprofile/' + ${user.getId()}}" th:method="post" th:object="${user}">
+    <!-- Stuff they don't get to change -->
     <input type="hidden" th:field="*{id}">
     <input type="hidden" th:field="*{is_admin}">
     <input type="hidden" th:field="*{username}">
-    <!-- Stuff they get to change: email, email_updates, first_name, last_name, password -->
+    <!-- Stuff they get to change -->
     <h4 class="subheader">First Name: </h4>
         <input th:field="*{first_name}">
     <br>
