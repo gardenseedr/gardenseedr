@@ -12,7 +12,8 @@
 }
 
 .selected-plant:hover {
-    background-color: deeppink;
+    font-size: larger;
+    cursor: pointer;
 }
 
 
@@ -54,4 +55,8 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.bold-title {
+    font-weight: bold;
 }
