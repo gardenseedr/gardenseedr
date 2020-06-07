@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 <head>
+
+
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
+    <link href="/css/hover-min.css" rel="stylesheet">
     <title th:text="${garden.getGarden_name()}"></title>
 </head>
 <body>
@@ -47,7 +50,7 @@
                             th:plant-name="${square.getPlant().getPlant_name()}"
                             th:plant-body="${square.getPlant().getAPI_id()}"
                             th:plant-id="${square.getId()}">
-                        <img th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
+                        <img class="hvr-pop" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
                     <span th:unless="${i} == ${square.getSquare_num()}"></span>
                 </span>
 
