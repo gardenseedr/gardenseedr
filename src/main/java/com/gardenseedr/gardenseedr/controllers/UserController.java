@@ -116,13 +116,13 @@ public class UserController {
     }
 
     // Edit User Profile Page
-    @GetMapping("/edit/profile/{userId}")
+    @GetMapping("/editprofile/{userId}")
     public String editUserProfile (@PathVariable long userId, Model model){
         model.addAttribute("user", userDao.getOne(userId));
         return "editUserProfile";
     }
         // Actually editing the Profile
-        @PostMapping("/edit/profile/{userId}")
+        @PostMapping("/editprofile/{userId}")
         public String editingUserProfile (@PathVariable long userId, @ModelAttribute User user){
             // Editing profile
             if (user.getEmail().equals("")){

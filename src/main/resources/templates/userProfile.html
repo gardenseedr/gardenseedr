@@ -24,7 +24,7 @@
             <span class="info-user" th:unless="${user.isIs_admin()} == true" th:text="'Not an Admin'"></span>
             <br>
             <!-- Edit button which sends user to the page for actually editing -->
-            <a th:href="'/edit/profile/' + ${user.getId()}" class="btn btn-warning subheader col-3">Edit Profile</a>
+            <a th:href="'/editprofile/' + ${user.getId()}" class="btn btn-warning subheader col-3">Edit Profile</a>
             <br>
         </div>
     </div>
