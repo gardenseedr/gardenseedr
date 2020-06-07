@@ -15,7 +15,7 @@ function fetchArugula(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="arugula" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="first" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -42,7 +42,7 @@ function fetchAsparagus(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="asparagus" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="second" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -69,7 +69,7 @@ function fetchBasil(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="basil" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="third" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -97,7 +97,7 @@ function fetchBellPepper(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="bellPepper" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="fourth" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -125,7 +125,7 @@ function fetchBroccoli(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="broccoli" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="fifth" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -153,7 +153,7 @@ function fetchBrusselsSprout(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="brusselsSprout" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="sixth" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -181,7 +181,7 @@ function fetchCabbage(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="cabbage" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="seventh" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -209,7 +209,7 @@ function fetchCarrot(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="carrot" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="eighth" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -237,7 +237,7 @@ function fetchCelery(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="celery" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="ninth" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
@@ -264,7 +264,7 @@ function fetchChives(){
             console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
-            html_var += `<img class="card-img-top" id="chives" src="${picture}" alt="Card image cap"`;
+            html_var += `<img class="card-img-top" id="tenth" src="${picture}" alt="Card image cap"`;
             html_var += '<p>' + info.name + '</p>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
