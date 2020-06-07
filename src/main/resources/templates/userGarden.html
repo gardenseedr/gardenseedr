@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 <head>
 
-
+<!--    <link rel="icon" href="/images/tableaf.png">-->
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <link href="/css/hover-min.css" rel="stylesheet">
     <title th:text="${garden.getGarden_name()}"></title>
@@ -101,19 +101,20 @@
                 </div>
             </div>
         </div>
-        <!-- Delete button -->
 
-        <div class="button-field">
-            <form class="btn btn-danger" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete"
-                  th:object="${garden}">
-                <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
-                <input type="hidden" th:field="*{id}">
-                <input type="hidden" th:field="*{user}">
-                <input type="hidden" th:field="*{created}">
-                <input type="hidden" th:field="*{updated}">
-                <input type="submit" name="delete" value="DELETE GARDEN">
-            </form>
-        </div>
+    </div>
+    <!-- Delete button -->
+
+    <div class="button-field">
+        <form class="btn" th:action="@{'/garden/delete/'+ ${garden.getId()}}" th:method="delete"
+              th:object="${garden}">
+            <!-- since garden_name is not restated it resets to null, necessary for controller to sort out which form it's getting -->
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{user}">
+            <input type="hidden" th:field="*{created}">
+            <input type="hidden" th:field="*{updated}">
+            <input type="submit" name="delete" value="Delete Garden">
+        </form>
     </div>
     <br>
 </div>

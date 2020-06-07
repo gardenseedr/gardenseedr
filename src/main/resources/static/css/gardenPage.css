@@ -61,10 +61,16 @@
 }
 
 .expanded {
-    display: block;
+    display: none;
 }
 
 .bold-title {
     font-weight: bold;
+}
+
+.button-field {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
 }
 
