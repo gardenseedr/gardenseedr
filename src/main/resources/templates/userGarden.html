@@ -187,11 +187,11 @@
         var html = "";
         html += "<h1 class='crop-name'>" + crop.name + "</h1>";
         html += "<p id='crop-description'>" + crop.description + "</p>";
-        html += "<p>" + "Sun Requirements: " + crop.sun_requirements + "</p>";
-        html += "<p>" + "Sowing Method: " + crop.sowing_method + "</p>";
-        html += "<p>" + "Spread: " + (((crop.spread) / 2.54).toFixed(0)) + " inches</p>";
-        html += "<p>" + "Row Spacing: " + (((crop.row_spacing) / 2.54).toFixed(0)) + " inches</p>";
-        html += "<p>" + "Height: " + (((crop.height) / 2.54).toFixed(0)) + " inches</p>";
+        html += "<p><strong>Sun Requirements: </strong>" + crop.sun_requirements + "</p>";
+        html += "<p><strong>Sowing Method: </strong>" + crop.sowing_method + "</p>";
+        html += "<p><strong>Spread: </strong>" + (((crop.spread) / 2.54).toFixed(0)) + " inches</p>";
+        html += "<p><strong>Row Spacing: </strong>" + (((crop.row_spacing) / 2.54).toFixed(0)) + " inches</p>";
+        html += "<p><strong>Height: </strong>" + (((crop.height) / 2.54).toFixed(0)) + " inches</p>";
 
         $("#filter-results").html("");
         $("#api-results").html(html);
