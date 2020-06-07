@@ -7,23 +7,14 @@
             'blc gg';
 }
 
-/*.top-left-container{*/
-/*    border-radius: 2px ;*/
-/*    display: grid;*/
-/*    grid-area: tlc;*/
-/*    margin: 4px;*/
-/*    box-shadow: 2px 2px 5px;*/
+#filter-results {
+    padding-top: 30px;
+}
 
-/*}*/
+.selected-plant:hover {
+    background-color: deeppink;
+}
 
-/*.bot-left-container{*/
-/*    display: grid;*/
-/*    grid-area: blc;*/
-/*    border-radius: 2px ;*/
-/*    width: 100px;*/
-/*    box-shadow: 2px 2px 5px;*/
-/*    margin: 4px;*/
-/*}*/
 
 .garden-grid{
     padding: 8px;
@@ -58,11 +49,9 @@
 
 }
 
-#ellipsis {
-    text-overflow: ellipsis;
-    height: 50px;
-
-    /* Required for text-overflow to do anything */
-    white-space: nowrap;
+#crop-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }

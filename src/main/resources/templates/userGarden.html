@@ -88,7 +88,7 @@
                                 <input type="hidden" name="plant-id" id="plant-id" class="field">
                                 <input type="hidden" name="square-num" id="square-num" class="field"
                                        th:field="*{square_num}">
-                                <input type="submit" name="submit" value="Plant it!">
+                                <input id="submit-crop" type="submit" name="submit" value="Plant it!">
                             </form>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                 Close
@@ -186,7 +186,7 @@
         //add fun info later!!
         var html = "";
         html += "<h1 class='crop-name'>" + crop.name + "</h1>";
-        html += "<p id='ellipsis'>" + crop.description + "</p>";
+        html += "<p id='crop-description'>" + crop.description + "</p>";
         html += "<p>" + "Sun Requirements: " + crop.sun_requirements + "</p>";
         html += "<p>" + "Sowing Method: " + crop.sowing_method + "</p>";
         html += "<p>" + "Spread: " + (((crop.spread) / 2.54).toFixed(0)) + " inches</p>";
