@@ -22,7 +22,7 @@ function fetchArugula(){
             html_var += '</div>';
             console.log(info.description);
             console.log(html_var);
-            document.getElementById('1').innerHTML = html_var;
+            document.getElementById('1').innerHTML = html_var;gi
             });
 }
 
