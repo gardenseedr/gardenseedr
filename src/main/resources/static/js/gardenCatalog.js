@@ -16,13 +16,17 @@ function fetchArugula(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="first" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
-            html_var += '<p>' + info.binomial_name + '</p>';
-            html_var += '<p>' + info.description + '</p>';
+            html_var += '<div class="card-body">';
+            html_var += '<h5>' + info.name + '</h5>';
+            html_var += '<p class="card-text">' + info.binomial_name + '</p>';
+            html_var += '<p class="card-text">' + info.description + '</p>';
+            html_var += '</div>';
             html_var += '</div>';
             // console.log(info.description);
             // console.log(html_var);
+            // document.getElementById('first').append('<img class="card-img-top" id="first" src="${picture}" alt="Card image cap">');
             document.getElementById('1').innerHTML = html_var;
+
             });
 }
 
@@ -43,7 +47,8 @@ function fetchAsparagus(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="second" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<div class="card-body">';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -70,7 +75,8 @@ function fetchBasil(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="third" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<div class="card-body">';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -98,7 +104,8 @@ function fetchBellPepper(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="fourth" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<div class="card-body">';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -126,7 +133,8 @@ function fetchBroccoli(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="fifth" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<div class="card-body">';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -154,7 +162,7 @@ function fetchBrusselsSprout(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="sixth" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -182,7 +190,7 @@ function fetchCabbage(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="seventh" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -210,7 +218,7 @@ function fetchCarrot(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="eighth" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -238,7 +246,7 @@ function fetchCelery(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="ninth" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
@@ -265,7 +273,7 @@ function fetchChives(){
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="tenth" src="${picture}" alt="Card image cap"`;
-            html_var += '<p>' + info.name + '</p>';
+            html_var += '<h5>' + info.name + '</h5>';
             html_var += '<p>' + info.binomial_name + '</p>';
             html_var += '<p>' + info.description + '</p>';
             html_var += '</div>';
