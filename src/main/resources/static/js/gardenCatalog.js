@@ -209,7 +209,6 @@ function fetchCarrot(){
             html_var += '<div class="card-body">';
             html_var += '<br>';
             html_var += '<h5 class="card-title">' + info.name + '</h5>';
-            html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
             html_var += '<p>' + info.description + '</p>';
@@ -230,15 +229,12 @@ function fetchCelery(){
             return response.json();
         })
         .then(data => {
-            // console.log(data.data);
             var picture = data.data.attributes.main_image_path;
-            // console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="ninth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
             html_var += '<h5 class="card-title">' + info.name + '</h5>';
-            html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
             html_var += '<p>' + info.description + '</p>';
@@ -258,14 +254,11 @@ function fetchChives(){
             return response.json();
         })
         .then(data => {
-            // console.log(data.data);
             var picture = data.data.attributes.main_image_path;
-            // console.log(picture);
             var info = data.data.attributes;
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="tenth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<br>';
             html_var += '<h5 class="card-title">' + info.name + '</h5>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
