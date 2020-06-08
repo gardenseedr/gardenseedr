@@ -11,7 +11,7 @@
 
 <div class="container">
 
-    <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
+    <h1 class="d-flex justify-content-center"> Welcome back,  <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
 
 
     <!--make big and beautiful to take up room of a three day forecast-->
@@ -39,6 +39,7 @@
 
     <!-- List of links to User's garden(s) -->
     <div>
+        <h3>My Gardens</h3>
         <div th:each="garden : ${allTheGardens}">
             <a th:href="@{'/garden/' + ${garden.getId()}}">
                 <span th:text="${garden.getGarden_name()}"></span>
