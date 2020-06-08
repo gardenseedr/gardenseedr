@@ -98,9 +98,10 @@ footer {
     display: grid;
     grid-area: rR;
     font-family: 'Open Sans', sans-serif;
-    background: white;
+    background: rgba(255, 255, 255, 0.92);
     padding: 30px 40px 10px 10px ;
     width: 400px;
+    box-shadow: 2px 2px 10px black;
 }
 
 
