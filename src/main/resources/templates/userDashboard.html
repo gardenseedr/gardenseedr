@@ -3,54 +3,95 @@
 <head>
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Dashboard</title>
+    <style>
+        .garden-names {
+            padding-bottom: 20px;
+        }
+        #gardeningTipsDiv{
+            font-weight: bold;
+            color: black;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <!--Navbar Frag-->
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 <div class="container">
-    <h1 class="d-flex justify-content-center"> Welcome back,  <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
-    <!--make big and beautiful to take up room of a three day forecast-->
-    <div id="weatherDiv" class="flex-row justify-content-center">
-        <h3>Today's Weather</h3>
-        <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
-        <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
-        <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
-        <br>
-        <span th:text="${weather.weatherDescription}"></span>
-        <i th:if="${weather.generalCondition == 'Drizzle'}" class="fas fa-cloud-showers-heavy"></i>
-        <i th:if="${weather.generalCondition == 'Clouds'}" class="fas fa-cloud"></i>
-        <i th:if="${weather.generalCondition == 'Rain'}" class="fas fa-cloud-rain"></i>
-        <i th:if="${weather.generalCondition == 'Thunderstorm'}" class="fas fa-bolt"></i>
-        <i th:if="${weather.generalCondition == 'Snow'}" class="fas fa-snowflake"></i>
-        <i th:if="${weather.generalCondition == 'Clear'}" class="fas fa-sun"></i>
-        <br>
-        <span th:text="'High/Low: ' + ${#strings.substring(weather.highTemp,0,2)} + '/' + ${#strings.substring(weather.lowTemp,0,2)} +  '°F'"></span>
-        <br>
-        <span th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
-        <br>
-    </div>
-    <!-- List of links to User's garden(s) -->
-    <div>
-        <h3>My Gardens</h3>
-        <div th:each="garden : ${allTheGardens}">
-            <a th:href="@{'/garden/' + ${garden.getId()}}">
-                <span th:text="${garden.getGarden_name()}"></span>
-            </a>
+
+    <h1 class="row d-flex justify-content-center">
+        Welcome Back,
+        <a
+            th:href="'/profile/' + ${user.getId()}"><span
+            th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!
+    </h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 user-gardens">
+            <h3>My Gardens</h3>
+            <div class="garden-names" th:each="garden : ${allTheGardens}">
+                <a th:href="@{'/garden/' + ${garden.getId()}}">
+                    <span th:text="${garden.getGarden_name()}"></span>
+                </a>
+            </div>
+            <!--Create a new garden button -->
+            <form th:action="@{'/dashboard/'+ ${userId}}"
+                  th:method="post"
+                  th:object="${newGarden}">
+                <!-- Where's this go? -->
+                <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
+                 which then passes it to GardenController: createGarden   -->
+
+            <input type="submit"
+                   class="btn btn-success create-garden"
+                   value="Create New Garden">
+            </form>
+        </div>
+
+        <!--make big and beautiful to take up room of a three day forecast-->
+        <div id="weatherDiv" class="col-6">
+            <h3 th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
+            <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
+            <i th:if="${weather.currentTemp} >= '80'"
+               class="fas fa-thermometer-full"></i>
+            <i th:if="${weather.currentTemp} <= '40'"
+               class="fas fa-thermometer-empty"></i>
+            <br>
+            <span th:text="${weather.weatherDescription}"></span>
+            <i th:if="${weather.generalCondition == 'Drizzle'}"
+               class="fas fa-cloud-showers-heavy"></i>
+            <i th:if="${weather.generalCondition == 'Clouds'}"
+               class="fas fa-cloud"></i>
+            <i th:if="${weather.generalCondition == 'Rain'}"
+               class="fas fa-cloud-rain"></i>
+            <i th:if="${weather.generalCondition == 'Thunderstorm'}"
+               class="fas fa-bolt"></i>
+            <i th:if="${weather.generalCondition == 'Snow'}"
+               class="fas fa-snowflake"></i>
+            <i th:if="${weather.generalCondition == 'Clear'}"
+               class="fas fa-sun"></i>
+            <br>
+            <span th:text="'High/Low: ' + ${#strings.substring(weather.highTemp,0,2)} + '/' + ${#strings.substring(weather.lowTemp,0,2)} +  '°F'"></span>
+            <br>
+            <span th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
+            <br>
+            <!--        <span th:text="'Sunrise: ' + ${weather.sunrise}"></span>-->
+            <!--        <br>-->
+            <!--        <span th:text="'Sunset: ' + ${weather.sunset}"></span>-->
+            <!--        <br>-->
         </div>
     </div>
-    <!--Create a new garden button -->
-    <form th:action="@{'/dashboard/'+ ${userId}}" th:method="post" th:object="${newGarden}"> <!-- Where's this go? -->
-        <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
-         which then passes it to GardenController: createGarden   -->
-        <input type="submit" class="btn btn-success" value="Create New Garden">
-    </form>
+    <!-- List of links to User's garden(s) -->
+
     <!--Gardening tips-->
-    <div id="gardeningTipsDiv">
-        A quick tip:
-        <br>
-        <!-- the tip will append here -->
+    <div class="row  tip">
+        <div class="col-12 d-flex align-items-end" id="gardeningTipsDiv">
+            A quick tip:
+            <br>
+            <!-- the tip will append here -->
+        </div>
     </div>
+
 </div>
 <!-- Footer -->
 <footer th:replace="fragments/visibleElements :: footer"></footer>
