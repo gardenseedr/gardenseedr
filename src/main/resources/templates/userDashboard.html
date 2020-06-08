@@ -39,6 +39,7 @@
 
     <!-- List of links to User's garden(s) -->
     <div>
+        <h3>My Gardens</h3>
         <div th:each="garden : ${allTheGardens}">
             <a th:href="@{'/garden/' + ${garden.getId()}}">
                 <span th:text="${garden.getGarden_name()}"></span>
