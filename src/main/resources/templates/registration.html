@@ -3,41 +3,80 @@
 <head>
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Register</title>
+    <style>
+        body{
+            background-image: url("/images/loginBackground.jpeg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        .inputs{
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid darkgrey;
+            width: 50%;
+            display: inline-block;
+            float: right;
+        }
+        /*label{*/
+        /*    display: inline-block;*/
+        /*    float: left;*/
+        /*    width: 250px;*/
+        /*    text-align: right;*/
+        /*    padding: 8px;*/
+        /*}*/
+        /*input {*/
+
+        /*}*/
+    </style>
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
-<!--Registration form-->
-<div class="container">
 
-    <h1 class="subheader">Create an account</h1>
-    <form th:action="@{/register}" method="POST" th:object="${user}">
+<br>
+<br>
+<h1 class="subheader">Create an account</h1>
+<br>
+<br>
+<div class="register-container container">
 
-        <!--  username, PW, email, zipcode, yes or no on emails  -->
-        <label for="firstname">First Name: </label><br>
-        <input id="firstname" th:field="*{first_name}" th:placeholder="Grace" pattern="[A-Za-z]{2,}"/>
-        <br>
-        <label for="lastname">Last Name:</label><br>
-        <input id="lastname" th:field="*{last_name}" th:placeholder="Hopper" pattern="[A-Za-z]{2,}"/>
-        <br>
-        <label for="username">Username:</label><br>
-        <input id="username" th:field="*{username}" th:placeholder="GHopper" pattern="{1,20}"/>
-        <br>
-        <label for="email">Email:</label><br>
-        <input id="email" th:field="*{email}" th:placeholder="'Ghopper@gmail.com'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
-        <br>
-        <label for="zipcode">Zipcode:</label><br>
-        <input id="zipcode" th:field="*{zipcode}" pattern="[0-9]{5}"/>
-        <br>
-        <label for="password">Password:</label><br>
-        <input id="password" type="password" th:field="*{password}" /> <!-- add in pattern="{8}"-->
-        <br>
-        <br>
-        <!--Submit button-->
-        <input value="Sign me up!" type="submit" />
-        <br>
-    </form>
+    <div class="left-register">
+        <br><br>
+        <h1 class="subheader">Designed for Gardeners</h1>
+        <h3 class="subheader">Built for Gardening</h3>
+    </div>
+    <div class="right-register subheader">
+        <!--Registration form-->
+
+        <form  th:action="@{/register}" method="POST" th:object="${user}">
+
+            <!--  username, PW, email, zipcode, yes or no on emails  -->
+            <label for="firstname">First Name: </label>
+            <input class="inputs" id="firstname" th:field="*{first_name}" th:placeholder="Grace" pattern="[A-Za-z]{2,}"/>
+            <br>
+            <label for="lastname">Last Name:</label>
+            <input class="inputs" id="lastname" th:field="*{last_name}" th:placeholder="Hopper" pattern="[A-Za-z]{2,}"/>
+            <br>
+            <label for="username">Username:</label>
+            <input class="inputs" id="username" th:field="*{username}" th:placeholder="GHopper" pattern="{1,20}"/>
+            <br>
+            <label for="email">Email:</label>
+            <input class="inputs" id="email" th:field="*{email}" th:placeholder="'Ghopper@gmail.com'"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+            <br>
+            <label for="zipcode">Zipcode:</label>
+            <input class="inputs" id="zipcode" th:field="*{zipcode}" pattern="[0-9]{5}"/>
+            <br>
+            <label for="password">Password:</label>
+            <input class="inputs" id="password" type="password" th:field="*{password}"/> <!-- add in pattern="{8}"-->
+            <br>
+            <!--Submit button-->
+            <br>
+            <input value="Sign me up!" type="submit"/>
+            <br>
+        </form>
+    </div>
 </div>
 
 <!-- Footer -->

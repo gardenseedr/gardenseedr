@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $(".garden-square").click(function () {
         $("#api-results").html("");
         $("#modal-title").text("Search Crops");
@@ -10,18 +9,13 @@ $(document).ready(function () {
         var apiId = $(this).children().attr('plant-body');
         console.log(apiId);
         if (plantName == null) {
-            console.log("no plant name");
             $(".plantSearch").show();
             $("#submit-crop").show();
         } else {
             $("#submit-crop").hide();
             $(".plantSearch").hide();
-            console.log("Plant Name:" + plantName);
             $("#modal-title").text(plantName);
-
-            // plantBody = $(this).children().attr('plant-body');
             var plantedSquareId = $(this).children().attr('plant-id');
-            console.log(plantedSquareId);
             var plantUrl = "https://openfarm.cc/api/v1/crops/" + apiId;
             fetch(plantUrl)
                 .then(response => response.json())
@@ -39,11 +33,13 @@ $(document).ready(function () {
 
         }
 
+
         // if (plantBody == undefined) {
         //     // var plantSearch = "search";
         //     $(".plantSearch").show();
         //     // $("#modal-body").text(plantSearch);
         // }
     })
+
     });
 

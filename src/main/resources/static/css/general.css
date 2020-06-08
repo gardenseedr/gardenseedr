@@ -79,6 +79,31 @@ footer {
     border-radius: 2px;
 }
 
+.register-container{
+    display: grid;
+    grid-template-columns: 30% 20% 50% 0% ;
+    grid-template-areas: 'lR . rR .';
+}
+
+.left-register{
+    display: grid;
+    grid-area: lR;
+    height: 200px;
+    align-content: center;
+    color: white;
+}
+
+.right-register{
+    display: grid;
+    grid-area: rR;
+    font-family: 'Playfair Display SC', serif;
+    text-shadow: 2px 2px 2px lightgrey;
+    background: white;
+    padding: 30px 40px 10px 10px ;
+    width: 400px;
+}
+
+
 .col-md-12 { /* Title area */
     display: flex;
     justify-content: center;
@@ -117,9 +142,6 @@ footer {
     align-items: center;
 }
 
-.button-field{
-    align-content: center;
-}
 
 .noteForm{
     font-family: 'Playfair Display SC', serif;
