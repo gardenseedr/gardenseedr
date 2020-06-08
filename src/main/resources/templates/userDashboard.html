@@ -16,7 +16,11 @@
 
     <!--make big and beautiful to take up room of a three day forecast-->
     <div id="weatherDiv" class="flex-row justify-content-center">
-        <h3><u>Today's Weather</u></h3>
+        <h3>Today's Weather</h3>
+        <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
+        <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
+        <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
+        <br>
         <span th:text="${weather.weatherDescription}"></span>
             <i th:if="${weather.generalCondition == 'Drizzle'}" class="fas fa-cloud-showers-heavy"></i>
             <i th:if="${weather.generalCondition == 'Clouds'}" class="fas fa-cloud"></i>
@@ -25,14 +29,11 @@
             <i th:if="${weather.generalCondition == 'Snow'}" class="fas fa-snowflake"></i>
             <i th:if="${weather.generalCondition == 'Clear'}" class="fas fa-sun"></i>
         <br>
-        <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
-            <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
-            <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
+        <span th:text="'High/Low: ' + ${#strings.substring(weather.highTemp,0,2)} + '/' + ${#strings.substring(weather.lowTemp,0,2)} +  '°F'"></span>
         <br>
-        <span th:text="'Low: ' + ${#strings.substring(weather.lowTemp,0,2)} + '°F'"></span>
+        <span th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
         <br>
-        <span th:text="'High: ' + ${#strings.substring(weather.highTemp,0,2)} + '°F'"></span>
-        <br>
+
     </div>
 
 
