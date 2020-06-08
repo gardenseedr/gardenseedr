@@ -15,7 +15,6 @@ body {
 a{
     color: black;
 }
-
 a:hover{
     color: var(--seedrGreen);
 }
@@ -96,36 +95,6 @@ footer {
 
 .btn-danger{
     align-items: center;
-}
-
-.carousel-container{
-    height: 85vh;
-    overflow: hidden;
-
-}
-
-.carousel{
-    overflow: hidden;
-    width: 100%;
-    height: inherit;
-}
-
-.carousel-inner {
-    position: relative;
-    text-align: center;
-}
-
-.centered {
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    text-shadow: 2px 2px 10px black;
-    color: #E0DECC;
-    font-size: 60px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
 }
 
 .swiper-wrapper{
