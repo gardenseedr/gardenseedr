@@ -34,9 +34,18 @@
                     <span th:text="${garden.getGarden_name()}"></span>
                 </a>
             </div>
+            <!--Create a new garden button -->
+            <form th:action="@{'/dashboard/'+ ${userId}}"
+                  th:method="post"
+                  th:object="${newGarden}">
+                <!-- Where's this go? -->
+                <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
+                 which then passes it to GardenController: createGarden   -->
+
             <input type="submit"
                    class="btn btn-success create-garden"
                    value="Create New Garden">
+            </form>
         </div>
 
         <!--make big and beautiful to take up room of a three day forecast-->
@@ -74,15 +83,6 @@
     </div>
     <!-- List of links to User's garden(s) -->
 
-    <!--Create a new garden button -->
-    <form th:action="@{'/dashboard/'+ ${userId}}"
-          th:method="post"
-          th:object="${newGarden}">
-        <!-- Where's this go? -->
-        <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
-		 which then passes it to GardenController: createGarden   -->
-
-    </form>
     <!--Gardening tips-->
     <div class="row  tip">
         <div class="col-12 d-flex align-items-end" id="gardeningTipsDiv">
