@@ -15,7 +15,33 @@ public class Weather implements Serializable{
     private double highTemp;
     private String generalCondition;
     private double humidity;
+    private String city;
+    private String sunrise;
+    private String sunset;
 
+    public String getSunrise() {
+        return sunrise;
+    }
+
+    public void setSunrise(String sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    public String getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(String sunset) {
+        this.sunset = sunset;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public double getHumidity() {
         return humidity;
@@ -92,6 +118,18 @@ public class Weather implements Serializable{
         setLowTemp(main.get("temp_min"));
         setHighTemp(main.get("temp_max"));
         setHumidity(main.get("humidity"));
+    }
+
+//    @JsonProperty("name")
+//    public void setName(Map<String, String> name) {
+//        setCity("name");
+//    }
+
+    @JsonProperty("sys")
+    public void setSys(Map<String, String> sys) {
+        setSunrise(sys.get("sunrise"));
+        setSunset(sys.get("sunset"));
+
     }
 
 }
