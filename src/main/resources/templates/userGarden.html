@@ -15,7 +15,7 @@
 
 <div class="container">
 
-    <h1 class="subheader" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
+    <h1 class="subheader garden-name" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
     <form class="subheader" th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post"
           th:object="${garden}">
@@ -111,7 +111,8 @@
             <input type="hidden" th:field="*{user}">
             <input type="hidden" th:field="*{created}">
             <input type="hidden" th:field="*{updated}">
-            <input type="submit" name="delete" value="Delete Garden">
+            <button type="submit" class="btn btn-light hvr-icon-grow" value="Delete Garden">Delete Garden <i class="fas fa-times hvr-icon"></i></button>
+
         </form>
     </div>
     <br>
