@@ -17,7 +17,7 @@
 
     <h1 class="subheader" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
-    <form th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post"
+    <form class="subheader" th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post"
           th:object="${garden}">
         <h1>Give your garden a name:
             <input th:field="*{garden_name}">

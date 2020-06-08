@@ -82,16 +82,20 @@ footer {
 
 .register-container{
     display: grid;
-    grid-template-columns: 30% 20% 50% 0% ;
+    grid-template-columns: 45% 5% 40% 10% ;
     grid-template-areas: 'lR . rR .';
+
 }
 
 .left-register{
     display: grid;
     grid-area: lR;
-    height: 200px;
+    margin-top: 95px;
+    height: 175px;
+    width: 100%;
     align-content: center;
-    color: white;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 2px;
 }
 
 .right-register{
@@ -186,7 +190,7 @@ footer {
 .info-label{
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-
+    padding: 4px;
 }
 
 .info-user{
