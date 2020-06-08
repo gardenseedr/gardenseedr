@@ -2,12 +2,13 @@ package com.gardenseedr.gardenseedr.models.POJOs;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.context.annotation.Bean;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Weather implements Serializable{
+public class Weather implements Serializable {
 
     private String weatherDescription;
     private double currentTemp;
@@ -39,6 +40,7 @@ public class Weather implements Serializable{
         return city;
     }
 
+    @JsonProperty("name")
     public void setCity(String city) {
         this.city = city;
     }
@@ -120,16 +122,12 @@ public class Weather implements Serializable{
         setHumidity(main.get("humidity"));
     }
 
-//    @JsonProperty("name")
-//    public void setName(Map<String, String> name) {
-//        setCity("name");
+
+//    @JsonProperty("sys")
+//    public void setSys(Map<String, String> sys) {
+//        setSunrise(sys.get("sunrise"));
+//        setSunset(sys.get("sunset"));
+//
 //    }
-
-    @JsonProperty("sys")
-    public void setSys(Map<String, String> sys) {
-        setSunrise(sys.get("sunrise"));
-        setSunset(sys.get("sunset"));
-
-    }
-
 }
+
