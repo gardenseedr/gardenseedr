@@ -26,8 +26,8 @@ nav {
 .subheader{
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-
-
+    display: flex;
+    justify-content: center;
 }
 
 footer {
