@@ -3,6 +3,16 @@
 <head>
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Dashboard</title>
+    <style>
+        .garden-names {
+            padding-bottom: 20px;
+        }
+        #gardeningTipsDiv{
+            font-weight: bold;
+            color: black;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
@@ -11,20 +21,21 @@
 <div class="container">
 
     <h1 class="row d-flex justify-content-center">
-        Welcome back, <a
+        <span th:text="Welcome back, "></span>
+        <a
             th:href="'/profile/' + ${user.getId()}"><span
-            th:text="' ' + ${#strings.capitalize(user.getFirst_name())}"></span></a>!
+            th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!
     </h1>
     <div class="row d-flex justify-content-center">
         <div class="col-6 user-gardens">
             <h3>My Gardens</h3>
-            <div th:each="garden : ${allTheGardens}">
+            <div class="garden-names" th:each="garden : ${allTheGardens}">
                 <a th:href="@{'/garden/' + ${garden.getId()}}">
                     <span th:text="${garden.getGarden_name()}"></span>
                 </a>
             </div>
             <input type="submit"
-                   class="btn btn-success"
+                   class="btn btn-success create-garden"
                    value="Create New Garden">
         </div>
 
@@ -73,8 +84,8 @@
 
     </form>
     <!--Gardening tips-->
-    <div class="row">
-        <div class="col-4" id="gardeningTipsDiv">
+    <div class="row  tip">
+        <div class="col-12 d-flex align-items-end" id="gardeningTipsDiv">
             A quick tip:
             <br>
             <!-- the tip will append here -->
