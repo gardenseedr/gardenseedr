@@ -34,3 +34,5 @@ src/main/resources/application.properties
 
 ### Other ###
 keys.js
+
+.DS_Store
