@@ -4,12 +4,13 @@
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Register</title>
     <style>
-        body{
+        body {
             background-image: url("/images/registerBackground.jpeg");
             background-repeat: no-repeat;
             background-size: 100%;
         }
-        .inputs{
+
+        .inputs {
             background: transparent;
             border: none;
             border-bottom: 1px solid darkgrey;
@@ -17,23 +18,29 @@
             float: right;
             padding: 4px;
         }
-        .submit{
+
+        .submit {
             background: transparent;
             display: inline-block;
             float: right;
             padding: 4px;
         }
+
         .phrase {
             font-size: 3em;
             font-family: 'Quicksand', sans-serif;
-            text-shadow: 2px 2px 10px rgba(44, 136, 32, 0.97);
         }
 
         #create {
             font-size: 2em;
-            color: white;
+            color: black;
             font-family: 'Quicksand', sans-serif;
-            text-shadow: 2px 2px 10px black;
+            /*text-shadow: 2px 2px 10px black;*/
+        }
+
+        .main-contain {
+            background: rgba(255, 255, 255, .87);
+            width: 75%;
         }
     </style>
 </head>
@@ -42,47 +49,54 @@
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
 <br><br><br><br>
-<h1 id="create" class="subheader">Create an account</h1>
-<br><br><br>
-<div class="register-container container">
+<div class="main-contain container">
+    <div>
+        <h1 id="create" class="subheader">Create an account</h1>
 
-    <div class="left-register">
-        <h1 class="subheader phrase">Designed for Gardeners</h1>
-    </div>
-    <div class="right-register">
-        <!--Registration form-->
+        <div class="register-container container">
 
-        <form  th:action="@{/register}" method="POST" th:object="${user}">
-
-            <!--  username, PW, email, zipcode, yes or no on emails  -->
-            <label class="info-label" for="firstname">First Name: </label>
-            <input class="inputs" id="firstname" th:field="*{first_name}" th:placeholder="Grace" pattern="[A-Za-z]{2,}"/>
-            <br>
-            <label class="info-label" for="lastname">Last Name:</label>
-            <input class="inputs" id="lastname" th:field="*{last_name}" th:placeholder="Hopper" pattern="[A-Za-z]{2,}"/>
-            <br>
-            <label class="info-label" for="username">Username:</label>
-            <input class="inputs" id="username" th:field="*{username}" th:placeholder="GHopper" pattern="{1,20}"/>
-            <br>
-            <label class="info-label" for="email">Email:</label>
-            <input class="inputs" id="email" th:field="*{email}" th:placeholder="'Ghopper@gmail.com'"
-                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
-            <br>
-            <label class="info-label" for="zipcode">Zipcode:</label>
-            <input class="inputs" id="zipcode" th:field="*{zipcode}" pattern="[0-9]{5}"/>
-            <br>
-            <label class="info-label" for="password">Password:</label>
-            <input class="inputs" id="password" type="password" th:field="*{password}"/> <!-- add in pattern="{8}"-->
-            <br>
-            <!--Submit button-->
-            <div class="bottom-buttons">
-            <input class="submit" value="Sign me up!" type="submit"/>
+            <div class="left-register">
+                <h1 class="phrase">Designed for Gardeners</h1>
             </div>
-            <br>
-        </form>
+            <div class="right-register">
+                <!--Registration form-->
+
+                <form th:action="@{/register}" method="POST" th:object="${user}">
+
+                    <!--  username, PW, email, zipcode, yes or no on emails  -->
+                    <label class="info-label" for="firstname">First Name: </label>
+                    <input class="inputs" id="firstname" th:field="*{first_name}" th:placeholder="Grace"
+                           pattern="[A-Za-z]{2,}"/>
+                    <br>
+                    <label class="info-label" for="lastname">Last Name:</label>
+                    <input class="inputs" id="lastname" th:field="*{last_name}" th:placeholder="Hopper"
+                           pattern="[A-Za-z]{2,}"/>
+                    <br>
+                    <label class="info-label" for="username">Username:</label>
+                    <input class="inputs" id="username" th:field="*{username}" th:placeholder="GHopper"
+                           pattern="{1,20}"/>
+                    <br>
+                    <label class="info-label" for="email">Email:</label>
+                    <input class="inputs" id="email" th:field="*{email}" th:placeholder="'Ghopper@gmail.com'"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+                    <br>
+                    <label class="info-label" for="zipcode">Zipcode:</label>
+                    <input class="inputs" id="zipcode" th:field="*{zipcode}" pattern="[0-9]{5}"/>
+                    <br>
+                    <label class="info-label" for="password">Password:</label>
+                    <input class="inputs" id="password" type="password" th:field="*{password}"/>
+                    <!-- add in pattern="{8}"-->
+                    <br>
+                    <!--Submit button-->
+                    <div class="bottom-buttons">
+                        <input class="submit" value="Sign me up!" type="submit"/>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-
 <!-- Footer -->
 <footer th:replace="fragments/visibleElements :: footer"></footer>
 <!-- JavaScript  -->
