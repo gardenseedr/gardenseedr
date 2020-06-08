@@ -10,47 +10,53 @@
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
 
 <div class="container">
+    <br><br><br>
+    <h1 class="subheader"> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span
+            th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
 
-    <h1> Welcome back, <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!</h1>
-
+    <br>
 
     <!--make big and beautiful to take up room of a three day forecast-->
-    <div id="weatherDiv" class="flex-row justify-content-center">
+    <div id="weatherDiv" class="flex-row justify-content-center subheader">
         <h3><u>Today's Weather</u></h3>
         <span th:text="${weather.weatherDescription}"></span>
-            <i th:if="${weather.generalCondition == 'Drizzle'}" class="fas fa-cloud-showers-heavy"></i>
-            <i th:if="${weather.generalCondition == 'Clouds'}" class="fas fa-cloud"></i>
-            <i th:if="${weather.generalCondition == 'Rain'}" class="fas fa-cloud-rain"></i>
-            <i th:if="${weather.generalCondition == 'Thunderstorm'}" class="fas fa-bolt"></i>
-            <i th:if="${weather.generalCondition == 'Snow'}" class="fas fa-snowflake"></i>
-            <i th:if="${weather.generalCondition == 'Clear'}" class="fas fa-sun"></i>
+        <i th:if="${weather.generalCondition == 'Drizzle'}" class="fas fa-cloud-showers-heavy"></i>
+        <i th:if="${weather.generalCondition == 'Clouds'}" class="fas fa-cloud"></i>
+        <i th:if="${weather.generalCondition == 'Rain'}" class="fas fa-cloud-rain"></i>
+        <i th:if="${weather.generalCondition == 'Thunderstorm'}" class="fas fa-bolt"></i>
+        <i th:if="${weather.generalCondition == 'Snow'}" class="fas fa-snowflake"></i>
+        <i th:if="${weather.generalCondition == 'Clear'}" class="fas fa-sun"></i>
         <br>
         <span th:text="'Current Temp: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
-            <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
-            <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
+        <i th:if="${weather.currentTemp} >= '80'" class="fas fa-thermometer-full"></i>
+        <i th:if="${weather.currentTemp} <= '40'" class="fas fa-thermometer-empty"></i>
         <br>
         <span th:text="'Low: ' + ${#strings.substring(weather.lowTemp,0,2)} + '°F'"></span>
         <br>
         <span th:text="'High: ' + ${#strings.substring(weather.highTemp,0,2)} + '°F'"></span>
         <br>
     </div>
-
-
+    <br>
     <!-- List of links to User's garden(s) -->
-    <div>
-        <div th:each="garden : ${allTheGardens}">
-            <a th:href="@{'/garden/' + ${garden.getId()}}">
-                <span th:text="${garden.getGarden_name()}"></span>
-            </a>
+    <div class="subheader user-dash-gardens">
+        <h3>Your Gardens</h3>
+        <div>
+            <div th:each="garden : ${allTheGardens}">
+                <a th:href="@{'/garden/' + ${garden.getId()}}">
+                    <span th:text="${garden.getGarden_name()}"></span>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!--Create a new garden button -->
-    <form th:action="@{'/dashboard/'+ ${userId}}" th:method="post" th:object="${newGarden}"> <!-- Where's this go? -->
-        <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
-         which then passes it to GardenController: createGarden   -->
-        <input type="submit" class="btn btn-success" value="Create New Garden">
-    </form>
+        <br>
+        <!--Create a new garden button -->
+        <form th:action="@{'/dashboard/'+ ${userId}}" th:method="post" th:object="${newGarden}">
+            <!-- Where's this go? -->
+            <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
+             which then passes it to GardenController: createGarden   -->
+            <input type="submit" class="btn btn-success" value="Create New Garden">
+        </form>
+    </div>
 
     <!--Gardening tips-->
     <div id="gardeningTipsDiv">

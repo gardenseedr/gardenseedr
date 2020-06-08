@@ -81,16 +81,20 @@ footer {
 
 .register-container{
     display: grid;
-    grid-template-columns: 30% 20% 50% 0% ;
+    grid-template-columns: 45% 5% 40% 10% ;
     grid-template-areas: 'lR . rR .';
+
 }
 
 .left-register{
     display: grid;
     grid-area: lR;
-    height: 200px;
+    margin-top: 95px;
+    height: 175px;
+    width: 100%;
     align-content: center;
-    color: white;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 2px;
 }
 
 .right-register{
@@ -98,9 +102,11 @@ footer {
     grid-area: rR;
     font-family: 'Playfair Display SC', serif;
     text-shadow: 2px 2px 2px lightgrey;
-    background: white;
-    padding: 30px 40px 10px 10px ;
-    width: 400px;
+    background: rgba(255, 255, 255, 0.87);
+    padding: 30px;
+    width: 100%;
+    height: 375px;
+    border-radius: 2px;
 }
 
 
@@ -185,7 +191,7 @@ footer {
 .info-label{
     font-family: 'Playfair Display SC', serif;
     font-size: 20px;
-
+    padding: 4px;
 }
 
 .info-user{
