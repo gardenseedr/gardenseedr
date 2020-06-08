@@ -1,5 +1,7 @@
 $(document).ready(function () {
     $(".garden-square").click(function () {
+        $("#txtSearch").val("");
+        $("#filter-results").html("");
         $("#api-results").html("");
         $("#modal-title").text("Search Crops");
         var plantSquare = $(this).attr("id");

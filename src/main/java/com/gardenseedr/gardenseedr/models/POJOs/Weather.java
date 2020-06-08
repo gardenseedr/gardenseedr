@@ -1,25 +1,29 @@
 package com.gardenseedr.gardenseedr.models.POJOs;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.context.annotation.Bean;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Weather implements Serializable{
 
-
     private String weatherDescription;
-
-
     private double currentTemp;
     private double lowTemp;
     private double highTemp;
     private String generalCondition;
+    private double humidity;
+
+
+    public double getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(double humidity) {
+        this.humidity = humidity;
+    }
 
     public String getGeneralCondition() {
         return generalCondition;
@@ -87,8 +91,7 @@ public class Weather implements Serializable{
         setCurrentTemp(main.get("temp"));
         setLowTemp(main.get("temp_min"));
         setHighTemp(main.get("temp_max"));
-
-
+        setHumidity(main.get("humidity"));
     }
 
 }
