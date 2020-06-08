@@ -12,18 +12,26 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+a{
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: var(--seedrGreen);
+}
+
 nav {
     background: var(--seedrBone);
     font-family: 'Open Sans', sans-serif;
 }
-
-
 
 .bigLogo { /* logo inside of nav */
     width: 300px;
 }
 
 .subheader{
+    padding-top: 30px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     display: flex;
@@ -104,42 +112,8 @@ footer {
     justify-content: center;
 }
 
-.littlePlantSvg { /* In left 6*/
-    height: 300px;
-}
-
-.notesDiv { /* Right 6 */
-    max-height: 100%;
-}
-
-.noteForm { /* Top Right */
-    max-height: 50%;
-    width: 100%;
-}
-
-.noteTextarea {
-    height: 40%;
-    width: 100%;
-}
-
-.existingNotesDiv { /* Bottom Right */
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    width: 100%;
-    overflow: scroll;
-}
-
-.col-md-6 { /* Left AND Right */
-}
-
 .btn-danger{
     align-items: center;
-}
-
-
-.noteForm{
-    font-family: 'Open Sans', sans-serif;
 }
 
 .carousel-container{
