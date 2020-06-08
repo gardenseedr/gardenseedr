@@ -1,15 +1,9 @@
 package com.gardenseedr.gardenseedr.models.POJOs;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.context.annotation.Bean;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
