@@ -4,6 +4,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 src/main/resources/.DS_Store
+.DS_Store
 
 ### STS ###
 .apt_generated
