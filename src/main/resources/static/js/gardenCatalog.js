@@ -279,10 +279,7 @@ function fetchChives(){
 fetchChives();
 
 
-// document.getElementsByClassName('card-body').css("text-overflow", "scroll");width:  100px;
-//     height: 100px;
-//     object-fit: cover;
 
 
-document.getElementsByClassName('card-img-top').css("object-fit", "cover");
+
 
