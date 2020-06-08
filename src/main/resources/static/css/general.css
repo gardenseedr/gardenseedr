@@ -12,18 +12,26 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+a{
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: var(--seedrGreen);
+}
+
 nav {
     background: var(--seedrBone);
     font-family: 'Open Sans', sans-serif;
 }
-
-
 
 .bigLogo { /* logo inside of nav */
     width: 300px;
 }
 
 .subheader{
+    padding-top: 30px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     display: flex;
@@ -43,33 +51,6 @@ footer {
 .navIcon{ /* The little icons in the nav */
     height: 30px;
     line-height: 30px;
-}
-
-#weatherDiv{ /* Weather info in Dashboard */
-    border: var(--seedrGreen) 1px solid;
-}
-
-
-.btn-success{
-    /*background: rgba(44, 136, 32, 0.97);*/
-    /*!*background: red;*!*/
-    /*border: 1px solid rgba(44, 136, 32, 0.97);*/
-}
-
-
-/* For aboutUs */
-.aboutUsContainer {
-    display: flex;
-    flex-direction: row;
-}
-
-/* For Dashboard */
-#gardeningTipsDiv{
-    font-weight: bold;
-    color: black;
-
-    width: 200px;
-    border: var(--seedrGreen) 1px solid;
 }
 
 
@@ -114,42 +95,8 @@ footer {
     justify-content: center;
 }
 
-.littlePlantSvg { /* In left 6*/
-    height: 300px;
-}
-
-.notesDiv { /* Right 6 */
-    max-height: 100%;
-}
-
-.noteForm { /* Top Right */
-    max-height: 50%;
-    width: 100%;
-}
-
-.noteTextarea {
-    height: 40%;
-    width: 100%;
-}
-
-.existingNotesDiv { /* Bottom Right */
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    width: 100%;
-    overflow: scroll;
-}
-
-.col-md-6 { /* Left AND Right */
-}
-
 .btn-danger{
     align-items: center;
-}
-
-
-.noteForm{
-    font-family: 'Open Sans', sans-serif;
 }
 
 .carousel-container{
@@ -205,3 +152,4 @@ footer {
     display: flex;
     justify-content: center;
 }
+
