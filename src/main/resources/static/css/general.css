@@ -53,9 +53,7 @@ footer {
     line-height: 30px;
 }
 
-#weatherDiv{ /* Weather info in Dashboard */
-    border: var(--seedrGreen) 1px solid;
-}
+
 
 
 .btn-success{
@@ -71,14 +69,6 @@ footer {
     flex-direction: row;
 }
 
-/* For Dashboard */
-#gardeningTipsDiv{
-    font-weight: bold;
-    color: black;
-
-    width: 200px;
-    border: var(--seedrGreen) 1px solid;
-}
 
 
 /* For all pages containing .container */
@@ -90,16 +80,20 @@ footer {
 
 .register-container{
     display: grid;
-    grid-template-columns: 30% 20% 50% 0% ;
+    grid-template-columns: 45% 5% 40% 10% ;
     grid-template-areas: 'lR . rR .';
+
 }
 
 .left-register{
     display: grid;
     grid-area: lR;
-    height: 200px;
+    margin-top: 95px;
+    height: 175px;
+    width: 100%;
     align-content: center;
-    color: white;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 2px;
 }
 
 .right-register{
@@ -160,6 +154,7 @@ footer {
 .info-label{
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
+    padding: 4px;
 }
 
 .info-user{
@@ -167,3 +162,7 @@ footer {
     font-size: 24px;
     background: lightgoldenrodyellow;
 }
+
+
+
+

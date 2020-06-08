@@ -7,31 +7,59 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <style>
-<
-        *{
+
+        * {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
         }
-        body{
-            background: rgb(233,230,217);
-            background: linear-gradient(0deg, rgba(233,230,217,1) 0%, rgba(255,255,255,1) 100%);
+
+        body {
+            background: rgb(233, 230, 217);
+            background: linear-gradient(0deg, rgba(233, 230, 217, 1) 0%, rgba(255, 255, 255, 1) 100%);
         }
-       .card{
-           height: 500px;
-           width: 350px;
-           margin: 0 auto;
-           padding-bottom: 10px;
-           position: relative;
-           overflow: hidden;
-           background: darkslategrey;
-       }
-       .swiper-container{
-           height: 100vh;
-       }
-        .card-img-top{
-            padding: 10px;
+
+        .card {
+            height: 550px;
+            width: 500px;
+            margin: 0 auto;
+            padding-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            background: #D2BBA0;
         }
+
+        .swiper-container {
+            width: 100%;
+            height: 600px;
+        }
+
+        .card-img-top {
+            width:  200px;
+            height: 200px;
+            padding-bottom: 10px;
+            object-fit: cover;
+        }
+        .swiper-slide {
+            text-align: center;
+            overflow: scroll;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+
+
     </style>
 
 </head>
@@ -47,92 +75,65 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper ">
         <!-- Slides -->
-        <div class="card swiper-slide  main" style="width: 18rem;">
-<!--            <img class="card-img-top" id="first" src="" alt="Card image cap">-->
+        <div class="card swiper-slide" style="width: 18rem;">
+            <!--            <img class="card-img-top" id="first" src="" alt="Card image cap">-->
             <div class="card-body" id="1">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="2" style="width: 18rem;">
-            <img class="card-img-top" src="second" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide"  style="width: 18rem;">
+            <!--            <img class="card-img-top" src="second" alt="Card image cap">-->
+            <div class="card-body" id="2">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="3" style="width: 18rem;">
-            <img class="card-img-top" src="third" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="third" alt="Card image cap">-->
+            <div class="card-body" id="3">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="4" style="width: 18rem;">
-            <img class="card-img-top" src="fourth" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="fourth" alt="Card image cap">-->
+            <div class="card-body" id="4">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="5" style="width: 18rem;">
-            <img class="card-img-top" src="fifth" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="fifth" alt="Card image cap">-->
+            <div class="card-body" id="5">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="6" style="width: 18rem;">
-            <img class="card-img-top" src="sixth" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="sixth" alt="Card image cap">-->
+            <div class="card-body" id="6">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="7" style="width: 18rem;">
-            <img class="card-img-top" src="seventh" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="seventh" alt="Card image cap">-->
+            <div class="card-body" id="7">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="8" style="width: 18rem;">
-            <img class="card-img-top" src="eighth" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="eighth" alt="Card image cap">-->
+            <div class="card-body" id="8">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="9" style="width: 18rem;">
-            <img class="card-img-top" src="ninth" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="ninth" alt="Card image cap">-->
+            <div class="card-body" id="9">
             </div>
         </div>
 
-        <div class="card swiper-slide  main" id="10" style="width: 18rem;">
-            <img class="card-img-top" src="tenth" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card swiper-slide  main" style="width: 18rem;">
+            <!--            <img class="card-img-top" src="tenth" alt="Card image cap">-->
+            <div class="card-body" id="10">
             </div>
         </div>
         ...
@@ -157,18 +158,19 @@
 <script src="https://unpkg.com/swiper/js/swiper.js"></script>
 <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 <th:block th:insert="fragments/invisibleElements :: JavaScript"></th:block>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
 <script src="/js/gardenCatalog.js"></script>
 <script>
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            spaceBetween: 30,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 30,
+        pagination: {
+            dynamicBullets: true,
+            clickable: true,
+        },
+    });
 </script>
 </body>
 </html>
