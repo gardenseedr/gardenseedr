@@ -7,7 +7,7 @@
         body {
             background-image: url("/images/registerBackground.jpeg");
             background-repeat: no-repeat;
-            background-size: 100%;
+            background-size: cover;
         }
 
         .inputs {
@@ -39,8 +39,32 @@
         }
 
         .main-contain {
-            background: rgba(255, 255, 255, .87);
+            background: rgba(255, 255, 255, .90);
             width: 75%;
+        }
+
+        .register-container{
+            display: grid;
+            grid-template-columns: 45% 5% 40% 10% ;
+            grid-template-areas: 'lR . rR .';
+        }
+
+        .left-register{
+            display: grid;
+            grid-area: lR;
+            margin-top: 75px;
+            height: 175px;
+            width: 100%;
+            align-content: center;
+            border-radius: 2px;
+            padding-left: 130px;
+        }
+
+        .right-register{
+            display: grid;
+            grid-area: rR;
+            padding: 30px;
+            width: 400px;
         }
     </style>
 </head>
