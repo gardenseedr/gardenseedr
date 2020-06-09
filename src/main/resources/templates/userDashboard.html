@@ -80,7 +80,7 @@
                 <i th:if="${weather.currentTemp} <= '40'"
                    class="fas fa-thermometer-empty"></i>
                 <br>
-                <span th:text="${weather.weatherDescription}"></span>
+                <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
                 <i th:if="${weather.generalCondition == 'Drizzle'}"
                    class="fas fa-cloud-showers-heavy"></i>
                 <i th:if="${weather.generalCondition == 'Clouds'}"
