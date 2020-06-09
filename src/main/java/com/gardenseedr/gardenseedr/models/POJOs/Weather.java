@@ -123,11 +123,11 @@ public class Weather implements Serializable {
     }
 
 
-//    @JsonProperty("sys")
-//    public void setSys(Map<String, String> sys) {
-//        setSunrise(sys.get("sunrise"));
-//        setSunset(sys.get("sunset"));
-//
-//    }
+    @JsonProperty("sys")
+    public void setSys(Map<String, String> sys) {
+        setSunrise(sys.get("sunrise"));
+        setSunset(sys.get("sunset"));
+
+    }
 }
 
