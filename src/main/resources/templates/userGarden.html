@@ -11,8 +11,11 @@
         .garden-name {
             padding-top: 20px;
         }
-        .fa-times {
+        .fa-trash, .fa-times{
             color: rgba(181, 38, 38, 1);
+        }
+        .fa-edit, .fa-seedling{
+            color: rgba(44, 136, 32, 1);
         }
     </style>
 </head>
@@ -27,14 +30,14 @@
 
     <form class="subheader" th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post"
           th:object="${garden}">
-        <h1>Give your garden a name:
+        <h2>Give your garden a name:
             <input th:field="*{garden_name}">
             <!-- This stuff has to be restated as what it already is or they'll reset to null/0-->
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:field="*{user}">
             <input type="hidden" th:field="*{created}">
-            <input type="submit">
-        </h1>
+            <button class="btn btn-light hvr-icon-grow" type="submit">Name It! <i class="fas fa-edit hvr-icon"></i></button>
+        </h2>
     </form>
 
     <!-- User garden grid -->
@@ -97,10 +100,12 @@
                                 <input type="hidden" name="plant-id" id="plant-id" class="field">
                                 <input type="hidden" name="square-num" id="square-num" class="field"
                                        th:field="*{square_num}">
-                                <input id="submit-crop" type="submit" name="submit" value="Plant it!">
+                                <button id="submit-crop" type="submit" name="submit" class="btn btn-light hvr-icon-drop">
+                                    Plant It! <i class="fas fa-seedling hvr-icon"></i>
+                                </button>
                             </form>
-                            <button id="closeButton" type="button" class="btn btn-secondary" data-dismiss="modal">
-                                Close
+                            <button id="closeButton" type="button" class="btn btn-light hvr-icon-grow" data-dismiss="modal">
+                                Close <i class="fas fa-times hvr-icon"></i>
                             </button>
                         </div>
                     </div>
@@ -119,8 +124,7 @@
             <input type="hidden" th:field="*{user}">
             <input type="hidden" th:field="*{created}">
             <input type="hidden" th:field="*{updated}">
-            <button type="submit" class="btn btn-light hvr-border-fade hvr-icon-grow" value="Delete Garden">Delete Garden <i class="fas fa-times hvr-icon"></i></button>
-
+            <button type="submit" class="btn btn-light hvr-border-fade hvr-icon-grow" value="Delete Garden">Delete Garden <i class="fas fa-trash hvr-icon"></i></button>
         </form>
     </div>
     <br>

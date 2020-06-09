@@ -3,39 +3,43 @@
 <head>
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Profile</title>
+    <style>
+        .profile-deets {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 500px;
+        }
+
+        .label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 24px;
+        }
+
+        .data {
+            display: flex;
+            font-size: 20px;
+        }
+
+        .name {
+            font-size: 80px;
+        }
+        .containerHere{
+            width: 600px;
+            border-radius: 2px;
+            box-shadow: 0px 0px 5px rgba(44, 136, 32, 1);
+        }
+        .fa-edit{
+            color: rgba(44, 136, 32, 1);
+        }
+    </style>
 </head>
+
 <body>
 <th:block th:insert="fragments/invisibleElements :: topOfPage"></th:block>
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
-<style>
-    .profile-deets {
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 500px;
-    }
-
-    .label {
-        display: flex;
-        justify-content: space-between;
-        font-size: 24px;
-    }
-
-    .data {
-        display: flex;
-        font-size: 20px;
-    }
-
-    .name {
-        font-size: 80px;
-    }
-    .containerHere{
-        width: 600px;
-        border-radius: 2px;
-        box-shadow: 0px 0px 5px rgba(44, 136, 32, 0.97);
-    }
-</style>
 
 <br><br><br><br>
 <div class="container containerHere col-8">
@@ -53,7 +57,7 @@
         <br>
         <div class="bottom-buttons">
             <!-- Edit button which sends user to the page for actually editing -->
-            <a th:href="'/editprofile/' + ${user.getId()}" class="btn btn-warning col-3">Edit Profile</a>
+            <a th:href="'/editprofile/' + ${user.getId()}" class="btn btn-light col-3 hvr-icon-grow">Edit <i class="fas fa-edit hvr-icon"></i></a>
         </div>
         <br>
     </div>
