@@ -32,6 +32,21 @@
             background-image: url("/images/leafFrame.jpg");
             background-size: cover;
         }
+        .fa-sun {
+            color: gold;
+        }
+        .fa-thermometer-full:before {
+            color: rgba(181, 38, 38, 1);
+        }
+        .fas {
+            font-size: 3em;
+        }
+        .fa-cloud-showers-heavy {
+            color: navy;
+        }
+        .fa-cloud {
+            color: dimgray;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +74,7 @@
             <!--  Weather  -->
             <div class="col-md-6 card text-center" id="weatherDiv">
                 <h3 th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
-                <span th:text="'Currently: ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
+                <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
                 <i th:if="${weather.currentTemp} >= '80'"
                    class="fas fa-thermometer-full"></i>
                 <i th:if="${weather.currentTemp} <= '40'"
@@ -83,19 +98,15 @@
                 <br>
                 <span th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
                 <br>
-                <!--        <span th:text="'Sunrise: ' + ${weather.sunrise}"></span>-->
-                <!--        <br>-->
-                <!--        <span th:text="'Sunset: ' + ${weather.sunset}"></span>-->
-                <!--        <br>-->
             </div>
         </div>
         <!--  Gardens  -->
         <div class="row d-flex flex-column">
             <div class="col-md-12 user-gardens">
                 <!-- Existing gardens -->
-                <div class="garden-info" th:each="garden : ${allTheGardens}">
+                <div class="garden-info card" th:each="garden : ${allTheGardens}">
                     <a th:href="@{'/garden/' + ${garden.getId()}}">
-                        <span class="names" th:text="${garden.getGarden_name()}"></span>
+                        <span class="names text-center" th:text="${garden.getGarden_name()}"></span>
                         <br>
                         <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null"><img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt=""></span>
                     </a>
