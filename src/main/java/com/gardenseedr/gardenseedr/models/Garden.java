@@ -2,6 +2,7 @@ package com.gardenseedr.gardenseedr.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -97,5 +98,16 @@ public class Garden {
     }
     public void setUpdated(LocalDate updated) {
         this.updated = updated;
+    }
+
+    public List<Plant> getUniquePlants(){
+        List<Plant> bucket = new ArrayList<>();
+
+        for(Square square: this.getSquares()){
+            if(!bucket.contains(square.getPlant())){
+                bucket.add(square.getPlant());
+            }
+        }
+        return bucket;
     }
 }

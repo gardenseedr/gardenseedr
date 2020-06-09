@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gardenseedr.gardenseedr.models.Garden;
 import com.gardenseedr.gardenseedr.models.POJOs.Weather;
+import com.gardenseedr.gardenseedr.models.Plant;
 import com.gardenseedr.gardenseedr.models.User;
 import com.gardenseedr.gardenseedr.repositories.GardenRepository;
 import com.gardenseedr.gardenseedr.repositories.UserRepository;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -61,12 +64,14 @@ public class UserController {
     // User's dashboard page
     @GetMapping("/dashboard/{userId}")
     public String showDashboard(@PathVariable long userId, Model model) throws JsonProcessingException {
-//        Weather weather = getWeather();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userDao.getOne(userId);
 
          int userZip = userDao.getOne(userId).getZipcode();
 
+         List<Plant> plantsDisplayed = new ArrayList<>();
+//         for loop through alltheGardens
+//         nested loop to check against plantsDisplayed
 
         if (userId != user.getId() || user == null) {
             return "redirect:/login";

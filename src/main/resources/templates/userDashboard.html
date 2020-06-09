@@ -113,13 +113,9 @@
 <!--                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">-->
 <!--                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">-->
 <!--                        </span>-->
-
-                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">
-                            <span th:with="bucket=[]" th:each="i : ${#numbers.sequence(1, 50, 1)}" th:if="${square.getPlant().getId()} != ">
-                                <img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">
-                            </span>
+                        <span th:each="plant : ${garden.getUniquePlants()}">
+                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + plant.getPic_file_name()}}" alt="">
                         </span>
-
                     </a>
                 </div>
                 <!--Create a new garden button -->
