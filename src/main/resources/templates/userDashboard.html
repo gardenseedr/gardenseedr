@@ -4,13 +4,23 @@
     <th:block th:insert="fragments/invisibleElements :: head"></th:block>
     <title>Dashboard</title>
     <style>
-        .garden-names {
+        .garden-info {
             padding-bottom: 20px;
+
         }
+
+        .names {
+            font-size: 2em;
+        }
+
         #gardeningTipsDiv{
             font-weight: bold;
             color: black;
             width: 200px;
+        }
+        .cute-icons {
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -26,12 +36,14 @@
             th:href="'/profile/' + ${user.getId()}"><span
             th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!
     </h1>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-around">
         <div class="col-6 user-gardens">
-            <h3>My Gardens</h3>
-            <div class="garden-names" th:each="garden : ${allTheGardens}">
+            <h2>My Gardens</h2>
+            <div class="garden-info" th:each="garden : ${allTheGardens}">
                 <a th:href="@{'/garden/' + ${garden.getId()}}">
-                    <span th:text="${garden.getGarden_name()}"></span>
+                    <span class="names" th:text="${garden.getGarden_name()}"></span>
+                    <br>
+                    <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null"><img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt=""></span>
                 </a>
             </div>
             <!--Create a new garden button -->
