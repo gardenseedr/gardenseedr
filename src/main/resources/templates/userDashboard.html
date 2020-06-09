@@ -6,8 +6,11 @@
     <style>
         .garden-info {
             padding-bottom: 20px;
-            border: none;
 
+
+        }
+        .tip-weather-row {
+            font-size: 1em;
         }
 
         .names {
@@ -18,6 +21,14 @@
             font-weight: bold;
             color: black;
             width: 200px;
+            border: 5px solid white;
+        }
+        .data {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
         }
 
         .fa-edit {
@@ -25,8 +36,8 @@
         }
 
         .cute-icons {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
 
         }
         .fa-sun {
@@ -47,6 +58,17 @@
         .fa-edit {
             font-size: 1em;
         }
+        #weatherDiv {
+            border: none;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+
+        }
+        .top-row {
+            padding-left: auto;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +78,7 @@
     <div class="container">
         <!-- Title -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-4">
                 <h1 class="row d-flex justify-content-center pb-1 subheader">
                     Welcome Back,&nbsp;
                     <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!
@@ -64,7 +86,8 @@
             </div>
         </div>
         <!--  Tips/Weather  -->
-        <div class="row">
+        <div class="row mt-4">
+            <div class="row tip-weather-row mb-5">
             <!--  Tips  -->
             <div class="col-md-6 card" id="gardeningTipsDiv">
                 <h3 class="text-center">A Quick Gardening Tip</h3>
@@ -74,39 +97,48 @@
             <!--  Weather  -->
             <div class="col-md-6 card text-center" id="weatherDiv">
                 <h3 th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
-                <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
-                <i th:if="${weather.currentTemp} >= '80'"
-                   class="fas fa-thermometer-full"></i>
-                <i th:if="${weather.currentTemp} <= '40'"
-                   class="fas fa-thermometer-empty"></i>
-                <br>
-                <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
-                <i th:if="${weather.generalCondition == 'Drizzle'}"
-                   class="fas fa-cloud-showers-heavy"></i>
-                <i th:if="${weather.generalCondition == 'Clouds'}"
-                   class="fas fa-cloud"></i>
-                <i th:if="${weather.generalCondition == 'Rain'}"
-                   class="fas fa-cloud-rain"></i>
-                <i th:if="${weather.generalCondition == 'Thunderstorm'}"
-                   class="fas fa-bolt"></i>
-                <i th:if="${weather.generalCondition == 'Snow'}"
-                   class="fas fa-snowflake"></i>
-                <i th:if="${weather.generalCondition == 'Clear'}"
-                   class="fas fa-sun"></i>
-                <br>
-                <span th:text="'High/Low: ' + ${#strings.substring(weather.highTemp,0,2)} + '/' + ${#strings.substring(weather.lowTemp,0,2)} +  '°F'"></span>
-                <br>
-                <span th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
-                <br>
+
+                <div class="data">
+                    <span class="top-row">
+                    <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
+                    <i th:if="${weather.currentTemp} >= '80'"
+                       class="mr-5 fas fa-thermometer-full"></i>
+                    <i th:if="${weather.currentTemp} <= '40'"
+                       class="mr-5 fas fa-thermometer-empty"></i>
+
+                     <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
+                    <i th:if="${weather.generalCondition == 'Drizzle'}"
+                       class="mr-5 fas fa-cloud-showers-heavy"></i>
+                    <i th:if="${weather.generalCondition == 'Clouds'}"
+                       class="mr-5 fas fa-cloud"></i>
+                    <i th:if="${weather.generalCondition == 'Rain'}"
+                       class="mr-5 fas fa-cloud-rain"></i>
+                    <i th:if="${weather.generalCondition == 'Thunderstorm'}"
+                       class="mr-5 fas fa-bolt"></i>
+                    <i th:if="${weather.generalCondition == 'Snow'}"
+                       class="mr-5 fas fa-snowflake"></i>
+                    <i th:if="${weather.generalCondition == 'Clear'}"
+                       class="mr-5 fas fa-sun"></i>
+                    </span>
+                    <span class="bottom-row">
+                    <span class="mr-5" th:text="'High/Low: ' + ${#strings.substring(weather.highTemp,0,2)} + '/' + ${#strings.substring(weather.lowTemp,0,2)} +  '°F'"></span>
+
+                    <span class="mr-5" th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
+                    </span>
+
+                </div>
+            </div>
+
             </div>
         </div>
         <!--  Gardens  -->
-        <div class="row d-flex justify-content-center pt-2 pb-2"><h1>My Gardens</h1></div>
+
         <div class="row d-flex flex-column">
+            <div class="row d-flex justify-content-center pt-4 pb-2"><h1 class="mb-4">My Gardens</h1></div>
             <div class="col-md-12 user-gardens">
 
                 <!-- Existing gardens -->
-                <div class="garden-info card mr-1" th:each="garden : ${allTheGardens}">
+                <div class="garden-info card col-3" th:each="garden : ${allTheGardens}">
                     <a th:href="@{'/garden/' + ${garden.getId()}}">
                         <span class="names d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
                         <br>
@@ -125,7 +157,7 @@
             <form th:action="@{'/dashboard/'+ ${userId}}"
                   th:method="post"
                   th:object="${newGarden}">
-                <button type="submit" class="btn btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
+                <button type="submit" class="btn mt-4 btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
             </form>
         </div>
     </div>
