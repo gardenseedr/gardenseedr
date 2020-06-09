@@ -106,7 +106,6 @@ public class Square {
     public List<Note> getNotes() {
         return notes;
     }
-
     public void setNotes(List<Note> notes) {
         this.notes = notes;
     }
