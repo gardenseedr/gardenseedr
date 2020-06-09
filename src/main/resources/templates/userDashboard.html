@@ -97,6 +97,7 @@
             <!--  Weather  -->
             <div class="col-md-6 card text-center" id="weatherDiv">
                 <h3 th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
+
                 <div class="data">
                     <span class="top-row">
                     <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
@@ -105,7 +106,7 @@
                     <i th:if="${weather.currentTemp} <= '40'"
                        class="mr-5 fas fa-thermometer-empty"></i>
 
-                    <span th:text="${weather.weatherDescription}"></span>
+                     <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
                     <i th:if="${weather.generalCondition == 'Drizzle'}"
                        class="mr-5 fas fa-cloud-showers-heavy"></i>
                     <i th:if="${weather.generalCondition == 'Clouds'}"
@@ -127,6 +128,7 @@
 
                 </div>
             </div>
+
             </div>
         </div>
         <!--  Gardens  -->
@@ -140,7 +142,12 @@
                     <a th:href="@{'/garden/' + ${garden.getId()}}">
                         <span class="names d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
                         <br>
-                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null"><img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt=""></span>
+<!--                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">-->
+<!--                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">-->
+<!--                        </span>-->
+                        <span th:each="plant : ${garden.getUniquePlants()}">
+                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + plant.getPic_file_name()}}" alt="">
+                        </span>
                     </a>
                 </div>
                 <!--Create a new garden button -->
