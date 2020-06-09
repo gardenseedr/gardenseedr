@@ -43,10 +43,6 @@ public class GardenController {
 
         newgarden.setCreated(today);
         newgarden.setUser(userDao.getOne(userId));
-        System.out.println(newgarden.getId());
-        System.out.println(newgarden.getUser().getFirst_name());
-        System.out.println(newgarden.getUser().getLast_name());
-        System.out.println(newgarden.getGarden_name());
 
         gardenRepo.save(newgarden);
 
