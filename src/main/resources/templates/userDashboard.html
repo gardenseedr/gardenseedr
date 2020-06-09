@@ -6,6 +6,7 @@
     <style>
         .garden-info {
             padding-bottom: 20px;
+            border: none;
 
         }
 
@@ -24,14 +25,11 @@
         }
 
         .cute-icons {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
 
         }
-        body{
-            background-image: url("/images/leafFrame.jpg");
-            background-size: cover;
-        }
+
         .fa-sun {
             color: gold;
         }
@@ -39,13 +37,16 @@
             color: rgba(181, 38, 38, 1);
         }
         .fas {
-            font-size: 3em;
+            font-size: 2em;
         }
         .fa-cloud-showers-heavy {
             color: navy;
         }
         .fa-cloud {
             color: dimgray;
+        }
+        .fa-edit {
+            font-size: 1em;
         }
     </style>
 </head>
@@ -57,7 +58,7 @@
         <!-- Title -->
         <div class="row">
             <div class="col-md-12">
-                <h1 class="row d-flex justify-content-center subheader">
+                <h1 class="row d-flex justify-content-center pb-1 subheader">
                     Welcome Back,&nbsp;
                     <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!
                 </h1>
@@ -101,23 +102,27 @@
             </div>
         </div>
         <!--  Gardens  -->
+        <div class="row d-flex justify-content-center pt-2 pb-2"><h1>My Gardens</h1></div>
         <div class="row d-flex flex-column">
             <div class="col-md-12 user-gardens">
+
                 <!-- Existing gardens -->
-                <div class="garden-info card" th:each="garden : ${allTheGardens}">
+                <div class="garden-info card mr-1" th:each="garden : ${allTheGardens}">
                     <a th:href="@{'/garden/' + ${garden.getId()}}">
-                        <span class="names text-center" th:text="${garden.getGarden_name()}"></span>
+                        <span class="names d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
                         <br>
                         <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null"><img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt=""></span>
                     </a>
                 </div>
                 <!--Create a new garden button -->
-                <form th:action="@{'/dashboard/'+ ${userId}}"
-                      th:method="post"
-                      th:object="${newGarden}">
-                    <button type="submit" class="btn btn-light create-garden">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
-                </form>
             </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <form th:action="@{'/dashboard/'+ ${userId}}"
+                  th:method="post"
+                  th:object="${newGarden}">
+                <button type="submit" class="btn btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
+            </form>
         </div>
     </div>
 <!-- Footer -->
