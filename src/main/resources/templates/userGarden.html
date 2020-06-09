@@ -28,14 +28,9 @@
 
     <h1 class="subheader garden-name" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
-    <form th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post" th:object="${garden}">
-<!--    Removed: class="subheader"-->
+    <form class="subheader" th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post">
         <h2>Give your garden a name:
-            <input th:field="*{garden_name}">
-            <!-- This stuff has to be restated as what it already is or they'll reset to null/0-->
-            <input type="hidden" th:field="*{id}">
-            <input type="hidden" th:field="*{user}">
-            <input type="hidden" th:field="*{created}">
+            <input name="garden_name">
             <button class="btn btn-light hvr-icon-grow" type="submit">Name It! <i class="fas fa-edit hvr-icon"></i></button>
         </h2>
     </form>
