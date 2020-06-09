@@ -88,13 +88,9 @@ public class GardenController {
     // Name newly created garden
     @PostMapping("/garden/{gardenId}")
     public String nameGarden(@RequestParam String garden_name, @PathVariable long gardenId) {
-//        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
 
         Garden garden = gardenRepo.getOne(gardenId);
             garden.setGarden_name(garden_name);
-//        garden.setCreated(garden.getCreated());
-//        garden.setUpdated(today);
-//        garden.setId();
 
         gardenRepo.save(garden);
 
