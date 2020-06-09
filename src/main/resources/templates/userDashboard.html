@@ -18,9 +18,14 @@
             color: black;
             width: 200px;
         }
+
+        .fa-edit{
+            color: rgba(44, 136, 32, 1);
+
         .cute-icons {
             width: 50px;
             height: 50px;
+
         }
     </style>
 </head>
@@ -54,9 +59,7 @@
                 <!--  new Garden object made in UserController: showDashboard (named newGarden) passed to here,
                  which then passes it to GardenController: createGarden   -->
 
-            <input type="submit"
-                   class="btn btn-success create-garden"
-                   value="Create New Garden">
+            <button type="submit" class="btn btn-light create-garden">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
             </form>
         </div>
 
