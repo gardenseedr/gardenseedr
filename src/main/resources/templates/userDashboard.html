@@ -50,6 +50,7 @@
 
         }
 
+
         .fa-sun {
             color: gold;
         }
@@ -72,17 +73,21 @@
             font-size: 1em;
         }
         #weatherDiv {
-            border: none;
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: center;
+            font-size: 20px;
+            padding-bottom: 10px;
         }
-        .top-row {
-            padding-left: auto;
-        }
+
+
         .garden-links:hover {
             text-decoration: none;
+        }
+
+        #just-the-tip {
+            font-size: 20px;
         }
 
     </style>
@@ -102,17 +107,10 @@
             </div>
         </div>
         <!--  Tips/Weather  -->
-        <div class="row mt-2">
-            <div class="row tip-weather-row mb-5">
-            <!--  Tips  -->
-            <div class="col-md-6" id="gardeningTipsDiv">
-               <h3 class="quicksand text-center">A Quick Gardening Tip</h3>
-                <br>
-                <!-- the tip will append here -->
-            </div>
+
             <!--  Weather  -->
-            <div class="col-md-6 text-center" id="weatherDiv">
-                <h3 class="quicksand" th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
+            <div class="col-md-12 text-center" id="weatherDiv">
+                <h3 class="quicksand mb-3 pt-1 pb-1" th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
 
                 <div class="data justify-content-between">
                     <span class="top-row">
@@ -136,23 +134,20 @@
                         <i th:if="${weather.generalCondition == 'Snow'}"
                            class="mr-5 fas fa-snowflake"></i>
                         <i th:if="${weather.generalCondition == 'Clear'}"
-                           class="mr-5 fas fa-sun"></i>
-                        <i th:if="${weather.generalCondition != ''}"
-                           class="mr-5 fas fa-smog"></i>
+                           class="mr-5 fas fa-sun"></i>              
                     </span>
                     <span class="bottom-row">
                         <span class="mr-5" th:text="'High/Low: ' + ${#numbers.formatDecimal(weather.highTemp,2,0)} + '/' + ${#numbers.formatDecimal(weather.lowTemp,2,0)} +  '°F'"></span>
                         <span class="mr-5" th:text="'Humidity: ' + ${#numbers.formatDecimal(weather.humidity,2,0)} + '%'"></span>
                     </span>
+
                 </div>
             </div>
 
-            </div>
-        </div>
         <!--  Gardens  -->
 
         <div class="row d-flex flex-column">
-            <div class="row d-flex justify-content-center pt-2 pb-2"><h1 class="mb-4 quicksand">My Gardens</h1></div>
+            <div class="row d-flex justify-content-center pt-4 pb-2"><h1 class="mb-4 quicksand">My Gardens</h1></div>
             <div class="col-md-12 user-gardens">
 
                 <!-- Existing gardens -->
@@ -170,12 +165,23 @@
                 <!--Create a new garden button -->
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row mt-4 d-flex justify-content-center">
             <form th:action="@{'/dashboard/'+ ${userId}}"
                   th:method="post"
                   th:object="${newGarden}">
                 <button type="submit" class="btn mt-4 btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
             </form>
+        </div>
+
+        <!--  Tips  -->
+        <div class="row mt-5">
+            <div class="col-md-2" id="gardeningTipsDiv">
+                <h3 class="quicksand text-center">A Quick Gardening Tip</h3>
+            </div>
+            <div class="col-md-10 d-flex align-items-center"><p id="just-the-tip"></p></div>
+
+            <!-- the tip will append here -->
+            </div>
         </div>
     </div>
 <!-- Footer -->
