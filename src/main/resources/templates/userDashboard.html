@@ -92,24 +92,24 @@
         <!-- Title -->
         <div class="row">
             <div class="col-md-12 mb-4">
-                <h1 class="row d-flex justify-content-center pb-1 subheader">
+                <h1 class="row d-flex justify-content-center pb-1 subheader quicksand">
                     Welcome Back,&nbsp;
                     <a th:href="'/profile/' + ${user.getId()}"><span th:text="${#strings.capitalize(user.getFirst_name())}"></span></a>!
                 </h1>
             </div>
         </div>
         <!--  Tips/Weather  -->
-        <div class="row mt-4">
+        <div class="row mt-2">
             <div class="row tip-weather-row mb-5">
             <!--  Tips  -->
             <div class="col-md-6" id="gardeningTipsDiv">
-                <h3 class="text-center">A Quick Gardening Tip</h3>
+               <h3 class="quicksand text-center">A Quick Gardening Tip</h3>
                 <br>
                 <!-- the tip will append here -->
             </div>
             <!--  Weather  -->
             <div class="col-md-6 text-center" id="weatherDiv">
-                <h3 th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
+                <h3 class="quicksand" th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
 
                 <div class="data">
                     <span class="top-row">
@@ -147,13 +147,13 @@
         <!--  Gardens  -->
 
         <div class="row d-flex flex-column">
-            <div class="row d-flex justify-content-center pt-4 pb-2"><h1 class="mb-4">My Gardens</h1></div>
+            <div class="row d-flex justify-content-center pt-2 pb-2"><h1 class="mb-4 quicksand">My Gardens</h1></div>
             <div class="col-md-12 user-gardens">
 
                 <!-- Existing gardens -->
                 <div class="garden-info card col-3" th:each="garden : ${allTheGardens}">
                     <a class="garden-links" th:href="@{'/garden/' + ${garden.getId()}}">
-                        <span class="names hvr-grow d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
+                        <span class="names quicksand hvr-grow d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
 
                         <br>
 <!--                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">-->
