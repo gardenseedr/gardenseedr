@@ -6,12 +6,8 @@
     <style>
         .garden-info {
             padding-bottom: 20px;
-
             background: #523C23 url("../images/asfalt-light.png");
             margin: 10px;
-
-
-
 
         }
         /*.container{*/
@@ -24,6 +20,9 @@
         .names {
             font-size: 2em;
             color: white;
+        }
+        .names:hover {
+            text-decoration: none;
         }
 
         #gardeningTipsDiv{
@@ -46,8 +45,11 @@
         .cute-icons {
             width: 50px;
             height: 50px;
+            margin: 3px;
+            text-decoration: none;
 
         }
+
         .fa-sun {
             color: gold;
         }
@@ -75,6 +77,9 @@
         }
         .top-row {
             padding-left: auto;
+        }
+        .garden-links:hover {
+            text-decoration: none;
         }
 
     </style>
@@ -147,8 +152,9 @@
 
                 <!-- Existing gardens -->
                 <div class="garden-info card col-3" th:each="garden : ${allTheGardens}">
-                    <a th:href="@{'/garden/' + ${garden.getId()}}">
-                        <span class="names d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
+                    <a class="garden-links" th:href="@{'/garden/' + ${garden.getId()}}">
+                        <span class="names hvr-grow d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
+
                         <br>
 <!--                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">-->
 <!--                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">-->
@@ -157,6 +163,7 @@
                             <img class="hvr-pop cute-icons" th:src="@{${'/images/' + plant.getPic_file_name()}}" alt="">
                         </span>
                     </a>
+
                 </div>
                 <!--Create a new garden button -->
             </div>
