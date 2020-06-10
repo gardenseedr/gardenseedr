@@ -15,7 +15,7 @@ function fetchArugula(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="first" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -43,7 +43,7 @@ function fetchAsparagus(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="second" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -69,7 +69,7 @@ function fetchBasil(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="third" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5  class="card-title">' + info.name + '</h5>';
+            html_var += '<h4  class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -96,7 +96,7 @@ function fetchBellPepper(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="fourth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -124,7 +124,7 @@ function fetchBroccoli(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="fifth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -151,7 +151,7 @@ function fetchBrusselsSprout(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="sixth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -178,7 +178,7 @@ function fetchCabbage(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="seventh" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -206,7 +206,7 @@ function fetchCarrot(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="eighth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -233,7 +233,7 @@ function fetchCelery(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="ninth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
@@ -259,7 +259,7 @@ function fetchChives(){
             var html_var = '<div>';
             html_var += `<img class="card-img-top" id="tenth" src="${picture}" alt="Card image cap"`;
             html_var += '<div class="card-body">';
-            html_var += '<h5 class="card-title">' + info.name + '</h5>';
+            html_var += '<h4 class="card-title quicksand">' + info.name + '</h4>';
             html_var += '<br>';
             html_var += '<h6>' + info.binomial_name + '</h6>';
             html_var += '<br>';
