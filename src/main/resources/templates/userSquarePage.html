@@ -82,14 +82,8 @@
                 <div class="plantInfoDivs" th:text="'Days old: ' + ${daysOld.getDays()}"></div>
             <br>
             <br>
-            <!-- Water button -->
-            <form th:action="@{'/square/water/' + ${square.getId()}}" th:method="post" th:object="${square}">
-                <input type="hidden" th:field="*{id}">
-                <input type="hidden" th:field="*{plant}">
-                <input type="hidden" th:field="*{garden}">
-                <input type="hidden" th:field="*{plant_date}">
-                <input type="hidden" th:field="*{notes}">
-                <input type="hidden" th:field="*{square_num}">
+            <form th:action="@{'/square/water/' + ${square.getId()}}" th:method="post">
+                <!-- Water button -->
                 <button type="submit" class="btn btn-light hvr-icon-grow" value="Water this plant">Water <i class="fas fa-tint hvr-icon"></i></button>
                 <!-- Delete button -->
                 <button type="submit" class="btn btn-light hvr-icon-float-away" th:formaction="@{'/square/delete/' + ${square.getId()}}">Uproot <i class="fas fa-seedling hvr-icon"></i></button> <!-- ignore this error -->

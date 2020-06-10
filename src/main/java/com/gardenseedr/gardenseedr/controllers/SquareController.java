@@ -7,10 +7,7 @@ import com.gardenseedr.gardenseedr.repositories.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -72,10 +69,10 @@ public class SquareController {
 
         // Water the individual square sent from GetMapping("/square/{squareId}")
         @PostMapping("/square/water/{squareId}")
-        public String waterSquare(@ModelAttribute Square square, @PathVariable long squareId) {
+        public String waterSquare(@PathVariable long squareId) {
             LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
-            square.setLast_watered(today);
+            Square square = squareRepo.getOne(squareId);
+                square.setLast_watered(today);
 
             squareRepo.save(square);
 

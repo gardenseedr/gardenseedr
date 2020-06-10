@@ -6,9 +6,10 @@
     <style>
         .garden-info {
             padding-bottom: 20px;
-
-
         }
+        /*.container{*/
+        /*    background-color: rgba(255, 255, 255, 0.85);*/
+        /*}*/
         .tip-weather-row {
             font-size: 1em;
         }
@@ -21,7 +22,6 @@
             font-weight: bold;
             color: black;
             width: 200px;
-            border: 5px solid white;
         }
         .data {
             display: flex;
@@ -64,11 +64,11 @@
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: center;
-
         }
         .top-row {
             padding-left: auto;
         }
+
     </style>
 </head>
 <body>
@@ -89,13 +89,13 @@
         <div class="row mt-4">
             <div class="row tip-weather-row mb-5">
             <!--  Tips  -->
-            <div class="col-md-6 card" id="gardeningTipsDiv">
+            <div class="col-md-6" id="gardeningTipsDiv">
                 <h3 class="text-center">A Quick Gardening Tip</h3>
                 <br>
                 <!-- the tip will append here -->
             </div>
             <!--  Weather  -->
-            <div class="col-md-6 card text-center" id="weatherDiv">
+            <div class="col-md-6 text-center" id="weatherDiv">
                 <h3 th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
 
                 <div class="data">
