@@ -56,6 +56,9 @@
         .fa-thermometer-full:before {
             color: rgba(181, 38, 38, 1);
         }
+        fa-thermometer-empty:before {
+            color: rgba(106, 200, 226, 1);
+        }
         .fas {
             font-size: 2em;
         }
@@ -114,9 +117,11 @@
                 <div class="data justify-content-between">
                     <span class="top-row">
                         <span th:text="'Currently ' + ${#numbers.formatDecimal(weather.currentTemp,2,0)} + '°F'"></span>
-                        <i th:if="${weather.currentTemp} >= '80'"
+                        <i th:if="${weather.currentTemp} >= 90"
                            class="mr-5 fas fa-thermometer-full"></i>
-                        <i th:if="${weather.currentTemp} <= '40'"
+                        <i th:if="${weather.currentTemp} < 90 and ${weather.currentTemp} > 40"
+                           class="mr-5 fas fa-thermometer-half"></i>
+                        <i th:if="${weather.currentTemp} <= 40"
                            class="mr-5 fas fa-thermometer-empty"></i>
 
                          <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
@@ -132,6 +137,8 @@
                            class="mr-5 fas fa-snowflake"></i>
                         <i th:if="${weather.generalCondition == 'Clear'}"
                            class="mr-5 fas fa-sun"></i>
+                        <i th:if="${weather.generalCondition != ''}"
+                           class="mr-5 fas fa-smog"></i>
                     </span>
                     <span class="bottom-row">
                         <span class="mr-5" th:text="'High/Low: ' + ${#numbers.formatDecimal(weather.highTemp,2,0)} + '/' + ${#numbers.formatDecimal(weather.lowTemp,2,0)} +  '°F'"></span>
