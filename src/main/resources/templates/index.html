@@ -28,6 +28,10 @@
         h1{
             font-size: 60px;
         }
+        .siteInfo{
+            background-color: rgba(0, 0, 0, 0.67);
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -35,12 +39,11 @@
 <nav th:replace="fragments/visibleElements :: Nav"></nav>
     <div class="carousel-container">
         <!--Description of what our site does-->
-            <div class="centered">
+            <div class="centered siteInfo">
                 <h1 class="quicksand subheader">Eat What You Grow</h1>
                 <p>
-                   During these trying times more and more people are picking up gardening as both a fun hobby to pass the time
-                    and as a great way to reduce their carbon footprint.  Becoming a part of the growing urban agriculture movement also puts you
-                     in control of your own organic, eco-friendly, and sustainable vegetable supply.
+                   During these trying times more and more people are picking up gardening as a fun hobby to pass the time.
+                    Becoming part of the growing urban agriculture movement puts you in control of your own sustainable vegetable supply.
                 </p>
             </div>
 
