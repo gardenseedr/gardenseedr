@@ -27,4 +27,4 @@ function getAClue(array) {
     return array[randomNum];
 }
 
-$("#gardeningTipsDiv").append(getAClue(gardeningTips));
+$("#just-the-tip").append(getAClue(gardeningTips));

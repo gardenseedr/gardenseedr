@@ -50,11 +50,15 @@
 
         }
 
+
         .fa-sun {
             color: gold;
         }
         .fa-thermometer-full:before {
             color: rgba(181, 38, 38, 1);
+        }
+        fa-thermometer-empty:before {
+            color: rgba(106, 200, 226, 1);
         }
         .fas {
             font-size: 2em;
@@ -69,17 +73,21 @@
             font-size: 1em;
         }
         #weatherDiv {
-            border: none;
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: center;
+            font-size: 20px;
+            padding-bottom: 10px;
         }
-        .top-row {
-            padding-left: auto;
-        }
+
+
         .garden-links:hover {
             text-decoration: none;
+        }
+
+        #just-the-tip {
+            font-size: 20px;
         }
 
     </style>
@@ -99,55 +107,54 @@
             </div>
         </div>
         <!--  Tips/Weather  -->
-        <div class="row mt-2">
-            <div class="row tip-weather-row mb-5">
-            <!--  Tips  -->
-            <div class="col-md-6" id="gardeningTipsDiv">
-               <h3 class="quicksand text-center">A Quick Gardening Tip</h3>
-                <br>
-                <!-- the tip will append here -->
-            </div>
+
             <!--  Weather  -->
-            <div class="col-md-6 text-center" id="weatherDiv">
-                <h3 class="quicksand" th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
+            <div class="col-md-12 text-center" id="weatherDiv">
+                <h3 class="quicksand mb-3 pt-1 pb-1" th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
 
                 <div class="data justify-content-between">
                     <span class="top-row">
-                                                        <!-- TODO: FIX THIS  -->
-                    <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
-                    <i th:if="${weather.currentTemp} >= '80'"
-                       class="mr-5 fas fa-thermometer-full"></i>
-                    <i th:if="${weather.currentTemp} <= '40'"
-                       class="mr-5 fas fa-thermometer-empty"></i>
+                        <span th:text="'Currently ' + ${#numbers.formatDecimal(weather.currentTemp,2,0)} + '°F'"></span>
+                        <i th:if="${weather.currentTemp} >= 90"
+                           class="mr-5 fas fa-thermometer-full"></i>
+                        <i th:if="${weather.currentTemp} < 90 and ${weather.currentTemp} > 40"
+                           class="mr-5 fas fa-thermometer-half"></i>
+                        <i th:if="${weather.currentTemp} <= 40"
+                           class="mr-5 fas fa-thermometer-empty"></i>
 
-                     <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
-                    <i th:if="${weather.generalCondition == 'Drizzle'}"
-                       class="mr-5 fas fa-cloud-showers-heavy"></i>
-                    <i th:if="${weather.generalCondition == 'Clouds'}"
-                       class="mr-5 fas fa-cloud"></i>
-                    <i th:if="${weather.generalCondition == 'Rain'}"
-                       class="mr-5 fas fa-cloud-rain"></i>
-                    <i th:if="${weather.generalCondition == 'Thunderstorm'}"
-                       class="mr-5 fas fa-bolt"></i>
-                    <i th:if="${weather.generalCondition == 'Snow'}"
-                       class="mr-5 fas fa-snowflake"></i>
-                    <i th:if="${weather.generalCondition == 'Clear'}"
-                       class="mr-5 fas fa-sun"></i>
+                         <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
+                        <i th:if="${weather.generalCondition == 'Drizzle'}"
+                           class="mr-5 fas fa-cloud-showers-heavy"></i>
+                        <i th:if="${weather.generalCondition == 'Clouds'}"
+                           class="mr-5 fas fa-cloud"></i>
+                        <i th:if="${weather.generalCondition == 'Rain'}"
+                           class="mr-5 fas fa-cloud-rain"></i>
+                        <i th:if="${weather.generalCondition == 'Thunderstorm'}"
+                           class="mr-5 fas fa-bolt"></i>
+                        <i th:if="${weather.generalCondition == 'Snow'}"
+                           class="mr-5 fas fa-snowflake"></i>
+                        <i th:if="${weather.generalCondition == 'Clear'}"
+                           class="mr-5 fas fa-sun"></i>
+                        <i th:unless="${weather.generalCondition == 'Drizzle'
+                            or weather.generalCondition == 'Clouds'
+                            or weather.generalCondition == 'Rain'
+                            or weather.generalCondition == 'Thunderstorm'
+                            or weather.generalCondition == 'Snow'
+                            or weather.generalCondition == 'Clear'}"
+                           class="mr-5 fas fa-smog"></i>
                     </span>
                     <span class="bottom-row">
-                    <span class="mr-5" th:text="'High/Low: ' + ${#strings.substring(weather.highTemp,0,2)} + '/' + ${#strings.substring(weather.lowTemp,0,2)} +  '°F'"></span>
-
-                    <span class="mr-5" th:text="'Humidity: ' + ${#strings.substring(weather.humidity,0,2)} + '%'"></span>
+                        <span class="mr-5" th:text="'High/Low: ' + ${#numbers.formatDecimal(weather.highTemp,2,0)} + '/' + ${#numbers.formatDecimal(weather.lowTemp,2,0)} +  '°F'"></span>
+                        <span class="mr-5" th:text="'Humidity: ' + ${#numbers.formatDecimal(weather.humidity,2,0)} + '%'"></span>
                     </span>
+
                 </div>
             </div>
 
-            </div>
-        </div>
         <!--  Gardens  -->
 
         <div class="row d-flex flex-column">
-            <div class="row d-flex justify-content-center pt-2 pb-2"><h1 class="mb-4 quicksand">My Gardens</h1></div>
+            <div class="row d-flex justify-content-center pt-4 pb-2"><h1 class="mb-4 quicksand">My Gardens</h1></div>
             <div class="col-md-12 user-gardens">
 
                 <!-- Existing gardens -->
@@ -156,9 +163,6 @@
                         <span class="names quicksand hvr-grow d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
 
                         <br>
-<!--                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">-->
-<!--                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">-->
-<!--                        </span>-->
                         <span th:each="plant : ${garden.getUniquePlants()}">
                             <img class="hvr-pop cute-icons" th:src="@{${'/images/' + plant.getPic_file_name()}}" alt="">
                         </span>
@@ -168,12 +172,23 @@
                 <!--Create a new garden button -->
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row mt-4 d-flex justify-content-center">
             <form th:action="@{'/dashboard/'+ ${userId}}"
                   th:method="post"
                   th:object="${newGarden}">
                 <button type="submit" class="btn mt-4 btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
             </form>
+        </div>
+
+        <!--  Tips  -->
+        <div class="row mt-5">
+            <div class="col-md-2" id="gardeningTipsDiv">
+                <h3 class="quicksand text-center">A Quick Gardening Tip</h3>
+            </div>
+            <div class="col-md-10 d-flex align-items-center"><p id="just-the-tip"></p></div>
+
+            <!-- the tip will append here -->
+            </div>
         </div>
     </div>
 <!-- Footer -->
