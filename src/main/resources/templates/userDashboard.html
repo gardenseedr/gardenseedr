@@ -113,6 +113,7 @@
 
                 <div class="data justify-content-between">
                     <span class="top-row">
+                                                        <!-- TODO: FIX THIS  -->
                     <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
                     <i th:if="${weather.currentTemp} >= '80'"
                        class="mr-5 fas fa-thermometer-full"></i>
