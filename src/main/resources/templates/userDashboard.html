@@ -135,7 +135,7 @@
                     </span>
                     <span class="bottom-row">
                         <span class="mr-5" th:text="'High/Low: ' + ${#numbers.formatDecimal(weather.highTemp,2,0)} + '/' + ${#numbers.formatDecimal(weather.lowTemp,2,0)} +  '°F'"></span>
-                        <span class="mr-5" th:text="'Humidity: ' + ${weather.humidity} + '%'"></span>
+                        <span class="mr-5" th:text="'Humidity: ' + ${#numbers.formatDecimal(weather.humidity,2,0)} + '%'"></span>
                     </span>
                 </div>
             </div>
