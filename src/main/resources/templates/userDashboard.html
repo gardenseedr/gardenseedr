@@ -110,7 +110,9 @@
                 <h3 class="quicksand mb-3 pt-1 pb-1" th:text="'Today\'s Weather in ' + ${weather.city}"></h3>
 
                 <div class="data justify-content-between">
+
 <!--                    <span class="top-row">-->
+
                     <span th:text="'Currently ' + ${#strings.substring(weather.currentTemp,0,2)} + '°F'"></span>
                     <i th:if="${weather.currentTemp} >= '80'"
                        class="mr-5 ml-1 fas fa-thermometer-full"></i>
