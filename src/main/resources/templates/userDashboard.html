@@ -154,9 +154,6 @@
                         <span class="names quicksand hvr-grow d-flex justify-content-center" th:text="${garden.getGarden_name()}"></span>
 
                         <br>
-<!--                        <span th:each="square : ${garden.getSquares()}" th:if="${square.getPlant().getPic_file_name()} != null">-->
-<!--                            <img class="hvr-pop cute-icons" th:src="@{${'/images/' + square.getPlant().getPic_file_name()}}" alt="">-->
-<!--                        </span>-->
                         <span th:each="plant : ${garden.getUniquePlants()}">
                             <img class="hvr-pop cute-icons" th:src="@{${'/images/' + plant.getPic_file_name()}}" alt="">
                         </span>
