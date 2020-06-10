@@ -29,12 +29,12 @@
 
 <div class="container">
 
-    <h1 class="subheader garden-name" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
+    <h1 class="subheader garden-name quicksand" th:if="${garden.getGarden_name()} != null" th:text="${garden.getGarden_name()}"></h1>
 
     <form class="subheader" th:unless="${garden.getGarden_name()} != null" th:action="@{'/garden/' + ${garden.getId()}}" th:method="post">
-        <h2>Give your garden a name:
+        <h2 class="quicksand">Give your garden a name:
             <input name="garden_name">
-            <button class="btn btn-light hvr-icon-grow" type="submit">Name It! <i class="fas fa-edit hvr-icon"></i></button>
+            <button class="btn btn-light hvr-icon-grow not-quicksand" type="submit">Name It! <i class="fas fa-edit hvr-icon"></i></button>
         </h2>
     </form>
 
