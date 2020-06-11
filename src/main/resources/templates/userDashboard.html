@@ -121,7 +121,6 @@
                            class="mr-5 fas fa-thermometer-half"></i>
                         <i th:if="${weather.currentTemp} <= 40"
                            class="mr-5 fas fa-thermometer-empty"></i>
-
                          <span th:text="${#strings.capitalize(weather.weatherDescription)}"></span>
                         <i th:if="${weather.generalCondition == 'Drizzle'}"
                            class="mr-5 fas fa-cloud-showers-heavy"></i>
@@ -176,16 +175,19 @@
             <form th:action="@{'/dashboard/'+ ${userId}}"
                   th:method="post"
                   th:object="${newGarden}">
-                <button type="submit" class="btn mt-4 btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
+                <button type="submit" class="btn mt-1 btn-light create-garden hvr-grow">Create New Garden <i class="fas fa-edit hvr-icon"></i></button>
             </form>
         </div>
 
         <!--  Tips  -->
         <div class="row mt-3">
-            <div class="col-md-2" id="gardeningTipsDiv">
+
+            <div class="col-md-12" id="gardeningTipsDiv">
                 <h3 class="quicksand text-center">A Quick Gardening Tip</h3>
             </div>
-            <div class="col-md-10 d-flex align-items-center"><p id="just-the-tip"></p></div>
+            <div class="row">
+            <div class="col-md-12 d-flex align-items-center"><p id="just-the-tip"></p></div>
+
 
             <!-- the tip will append here -->
             </div>
