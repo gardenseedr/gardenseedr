@@ -4,7 +4,7 @@ var gardeningTips = [
     "Pay attention to how sunlight plays through your yard before choosing a spot for your garden. Most edible plants, including many vegetables, herbs, and fruits, need at least 6 hours of sun in order to thrive.",
     "Plan your new garden near a water source. Make sure you can run a hose to your garden site, so you don't have to lug water to it each time your plants get thirsty.",
     "The best way to tell if plants need watering is to push a finger an inch down into the soil (that's about one knuckle deep). If it's dry, it's time to water.",
-    "Paint the handles of your gardens tools a bright, color other than green to help you find them amongst your plants. You can also keep a mailbox in your garden for easy tool storage.",
+    "Paint the handles of your gardens tools a bright color other than green to help you find them amongst your plants. You can also keep a mailbox in your garden for easy tool storage.",
     "Compost needs time to integrate and stabilize in the soil. Apply two to three weeks prior to planting.",
     "Garden vegetables that become over-ripe are an easy target for some pests. Remove them as soon as possible to avoid detection.",
     "Insects can’t stand plants such as garlic, onions, and chives. Grow these plants around the garden to help repel insects.",
