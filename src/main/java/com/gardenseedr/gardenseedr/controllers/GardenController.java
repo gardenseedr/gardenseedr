@@ -53,8 +53,6 @@ public class GardenController {
     // This will be where the SEARCH function resides... eventually.
     @GetMapping("/search")
     public String findPlant(@PathVariable long gardenId, Model model, String keyword) {
-
-
         return "userGarden";
     }
 
