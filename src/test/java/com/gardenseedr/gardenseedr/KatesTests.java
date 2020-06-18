@@ -15,11 +15,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import javax.persistence.Column;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
+import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -84,27 +83,30 @@ public class KatesTests {
     }
 
     @Test
-    public void testCreateGarden() throws Exception{
+    public void contextLoads() {
+        // Sanity Test, just to make sure the MVC bean is working
+        assertNotNull(mvc);
+    }
+
+    @Test
+    public void testIfUserSessionIsActive() throws Exception {
+        // It makes sure the returned session is not null
+        assertNotNull(httpSession);
+    }
+
+    @Test
+    public void testCreateGarden() throws Exception {
         // Makes a Post request to /posts/create and expect a redirection to the Post
         // Makes a Post request to /dashboard/{userId} and expect a redirection to the Garden
+        LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
         this.mvc.perform(
                 post("/dashboard/{userId}").with(csrf())
                         .session((MockHttpSession) httpSession)
+
                         // Add all the required parameters to your request like this
-                        .param("title", "test")
-                        .param("body", "test to create post"))
-                .andExpect(status().is3xxRedirection());
-
-
-        public String createGarden(@ModelAttribute Garden newgarden, @PathVariable long userId) {
-            LocalDate today = LocalDate.now(); //gets today's date in yyyy-mm-dd format
-
-            newgarden.setCreated(today);
-            newgarden.setUser(userDao.getOne(userId));
-
-            gardenRepo.save(newgarden);
-
-            return "redirect:/garden/" + newgarden.getId();
+                        .param("created", String.valueOf(today))
+                        .param("user_id", testUser)
+                .andExpect(status().is3xxRedirection()));
     }
 
 
