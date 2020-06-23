@@ -26,7 +26,9 @@ public class Plant {
     @JsonBackReference
     private List<Square> squares;
 
-//    No constructor(s) cause it should not change after values are seeded
+    //    No constructor(s) cause it should not change after values are seeded
+
+    // ------------------------- Getters and Setters
 
     public List<Square> getSquares() {
         return squares;
@@ -56,7 +58,6 @@ public class Plant {
         this.plant_name = plant_name;
     }
 
-//    UNCOMMENT THIS TO RESET UP THE DB DESIGN
     public String getPic_file_name() {
         return pic_file_name;
     }

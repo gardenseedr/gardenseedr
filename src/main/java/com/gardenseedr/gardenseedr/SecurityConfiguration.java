@@ -58,15 +58,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                         // only authenticated users can hit these endpoints
-                        "/garden",
-                         "/dashboard/{userId}",
-                        "/search", // keep this one?
-                        "/garden/{gardenId}",
-                        "/square/{squareId}",
-                        "/profile/{userId}",
-                        "/editprofile/{userId}",
-                        "/delete/profile/{userId}")
-                .authenticated();
+                         // only authenticated users can hit these endpoints  ----- PUT THIS BACK BEFORE PUSHING TO PROD
+//                        "/garden",
+//                        "/dashboard/{userId}",
+//                        "/search",
+//                        "/garden/{gardenId}",
+//                        "/square/{squareId}",
+//                        "/profile/{userId}",
+                        "/editprofile/{userId}"
+//                        "/delete/profile/{userId}"
+                ).authenticated();
     }
 }

@@ -74,7 +74,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--        Jquery Dependency-->
+        <!-- Jquery Dependency-->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
