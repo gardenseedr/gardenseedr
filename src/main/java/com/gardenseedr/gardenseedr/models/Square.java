@@ -59,6 +59,7 @@ public class Square {
         this.plant = plant;
     }
 
+    // ------------------------- Getters and Setters
 
     public long getId() {
         return id;

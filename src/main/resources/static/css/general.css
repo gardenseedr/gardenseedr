@@ -7,37 +7,52 @@
 
 *{
     font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
 }
 
 html{
     height: 100%;
+    width: 100%;
 }
 
 body {
     background: white;
     margin: 0;
-    min-height: 100%;
+    height: 100%;
 }
 
 a{
     color: black;
 }
-
 a:hover{
     color: var(--seedrGreen);
 }
 
 nav {
     background: var(--seedrBone);
+    height: 7%;
 }
+    #logoAnchor{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .bigLogo { /* logo inside of nav */
+        height: 70%;
+    }
 
-.bigLogo { /* logo inside of nav */
-    width: 300px;
-}
+    #navbarSupportedContent, .navbar-nav{
+        height: 90%;
+    }
+
+    .navIcon{ /* The little icon in the nav */
+        height: 100%;
+        line-height: 100%;
+    }
+
 .quicksand {
     font-family: 'Quicksand', sans-serif;
 }
-
 .not-quicksand {
     font-family: 'Open Sans', sans-serif;
 }
@@ -47,7 +62,6 @@ nav {
     text-align: center;
     display: flex;
     justify-content: center;
-
 }
 
 footer {
@@ -56,14 +70,12 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 6%;
     display: flex;
     justify-content: center;
 }
 
-.navIcon{ /* The little icon in the nav */
-    height: 30px;
-    line-height: 30px;
-}
+
 
 
 /* For all pages containing .container */

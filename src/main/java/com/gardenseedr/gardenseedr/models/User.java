@@ -47,29 +47,7 @@ public class User {
         password = copy.password;
     }
 
-
-    // Every field but id included
-    public User (String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin){
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.zipcode = zipcode;
-        this.is_admin = is_admin;
-    }
-    // Every field included
-    public User (long id, String first_name, String last_name, String username, String email, String password, int zipcode, boolean is_admin){
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.zipcode = zipcode;
-        this.is_admin = is_admin;
-    }
-
+    // ------------------------- Getters and Setters
 
     public long getId() {
         return id;
@@ -133,7 +111,4 @@ public class User {
     public void setGardens(List<Garden> gardens) {
         this.gardens = gardens;
     }
-
-
-
 }

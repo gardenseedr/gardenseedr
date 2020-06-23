@@ -22,8 +22,9 @@ import java.time.LocalDate;
         @JoinColumn(name = "square_id")
         private Square square;
 
-//    No constructor(s) cause it should not change after values are seeded
+        //    No constructor(s) cause it should not change after values are seeded
 
+        // ------------------------- Getters and Setters
         public long getId() {
             return id;
         }
