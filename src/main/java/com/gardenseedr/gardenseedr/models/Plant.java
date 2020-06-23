@@ -26,7 +26,9 @@ public class Plant {
     @JsonBackReference
     private List<Square> squares;
 
-//    No constructor(s) cause it should not change after values are seeded
+    //    No constructor(s) cause it should not change after values are seeded
+
+    // ------------------------- Getters and Setters
 
     public List<Square> getSquares() {
         return squares;

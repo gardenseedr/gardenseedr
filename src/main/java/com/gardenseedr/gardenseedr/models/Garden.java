@@ -56,8 +56,7 @@ public class Garden {
         this.user = user;
     }
 
-
-    // GETTERS AND SETTERS
+    // ------------------------- Getters and Setters
     public User getUser() {
         return user;
     }
