@@ -56,7 +56,6 @@ public class Plant {
         this.plant_name = plant_name;
     }
 
-//    UNCOMMENT THIS TO RESET UP THE DB DESIGN
     public String getPic_file_name() {
         return pic_file_name;
     }
